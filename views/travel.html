@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcom to team30's website</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+</head>
+<body>
+
+  <div>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="about.html">Blog<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="travel.html">Travel</a></li>
+              <li><a href="#">Food</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        </ul>
+      </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="col-md-3" id="margin-navbar">
+  <div id="sidenav1">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sideNavbar"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+    </div>
+    <div class="collapse navbar-collapse" id="sideNavbar">
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a href="#"><span class="glyphicon glyphicon-home"></span>Travel</a> </h4>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-globe"> </span>A<span class="caret"></span></a> </h4>
+          </div>
+          <!-- Note: By adding "in" after "collapse", it starts with that particular panel open by default; remove if you want them all collapsed by default --> 
+          <div id="collapseOne" class="panel-collapse collapse in">
+            <ul class="list-group">
+              <li><a href="" class="navlink">Link 1</a></li>
+              <li><a href="" class="navlink">Link 2</a></li>
+              <li><a href="" class="navlink">Link 3</a></li>
+              <li><a href="" class="navlink">Link 4</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-globe"> </span>B<span class="caret"></span></a> </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse">
+            <ul class="list-group">
+              <li><a href="" class="navlink">Link 1</a></li>
+              <li><a href="" class="navlink">Link 2</a></li>
+              <li><a href="" class="navlink">Link 3</a></li>
+              <li><a href="" class="navlink">Link 4</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-globe"> </span>C<span class="caret"></span></a> </h4>
+          </div>
+          <div id="collapseThree" class="panel-collapse collapse">
+            <ul class="list-group">
+              <li><a href="" class="navlink">Link 1</a></li>
+              <li><a href="" class="navlink">Link 2</a></li>
+              <li><a href="" class="navlink">Link 3</a></li>
+              <li><a href="" class="navlink">Link 4</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-globe"></span>D<span class="caret"></span></a></h4>
+          </div>
+          <div id="collapseFour" class="panel-collapse collapse">
+            <ul class="list-group">
+              <li><a href="" class="navlink">Link 1</a></li>
+              <li><a href="" class="navlink">Link 2</a></li>
+              <li><a href="" class="navlink">Link 3</a></li>
+              <li><a href="" class="navlink">Link 4</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- This is in case you want to add additional links that will only show once the Nav button is engaged; delete if you don't need -->
+        <div class="menu-hide">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title"><a href=""><span class="glyphicon glyphicon-new-window"></span>External Link</a> </h4>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title"><a href=""><span class="glyphicon glyphicon-new-window"></span>External Link</a> </h4>
+            </div>
+          </div>
+        </div>
+        <!-- end hidden Menu items --> 
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+  <script src="../js/jquery-3.3.1.min.js" type = "text/javascript"></script>
+  <script src="../js/bootstrap.min.js" type = "text/javascript"></script>
+</body>
+</html>
