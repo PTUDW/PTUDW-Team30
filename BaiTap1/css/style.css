@@ -21,6 +21,7 @@
     margin-right: 30px;
     margin-left: 30px;
     margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 #img-contact {
@@ -62,6 +63,13 @@ a img {
     overflow:auto
 }
 
+#img-contact-footer
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 30px;
+    height: 30px;
+}
 
 /********* SIDE NAV BAR ***********/
 a {
