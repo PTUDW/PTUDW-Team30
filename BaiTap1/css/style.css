@@ -1,0 +1,180 @@
+#avt {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+.center
+{
+    height: 50%;
+}
+#margin-navbar {
+    margin-top: 50px;
+}
+
+#margin-avt {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    background-color: #EEE;
+}
+
+#margin-body {
+    margin-right: 30px;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+#img-contact {
+    margin-top: 30px;
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+#about-text {
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+#about-text p {
+  display: list-item;
+  list-style: disc;
+  margin: 0;
+}
+
+a img {
+    -webkit-transition:all 1s ease;
+    -moz-transition:all 1s ease;
+    -o-transition:all 1s ease;
+    -ms-transition:all 1s ease;
+    transition:all 1s ease;
+    max-width:100%
+}
+
+a img:hover {
+    -webkit-transform:scale(1.1);
+    -moz-transform:scale(1.1);
+    -ms-transform:scale(1.1);
+    -o-transform:scale(1.1);
+    transform:scale(1.1)
+}
+a img {
+    max-width:100%;
+    overflow:auto
+}
+
+
+/********* SIDE NAV BAR ***********/
+a {
+color:#000;
+}
+
+li {
+list-style:none;
+} 
+
+.panel-default>.panel-heading {
+    color: #fff;
+    background-color: #00436a;
+    border-color: #ddd;
+}
+
+.panel-group .panel+.panel {
+    margin-top: 0px;
+}
+.panel-group {
+	margin-top: 35px;
+}
+.panel-collapse {
+	background-color:rgba(220, 213, 172, 0.5);
+}
+
+.glyphicon { 
+margin-right:10px; 
+}
+
+
+ul.list-group {
+	margin:0px;
+}
+
+ul.bulletlist li {
+	list-style:disc;
+}
+
+
+ul.list-group  li a {
+ display:block;
+ padding:5px 0px 5px 15px;
+ text-decoration:none;
+}
+
+ul.list-group li {
+	border-bottom: 1px dotted rgba(0,0,0,0.2);
+}
+	
+
+ul.list-group  li a:hover, ul li a:focus {
+ color:#fff;
+ background-color: #00436a;
+}
+
+.panel-title a:hover,
+.panel-title a:active,
+.panel-title a:focus,
+.panel-title .open a:hover,
+.panel-title .open a:active,
+.panel-title .open a:focus
+ {
+	text-decoration:none;
+	color:#fff;
+}
+
+.panel-title>.small, .panel-title>.small>a, .panel-title>a, .panel-title>small, .panel-title>small>a {
+        display: block;
+}
+
+@media (min-width: 768px){
+.navbar-collapse.collapse 
+	{
+    display: block!important;
+    height: auto!important;
+    padding-bottom: 0;
+    overflow: visible!important;
+	padding-left:0px; 
+}
+}
+
+@media (min-width: 992px){
+.menu-hide {
+    display: none;
+}
+
+}
+.menu-hide .panel-default>.panel-heading {
+    color: #fff;
+    background-color: #8e8c8c;
+    border-color: #ddd;
+}
+
+/********** END SIDEBAR *************/
+
+/********** NAVBAR TOGGLE *************/
+
+.navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+.navbar-toggle {
+    padding: 11px 10px;
+    margin-top: 8px;
+    margin-right: 15px;
+    margin-bottom: 8px;
+    background-color: #a32638;
+    border-radius: 0px;
+}
+
+/********** END NAVBAR TOGGLE *************/
+
+#container {
+    width: 100%;
+    margin: 0 auto;
+}
