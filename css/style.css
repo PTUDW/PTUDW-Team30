@@ -41,6 +41,27 @@
   margin: 0;
 }
 
+a img {
+    -webkit-transition:all 1s ease;
+    -moz-transition:all 1s ease;
+    -o-transition:all 1s ease;
+    -ms-transition:all 1s ease;
+    transition:all 1s ease;
+    max-width:100%
+}
+
+a img:hover {
+    -webkit-transform:scale(1.1);
+    -moz-transform:scale(1.1);
+    -ms-transform:scale(1.1);
+    -o-transform:scale(1.1);
+    transform:scale(1.1)
+}
+a img {
+    max-width:100%;
+    overflow:auto
+}
+
 
 /********* SIDE NAV BAR ***********/
 a {
