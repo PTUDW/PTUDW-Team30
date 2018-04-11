@@ -1,0 +1,273 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: $font-roboto;
+    color: $gray;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.padding-width {
+    padding-left: 10px;
+    padding-right: 10px;
+    @include screen(small) {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+figure {
+    margin: 0;
+}
+
+textarea {
+    resize: none;
+}
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.hide {
+    display: none;
+}
+
+.align-center {
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.hide-on-desktop {
+    @include screen(small) {
+        display: none;
+    }
+}
+
+.hide-on-mobile {
+    @include screen(small, false) {
+        display: none;
+    }
+}
+
+.box-shadow {
+    box-shadow: 0 5px 10px rgba($gray, 0.3);
+}
+
+button.cart {
+    cursor: pointer;
+    display: inline-block;
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    background: $sky;
+    transition: background 0.3s;
+    @include screen(small) {
+        &:hover {
+            background: $dark-sky;
+        }
+    }
+}
+
+label {
+    display: inline-block;
+}
+
+button.btn {
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    outline: none;
+    border: none;
+    padding: 10px 40px;
+    background-color: $sky;
+    // border-radius: 5px;
+    span {
+        color: white;
+        font-weight: 700;
+        font-size: 20px;
+    }
+    &:hover {
+        background-color: $dark-sky;
+    }
+    &.btn--large {
+        padding: 20px 50px;
+    }
+    &.btn--small {
+        padding: 5px 10px;
+        span {
+            font-size: 15px;
+            // font-weight: normal;
+        }
+    }
+    &.btn-buy {
+    margin: 20px auto;
+    }
+    &.btn--orange {
+        background-color: orange;
+        &:hover {
+            background-color: #e09100;
+        }
+    }
+    &.btn--red {
+        background-color: #ff3333;
+        &:hover {
+            background-color: #ca0000;
+        }
+    }
+}
+.btn-wrapper {
+    text-align: center;
+    a.btn {
+        display: inline-block;
+        padding: 10px 40px;
+        background-color: $sky;
+        color: white;
+        font-weight: 700;
+        font-size: 20px;
+    }
+}
+.btn-search {
+    cursor: pointer;
+    position: absolute;
+    background: transparent;
+    border: none;
+    outline: none;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.custom-input {
+    width: 100%;
+    margin: 5px auto 20px;
+    border: 1px solid $sky;
+    outline: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: $gray;
+    &[type="checkbox"] {
+        width: auto;
+    }
+    &:focus {
+        // border-width: 2px;
+        border-color: $dark-sky;
+        box-shadow: 0 0 10px $dark-sky;
+    }
+}
+
+footer {
+    background: $sky;
+    margin-top: 30px;
+    padding: 20px 0;
+    color: white;
+    font-weight: 300;
+    .container {
+        margin-bottom: 10px;
+        @include screen(small) {
+            width: 50%;
+            float: left;
+            text-align: center;
+        }
+    }
+    h2,
+    h3 {
+        margin: 0;
+    }
+    li, a {
+        font-size: 14px;
+        line-height: 1.5;
+        color: white;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    .member {
+       user-select: none;
+    }
+    .copy {
+        text-align: center;
+        font-size: 12px;
+    }
+}
+
+.col-half {
+    width : 50%;
+    float: left;
+}
+
+.col-aside {
+    @include screen(small) {
+        width: 25%;
+        float: left;
+        padding: 30px 20px 30px 0;
+    }
+}
+
+.col-content {
+    @include screen(small) {
+        width: 75%;
+        padding: 30px 0 30px 40px;
+        float: right;
+    }
+}
+
+table {
+    border-collapse: collapse;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.required-symbol {
+    color: red;
+}
+
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
+.table-manager {
+    max-width: 1200px;
+    td {
+        border: 1px solid $gray;
+        padding: 5px;
+    }
+    th {
+        background-color: $sky;
+        color: white;
+        padding: 5px;
+        border: 1px solid $dark-sky;
+    }
+    tr {
+        &:nth-child(odd) {
+            background-color: #e8e8e8;
+        }
+    }
+}
