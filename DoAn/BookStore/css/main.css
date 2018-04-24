@@ -232,3 +232,79 @@ table{border-collapse:collapse;max-width:900px;width:100%;margin:0 auto}
 .register-message{margin:80px auto}
 .register-message h2{font-size:40px}
 .register-message p{font-size:20px}
+.product-title {font-size: 30px;font-weight: 700;color: #1b9194;text-transform: capitalize;font-family: cursive;}
+.product-price {font-size: 25px;font-weight: 700;color: #ff5722;text-transform: capitalize;}
+
+
+.tiki-product .wrap .item-box .item-product-options .quantity-box .quantity-col1 {
+    clear: both;
+    float: left;
+    width: 84px;
+    margin-right: 31px;
+}
+.bootstrap-touchspin .input-group-btn>.btn {
+    display: block;
+    float: none;
+    width: 100%;
+    max-width: 100%;
+    line-height: 15px;
+    font-size: 14px;
+    font-weight: 300;
+    height: 28px;
+    position: relative;
+}
+.tiki-product .wrap .item-box .item-product-options .quantity-box .quantity-label {
+    line-height: 6px;
+    font-size: 11px;
+    margin-bottom: 6px;
+    color: #7b7b7b;
+}
+.tiki-product .wrap .item-box .item-product-options .quantity-box .quantity-col1 .tiki-number-input {
+    margin: 0;
+}
+.input-group {
+    display: table;
+    border-collapse: separate;
+}
+.bootstrap-touchspin .input-group-btn {
+    position: relative;
+    white-space: nowrap;
+    vertical-align: middle;
+    display: table-cell;
+}
+.bootstrap-touchspin .input-group-btn .bootstrap-touchspin-down {
+    border-radius: 4px 0 0 4px;
+    border: 1px solid #dfdfdf;
+    background: #fff;
+    padding: 0 10px;
+}
+.bootstrap-touchspin .input-group-btn .bootstrap-touchspin-up {
+    border-radius: 0 4px 4px 0;
+    border: 1px solid #dfdfdf;
+    background: #fff;
+    padding: 0 10px;
+}
+.input-group-addon {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.bootstrap-touchspin [name=qty] {
+    display: block;
+    border: 0;
+    border-top: 1px solid #dfdfdf;
+    border-bottom: 1px solid #dfdfdf;
+    height: 28px;
+    padding: 0;
+    width: 28px;
+    text-align: center;
+}
+.tiki-product .wrap .item-box .item-product-options .quantity-box {
+    padding: 20px 0;
+}
