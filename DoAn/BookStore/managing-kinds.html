@@ -2,37 +2,37 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=latin-ext,vietnamese" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/main.css">
-	<title>Book Store</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=latin-ext,vietnamese" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Book Store</title>
 </head>
 
 <body>
-	<header>
-		<h1 class="logo">Book<span>Store</span></h1>
+    <header>
+        <h1 class="logo">Book<span>Store</span></h1>
 
-		<nav class="nav-bar row">
-			<div class="btn-toggle-wrapper hide-on-desktop" id="btn-menu">
-				<span class="btn-toggle"></span>
-			</div>
-			<ul class="menu">
+        <nav class="nav-bar row">
+            <div class="btn-toggle-wrapper hide-on-desktop" id="btn-menu">
+                <span class="btn-toggle"></span>
+            </div>
+            <ul class="menu">
                 <li class="menu-item">
                     <a href="index-admin.html">
                         <i class="fa fa-book" aria-hidden="true"></i> Managing Books
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="managing-kinds.html">
+                <li class="menu-item active">
+                    <a href="managing-kinds" class="active">
                         <i class="fa fa-user" aria-hidden="true"></i> Managing Kinds
                     </a>
                 </li>
-                <li class="menu-item active">
-                    <a href="managing-issuingHouses.html" class="active">
+                <li class="menu-item">
+                    <a href="managing-issuingHouses.html">
                         <i class="fa fa-home" aria-hidden="true"></i> Managing Issuing houses
                     </a>
                 </li>
@@ -46,8 +46,8 @@
                     <a href="index.html" class="logout">Logout</a>
                 </li>
             </ul>
-		</nav>
-	</header>
+        </nav>
+    </header>
 
     <div class="container padding-width">
         <div class="manager-container">
@@ -58,7 +58,7 @@
                                         <tr>
                                             <td>
                                                 <div class="search-book-wrapper">
-                                                    <input type="text" class="custom-input" placeholder="Typing Issuing house ID or Name">
+                                                    <input type="text" class="custom-input" placeholder="Typing Kind ID or Name">
                                                     <button class="btn-search">
                                                         <i class="fa fa-search fa-lg" aria-hidden="true"></i>
                                                     </button>
@@ -72,41 +72,37 @@
                                 </div>
                                 <table class="table-manager">
                                     <tr>
-                                        <th>Issuing house ID</th>
-                                        <th>Issuing house Name</th>
-                                        <th>Address</th>
-                                        <th>Contact</th>
-                                        <th>Information</th>
+                                        <th>Kind ID</th>
+                                        <th>Kind Name</th>
+                                        <th>Catelogies belonging</th>
+                                        <th>Description</th>
                                         <th></th>
                                     </tr>
                                     <tr>
                                         <td>1</td>
-                                        <td>BachvietBooks</td>
-                                        <td>196, Cong Hoa</td>
-                                        <td>0288888888</td>
-                                        <td>sfhkdsjghkhkfdkhfkadhfkjfhkaj</td>
+                                        <td>English</td>
+                                        <td>Foreign language</td>
+                                        <td>... is the common language of the world</td>
                                         <td>
                                             <button id="book1" class="btn btn--small btn--orange" data-type="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span></button>
                                             <button class="btn btn--small btn--red" data-type="remove"><span><i class="fa fa-trash" aria-hidden="true"></i> Remove</span></button>
                                         </td>
                                     </tr>
                                    <tr>
-                                        <td>1</td>
-                                        <td>BachvietBooks</td>
-                                        <td>196, Cong Hoa</td>
-                                        <td>0288888888</td>
-                                        <td>sfhkdsjghkhkfdkhfkadhfkjfhkaj</td>
+                                        <td>2</td>
+                                        <td>Japanese</td>
+                                        <td>Foreign language</td>
+                                        <td>abc</td>
                                         <td>
                                             <button id="book1" class="btn btn--small btn--orange" data-type="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span></button>
                                             <button class="btn btn--small btn--red" data-type="remove"><span><i class="fa fa-trash" aria-hidden="true"></i> Remove</span></button>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>1</td>
-                                        <td>BachvietBooks</td>
-                                        <td>196, Cong Hoa</td>
-                                        <td>0288888888</td>
-                                        <td>sfhkdsjghkhkfdkhfkadhfkjfhkaj</td>
+                                        <td>3</td>
+                                        <td>Korean</td>
+                                        <td>Foreign language</td>
+                                        <td>def</td>
                                         <td>
                                             <button id="book1" class="btn btn--small btn--orange" data-type="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span></button>
                                             <button class="btn btn--small btn--red" data-type="remove"><span><i class="fa fa-trash" aria-hidden="true"></i> Remove</span></button>
@@ -118,15 +114,13 @@
                                 <i class="fa fa-close close-popup"></i>
                                 <div class="outer">
                                     <div class="container">
-                                        <label>Publisher ID</label>
+                                        <label>Kind ID</label>
                                         <input type="text" class="custom-input" required="true">
-                                        <label>Publisher Name</label>
+                                        <label>Kind Name</label>
                                         <input type="text" class="custom-input" required="true">
-                                        <label>Address</label>
+                                        <label>Catelogies belonging</label>
                                         <input type="text" class="custom-input" required="true">
-                                        <label>Contact</label>
-                                        <input type="text" class="custom-input" required="true">
-                                        <label>Information</label>
+                                        <label>Description</label>
                                         <input type="text" class="custom-input" required="true">
                                         <button class="btn"><span>Add</span></button>
                                     </div>
@@ -138,15 +132,13 @@
                                 <i class="fa fa-close close-popup"></i>
                                 <div class="outer">
                                     <div class="container">
-                                        <label>Publisher ID</label>
+                                        <label>Kind ID</label>
                                         <input type="text" class="custom-input" required="true">
-                                        <label>Publisher Name</label>
+                                        <label>Kind Name</label>
                                         <input type="text" class="custom-input" required="true">
-                                        <label>Address</label>
+                                        <label>Catelogies belonging</label>
                                         <input type="text" class="custom-input" required="true">
-                                        <label>Contact</label>
-                                        <input type="text" class="custom-input" required="true">
-                                        <label>Information</label>
+                                        <label>Description</label>
                                         <input type="text" class="custom-input" required="true">
                                         <button class="btn"><span>Edit</span></button>
                                     </div>
@@ -160,34 +152,34 @@
     </div>
 
 
-	<footer class="padding-width">
-		<div class="row">
-			<div class="container">
-				<h3>About Us</h3>
-				<ul>
-					<li class="member">Vo Thi Thanh Truc</li>
-					<li class="member">Nguyen Duy Nhat</li>
-				</ul>
-			</div>
-			<div class="container">
-				<h3>My Account</h3>
-				<ul>
-					<li>Login</li>
-					<li>Register</li>
-					<li>My Account</li>
-				</ul>
-			</div>
-		</div>
-		<div class="copy">
-			<span>&copy; 2018 HCMUS</span>
-		</div>
-	</footer>
+    <footer class="padding-width">
+        <div class="row">
+            <div class="container">
+                <h3>About Us</h3>
+                <ul>
+                    <li class="member">Vo Thi Thanh Truc</li>
+                    <li class="member">Nguyen Duy Nhat</li>
+                </ul>
+            </div>
+            <div class="container">
+                <h3>My Account</h3>
+                <ul>
+                    <li>Login</li>
+                    <li>Register</li>
+                    <li>My Account</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copy">
+            <span>&copy; 2018 HCMUS</span>
+        </div>
+    </footer>
 
-	<!-- script -->
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-		crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.js"></script>
-	<script src="js/main.js"></script>
+    <!-- script -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

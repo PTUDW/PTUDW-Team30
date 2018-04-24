@@ -249,8 +249,8 @@ table{border-collapse:collapse;max-width:900px;width:100%;margin:0 auto}
 .container-cart .qty-input{width:50px;margin-left:20px;text-align:right;border:1px solid #b1b1b1}
 .container-cart .fa-trash-o{cursor:pointer;font-size:20px;position:absolute;bottom:12px;right:10px}
 @media (min-width:768px){.container-cart .fa-trash-o{font-size:30px}}
-@media (min-width:768px){.col-order-1{float:left;width:25%}}
-@media (min-width:768px){.col-order-2{float:right;width:75%}}
+@media (min-width:768px){.col-order-1{float:left;width:25%; margin-left: 5%}}
+@media (min-width:768px){.col-order-2{float:right;width:65%; margin-left: 5%}}
 .order-info td{width:50%;padding:10px 20px}
 .order-info td.order-info--key{text-align:right}
 .order-info td.order-info--value{text-align:left}
@@ -400,4 +400,8 @@ table{border-collapse:collapse;max-width:900px;width:100%;margin:0 auto}
 }
 .tiki-product .wrap .item-box .item-product-options .quantity-box {
     padding: 20px 0;
+}
+
+.status-change{
+  padding: 20px 500px 20px 500px;
 }
