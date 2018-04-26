@@ -17,36 +17,38 @@
 		<h1 class="logo">Book<span>Store</span></h1>
 
 		<nav class="nav-bar row">
-			<div class="btn-toggle-wrapper hide-on-desktop" id="btn-menu">
-				<span class="btn-toggle"></span>
-			</div>
-			<ul class="menu">
+            <div class="btn-toggle-wrapper hide-on-desktop" id="btn-menu">
+                <span class="btn-toggle"></span>
+            </div>
+            <ul class="menu">
                 <li class="menu-item">
-                    <a href="index-admin.html">
-                        <i class="fa fa-book" aria-hidden="true"></i> Managing Books
-                    </a>
+                    <a href="index-customer.html">
+                        <i class="fa fa-home" aria-hidden="true"></i> Home</a>
                 </li>
                 <li class="menu-item">
-                    <a href="managing-kinds.html">
-                        <i class="fa fa-sitemap" aria-hidden="true"></i> Managing Kinds
-                    </a>
+                    <a href="user-info.html">
+                        <i class="fa fa-user" aria-hidden="true"></i> My Account</a>
+                </li>
+                <li class="menu-item active">
+                    <a href="order-track.html">
+                        <i class="fa fa-cart-plus" aria-hidden="true"></i> Order Track</a>
                 </li>
                 <li class="menu-item">
-                    <a href="managing-issuingHouses.html">
-                        <i class="fa fa-address-card" aria-hidden="true"></i> Managing Issuing houses
-                    </a>
+                    <a href="cart.html">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</a>
+                    <span class="badges-cart">0</span>
                 </li>
-                <li class="menu-item">
-                    <a href="managing-orders.html" class=""><i class="fa fa-truck" aria-hidden="true"></i> Managing Orders
-                    </a>
+                <li class="customer-login hide-on-mobile">
+                    Hi <span>...</span>! Welcom to my Bookstore!<br/>
+                    <a href="index.html" class="logout">Logout</a>
                 </li>
-				<li class="customer-login hide-on-mobile">
-                    Hi <span>admin</span>! Welcom to Bookstore!<br/>
-					<a href="index.html" class="logout">Logout</a>
-				</li>
-			</ul>
-			
-		</nav>
+            </ul>
+            <span class="search">
+                <input id="search-bar" class="search-bar hide-on-mobile" placeholder="Search" type="text">
+                <i class="fa fa-search fa-2x hide-on-desktop" aria-hidden="true"></i>
+                <i class="fa fa-search fa-lg hide-on-mobile" aria-hidden="true"></i>
+            </span>
+        </nav>
 	</header>
 
     <div class="container padding-width">
@@ -101,16 +103,8 @@
                     </table>
                 </div>
             </div>
-            <div class="status-change">
-                <label>Status</label>
-                <select required class="custom-input" id="select-status">
-                    <option>New</option>
-                    <option>Shipping</option>
-                    <option>Deliveried</option>
-                </select>
-            </div>
             <div class="row">
-                <button type="submit" class="btn btn-buy btn--orange btn--large"><a href="managing-orders.html"><span>Submit</span></button>
+                <button class="btn btn-buy btn--orange btn--large"><a href="order-track.html"><span>Back</span></button>
             </div>
     </div>
     
