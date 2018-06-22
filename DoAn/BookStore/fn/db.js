@@ -6,7 +6,7 @@ exports.load = sql => {
             host: 'localhost',
             port: 3306,
             user: 'root',
-            password: '1111',
+            password: '',
             database: 'bookstoredb'
         });
 
@@ -14,9 +14,9 @@ exports.load = sql => {
 
         cn.query(sql, function(error, rows, fields) {
             if (error) {
-            	reject(error);
+                reject(error);
             } else {
-            	resolve(rows);
+                resolve(rows);
             }
 
             cn.end();

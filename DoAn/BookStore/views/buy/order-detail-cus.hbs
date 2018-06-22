@@ -1,0 +1,91 @@
+<header>
+    <nav class="nav-bar row">
+        <div class="btn-toggle-wrapper hide-on-desktop" id="btn-menu">
+            <span class="btn-toggle"></span>
+        </div>
+        <ul class="menu">
+            <li class="menu-item">
+                <a href="index-customer.html">
+                    <i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="menu-item">
+                <a href="user-info.html">
+                    <i class="fa fa-user" aria-hidden="true"></i> My Account</a>
+            </li>
+            <li class="menu-item active">
+                <a href="order-track.html">
+                    <i class="fa fa-cart-plus" aria-hidden="true"></i> Order Track</a>
+            </li>
+            <li class="menu-item">
+                <a href="cart.html">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</a>
+                <span class="badges-cart">0</span>
+            </li>
+            <li class="customer-login hide-on-mobile">
+                Hi <span>...</span>! Welcom to my Bookstore!<br/>
+                <a href="index.html" class="logout">Logout</a>
+            </li>
+        </ul>
+        <span class="search">
+                <input id="search-bar" class="search-bar hide-on-mobile" placeholder="Search" type="text">
+                <i class="fa fa-search fa-2x hide-on-desktop" aria-hidden="true"></i>
+                <i class="fa fa-search fa-lg hide-on-mobile" aria-hidden="true"></i>
+            </span>
+    </nav>
+</header>
+<div class="container padding-width">
+    <h2 class="align-center">Order infomation</h2>
+    <div class="row wrapper-order">
+        <div class="col-order-1">
+            <label for="">Order ID</label>
+            <input readonly class="custom-input" type="text" name="orderid" value="1">
+            <label for="">Customer ID</label>
+            <input readonly class="custom-input" type="text" name="customerid" value="1">
+            <label for="">Consignee Name</label>
+            <input readonly class="custom-input" type="text" name="fullname" value="Vo Thi Thanh Truc">
+            <label for="">Consignee Phone</label>
+            <input readonly class="custom-input" type="text" name="phone" value="01234567890">
+            <label for="">Consignee Address</label>
+            <input readonly class="custom-input" type="text" name="address" value="12, Cong Hoa">
+            <label for="">Note</label>
+            <textarea readonly rows="4" cols="50" class="custom-input" type="text" name="address">delivery after 17:00pm</textarea>
+        </div>
+        <div class="col-order-2">
+            <table class="cart-table">
+                <tr class="container-cart">
+                    <td class="item-img">
+                        <img src="img/specials-1.png" alt="book">
+                    </td>
+                    <td class="item-info">
+                        <h4 class="item-name">Making</h4>
+                        <span class="item-cost">Price: $40</span><br>
+                        <span class="qty">Quantity: 1</span>
+                    </td>
+                </tr>
+                <tr class="container-cart">
+                    <td class="item-img">
+                        <img src="img/specials-1.png" alt="book">
+                    </td>
+                    <td class="item-info">
+                        <h4 class="item-name">Things</h4>
+                        <span class="item-cost">Price: $40</span><br>
+                        <span class="qty">Quantity: 1</span>
+                    </td>
+                </tr>
+                <tr class="container-cart">
+                    <td class="item-img">
+                        <img src="img/specials-1.png" alt="book">
+                    </td>
+                    <td class="item-info">
+                        <h4 class="item-name">Happen</h4>
+                        <span class="item-cost">Price: $40</span><br>
+                        <span class="qty">Quantity: 1</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <button class="btn btn-buy btn--orange btn--large"><a href="order-track"><span>Back</span></button>
+    </div>
+</div>

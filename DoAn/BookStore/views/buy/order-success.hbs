@@ -1,0 +1,64 @@
+<header>
+    <nav class="nav-bar row">
+        <div class="btn-toggle-wrapper hide-on-desktop" id="btn-menu">
+            <span class="btn-toggle"></span>
+        </div>
+        <ul class="menu">
+            <li class="menu-item active">
+                <a href="/home/home-customer">
+                    <i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="menu-item">
+                <a href="/home/user-info">
+                    <i class="fa fa-user" aria-hidden="true"></i> My Account</a>
+            </li>
+            <li class="menu-item">
+                <a href="order-track">
+                    <i class="fa fa-cart-plus" aria-hidden="true"></i> Order Track</a>
+            </li>
+            <li class="menu-item">
+                <a href="cart">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</a>
+                <span class="badges-cart">7</span>
+            </li>
+            <li class="customer-login hide-on-mobile">
+                Hi <span>...</span>! Welcom to Bookstore!<br/>
+                <a href="/home" class="logout">Logout</a>
+            </li>
+        </ul>
+        <span class="search">
+                <input id="search-bar" class="search-bar hide-on-mobile" placeholder="Search" type="text">
+                <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+            </span>
+    </nav>
+</header>
+<div class="container padding-width">
+    <div class="row">
+        <h2 class="align-center">Your order is created successfully!</h2>
+        <table class="order-info">
+            <tr>
+                <td class="order-info--key">Order ID:</td>
+                <td class="order-info--value">12543</td>
+            </tr>
+            <tr>
+                <td class="order-info--key">Full name:</td>
+                <td class="order-info--value">Vo Thi Thanh Truc</td>
+            </tr>
+            <tr>
+                <td class="order-info--key">Phone:</td>
+                <td class="order-info--value">01234567890</td>
+            </tr>
+            <tr>
+                <td class="order-info--key">Address:</td>
+                <td class="order-info--value">ward 1, district 3, Ho Chi Minh City</td>
+            </tr>
+            <tr class="total-cost">
+                <td class="order-info--key">Total cost:</td>
+                <td class="order-info--value">135.800 VND</td>
+            </tr>
+        </table>
+        <div class="btn-wrapper">
+            <a href="/home/home-customer" class="btn">Continue shopping</a>
+        </div>
+    </div>
+</div>

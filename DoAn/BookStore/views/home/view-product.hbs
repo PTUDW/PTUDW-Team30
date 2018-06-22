@@ -10,15 +10,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-
-
-    
     <title>Book Store</title>
 </head>
 
 <body>
     <header>
-        <h1 class="logo">Book<span>Store</span></h1>
+        <h1 class="logo">Book
+            <span>Store</span>
+        </h1>
 
         <nav class="nav-bar row">
             <div class="btn-toggle-wrapper hide-on-desktop" id="btn-menu">
@@ -26,16 +25,20 @@
             </div>
             <ul class="menu">
                 <li class="menu-item active">
-                    <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                    <a href="index.html">
+                        <i class="fa fa-home" aria-hidden="true"></i> Home</a>
                 </li>
                 <li class="menu-item">
-                    <a href="login.html"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
+                    <a href="login.html">
+                        <i class="fa fa-user" aria-hidden="true"></i> Login</a>
                 </li>
                 <li class="menu-item">
-                    <a href="register.html"><i class="fa fa-star" aria-hidden="true"></i> Register</a>
+                    <a href="register.html">
+                        <i class="fa fa-star" aria-hidden="true"></i> Register</a>
                 </li>
                 <li class="menu-item">
-                    <a href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</a>
+                    <a href="cart.html">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</a>
                     <span class="badges-cart">0</span>
                 </li>
                 <!-- <li class="customer-login hide-on-mobile">
@@ -85,7 +88,9 @@
                                 </select>
                             </div>
                         </form>
-                        <button type="submit" class="btn btn--orange"><span class="fa fa-search fa-lg"></span></button>
+                        <button type="submit" class="btn btn--orange">
+                            <span class="fa fa-search fa-lg"></span>
+                        </button>
                         <hr>
                     </div>
                     <div class="container-categories">
@@ -94,52 +99,84 @@
                         </h2>
                         <ul class="menu-categories">
                             <div class="dropdown">
-                                <li class="item-categories"><a href="#">Encyclopedias <i class=""></i><span class="arrow"></span></a></li>                 
-                                    <div class="dropdown-content">
-                                        <ul class=" item-categories sub-menu collapse" id="service">
-                                          <li>Categories 1</li>
-                                          <li>Categories 2</li>
-                                          <li>Categories 3</li>
-                                      </ul>
-                                    </div>
-                            </div>
-                            <div class="dropdown">
-                                <li class="item-categories"><a href="#">Foreign language <i class=""></i><span class="arrow"></span></a></li>
-                                    <div class="dropdown-content">
-                                        <ul class=" item-categories sub-menu collapse" id="service">
-                                          <li>Categories 1</li>
-                                          <li>Categories 2</li>
-                                          <li>Categories 3</li>
-                                      </ul>
-                                    </div>
-                            </div>
-                        <div class="dropdown">
-                            <li class="item-categories"><a href="#">Story <i class=""></i><span class="arrow"></span></a></li>
+                                <li class="item-categories">
+                                    <a href="#">Encyclopedias
+                                        <i class=""></i>
+                                        <span class="arrow"></span>
+                                    </a>
+                                </li>
                                 <div class="dropdown-content">
                                     <ul class=" item-categories sub-menu collapse" id="service">
-                                      <li>Categories 1</li>
-                                      <li>Categories 2</li>
-                                      <li>Categories 3</li>
+                                        <li>Categories 1</li>
+                                        <li>Categories 2</li>
+                                        <li>Categories 3</li>
                                     </ul>
-                              </div>
-                        </div>
-                        <div class="dropdown">
-                            <li class="item-categories"><a href="#">Poetry <i class=""></i><span class="arrow"></span></a></li>
-                            <div class="dropdown-content">
-                                <ul class=" item-categories sub-menu collapse" id="service">
-                                    <li>Categories 1</li>
-                                    <li>Categories 2</li>
-                                    <li>Categories 3</li>
-                                </ul>
+                                </div>
                             </div>
-                        </div>
+                            <div class="dropdown">
+                                <li class="item-categories">
+                                    <a href="#">Foreign language
+                                        <i class=""></i>
+                                        <span class="arrow"></span>
+                                    </a>
+                                </li>
+                                <div class="dropdown-content">
+                                    <ul class=" item-categories sub-menu collapse" id="service">
+                                        <li>Categories 1</li>
+                                        <li>Categories 2</li>
+                                        <li>Categories 3</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <li class="item-categories">
+                                    <a href="#">Story
+                                        <i class=""></i>
+                                        <span class="arrow"></span>
+                                    </a>
+                                </li>
+                                <div class="dropdown-content">
+                                    <ul class=" item-categories sub-menu collapse" id="service">
+                                        <li>Categories 1</li>
+                                        <li>Categories 2</li>
+                                        <li>Categories 3</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <li class="item-categories">
+                                    <a href="#">Poetry
+                                        <i class=""></i>
+                                        <span class="arrow"></span>
+                                    </a>
+                                </li>
+                                <div class="dropdown-content">
+                                    <ul class=" item-categories sub-menu collapse" id="service">
+                                        <li>Categories 1</li>
+                                        <li>Categories 2</li>
+                                        <li>Categories 3</li>
+                                    </ul>
+                                </div>
+                            </div>
 
-                            <li class="item-categories"><a href="#">Novel</a></li>
-                            <li class="item-categories"><a href="#">Science</a></li>
-                            <li class="item-categories"><a href="#">Literature</a></li>
-                            <li class="item-categories"><a href="#">Common sense</a></li>
-                            <li class="item-categories"><a href="#">Specialized</a></li>
-                            <li class="item-categories"><a href="#">Magazine</a></li>
+                            <li class="item-categories">
+                                <a href="#">Novel</a>
+                            </li>
+                            <li class="item-categories">
+                                <a href="#">Science</a>
+                            </li>
+                            <li class="item-categories">
+                                <a href="#">Literature</a>
+                            </li>
+                            <li class="item-categories">
+                                <a href="#">Common sense</a>
+                            </li>
+                            <li class="item-categories">
+                                <a href="#">Specialized</a>
+                            </li>
+                            <li class="item-categories">
+                                <a href="#">Magazine</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="container-categories">
@@ -147,11 +184,21 @@
                             <i id="btn-categories" class="fa fa-chevron-down right hide-on-desktop" aria-hidden="true"></i>
                         </h2>
                         <ul class="menu-categories">
-                            <li class="item-categories"><a href="#">Nguyen Nhat Anh</a></li>
-                            <li class="item-categories"><a href="#">Trang Ha</a></li>
-                            <li class="item-categories"><a href="#">Hamlet Truong</a></li>
-                            <li class="item-categories"><a href="#">Nguyen Phong Viet</a></li>
-                            <li class="item-categories"><a href="#">Nguyen Ngoc Thach</a></li>
+                            <li class="item-categories">
+                                <a href="#">Nguyen Nhat Anh</a>
+                            </li>
+                            <li class="item-categories">
+                                <a href="#">Trang Ha</a>
+                            </li>
+                            <li class="item-categories">
+                                <a href="#">Hamlet Truong</a>
+                            </li>
+                            <li class="item-categories">
+                                <a href="#">Nguyen Phong Viet</a>
+                            </li>
+                            <li class="item-categories">
+                                <a href="#">Nguyen Ngoc Thach</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="container-categories">
@@ -159,52 +206,75 @@
                             <i id="btn-categories" class="fa fa-chevron-down right hide-on-desktop" aria-hidden="true"></i>
                         </h2>
                         <ul class="menu-categories">
-                            <li class="item-categories"><a href="#">NXB Kim Đong</a></li>
-                            <li class="item-categories"><a href="#">NXB Tre</a></li>
-                            <li class="item-categories"><a href="#">NXB Tong hop TP.HCM</a></li>
-                            <li class="item-categories"><a href="#">NXB Giao duc</a></li>
-                            <li class="item-categories"><a href="#">NXB Lao dong</a></li>
+                            <li class="item-categories">
+                                <a href="#">NXB Kim Đong</a>
+                            </li>
+                            <li class="item-categories">
+                                <a href="#">NXB Tre</a>
+                            </li>
+                            <li class="item-categories">
+                                <a href="#">NXB Tong hop TP.HCM</a>
+                            </li>
+                            <li class="item-categories">
+                                <a href="#">NXB Giao duc</a>
+                            </li>
+                            <li class="item-categories">
+                                <a href="#">NXB Lao dong</a>
+                            </li>
                         </ul>
                     </div>
                 </aside>
             </div>
             <div class="col-content">
-                
 
-    
+
+
                 <div class="img-product col-2">
                     <p align="center" class="product-title">Bước chân theo dấu mặt trời</p>
-                    
-                    <img src="img/product-1.png" alt="book" style="margin-right: 10px;float: left">                   
-                    <p class="product-price">Price: 50.000₫</p>                
-                    <p>Publisher: <a href="#">NXB Kim Dong</a></p>
-                    <p>Authors: <a href="#">Nguyen Nhat Anh</a></p>
-                    <p>Category: <a href="#">Encyclopedias</a></p>
+
+                    <img src="img/product-1.png" alt="book" style="margin-right: 10px;float: left">
+                    <p class="product-price">Price: 50.000₫</p>
+                    <p>Publisher:
+                        <a href="#">NXB Kim Dong</a>
+                    </p>
+                    <p>Authors:
+                        <a href="#">Nguyen Nhat Anh</a>
+                    </p>
+                    <p>Category:
+                        <a href="#">Encyclopedias</a>
+                    </p>
                     <p>Viewed: 100</p>
                     <p>Sold: 10</p>
                     <div class="quantity-box">
-                     
 
-                    
-                    <p class="quantity-label" >Quantity:</p>
-                    <p class="tiki-number-input">
-                        <div class="input-group bootstrap-touchspin">
-                            <span class="input-group-btn">
-                            <button class="btn btn-default bootstrap-touchspin-down" type="button">-</button>
-                            </span>
-                        <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span>
-                        <input id="qty" type="tel" name="qty" value="1" min="1" max="100" class="form-control" style="display: block;">
-                        <span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
-                        <span class="input-group-btn"><button class="btn btn-default bootstrap-touchspin-up" type="button">+</button>
-                        </span></div>
-                    </p>
-                    <button type="submit" style="background-image:url('img/btn-buy.png');width: 145px;height: 40px;"></button> 
+
+
+                        <p class="quantity-label">Quantity:</p>
+                        <p class="tiki-number-input">
+                            <div class="input-group bootstrap-touchspin">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default bootstrap-touchspin-down" type="button">-</button>
+                                </span>
+                                <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span>
+                                <input id="qty" type="tel" name="qty" value="1" min="1" max="100" class="form-control" style="display: block;">
+                                <span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default bootstrap-touchspin-up" type="button">+</button>
+                                </span>
+                            </div>
+                        </p>
+                        <button type="submit" style="background-image:url('img/btn-buy.png');width: 145px;height: 40px;"></button>
                     </div>
                     <div class="row"></div>
-                    <p>Describe: It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose.
+                    <p>Describe: It is a long established fact that a reader will be distracted by the readable content of a
+                        page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                        distribution of letters, as opposed to using 'Content here, content here', making it look like readable
+                        English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default
+                        model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various
+                        versions have evolved over the years, sometimes by accident, sometimes on purpose.
 
                     </p>
-                    
+
                 </div>
 
                 <section class="section-display-item">
@@ -276,7 +346,7 @@
                                     </div>
                                 </div>
                             </div>
-                           
+
                         </div>
                     </div>
                     <div class="container-lastest">
@@ -347,9 +417,9 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
-                    </div>                  
+                    </div>
                 </section>
             </div>
         </div>
@@ -368,8 +438,12 @@
             <div class="container">
                 <h3>My Account</h3>
                 <ul>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="">Register</a></li>
+                    <li>
+                        <a href="login.html">Login</a>
+                    </li>
+                    <li>
+                        <a href="">Register</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -387,7 +461,7 @@
 
 <script type="text/javascript">
     var btnup = function () {
-      qty = qty + 1;
+        qty = qty + 1;
     }
 </script>
 
