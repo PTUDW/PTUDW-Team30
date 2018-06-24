@@ -1,63 +1,37 @@
-<header>
-    <nav class="nav-bar row">
-        <div class="btn-toggle-wrapper hide-on-desktop" id="btn-menu">
-            <span class="btn-toggle"></span>
-        </div>
-        <ul class="menu">
-            <li class="menu-item">
-                <a href="home-customer">
-                    <i class="fa fa-home" aria-hidden="true"></i> Home</a>
-            </li>
-            <li class="menu-item active">
-                <a href="user-info">
-                    <i class="fa fa-user" aria-hidden="true"></i> My Account</a>
-            </li>
-            <li class="menu-item">
-                <a href="/buy/order-track">
-                    <i class="fa fa-cart-plus" aria-hidden="true"></i> Order Track</a>
-            </li>
-            <li class="menu-item">
-                <a href="/buy/cart">
-                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</a>
-                <span class="badges-cart">7</span>
-            </li>
-            <li class="customer-login hide-on-mobile">
-                Hi <span>...</span>! Welcom to Bookstore!<br/>
-                <a href="/home" class="logout">Logout</a>
-            </li>
-        </ul>
-        <span class="search">
-                <input id="search-bar" class="search-bar hide-on-mobile" placeholder="Search" type="text">
-                <i class="fa fa-search fa-2x hide-on-desktop" aria-hidden="true"></i>
-                <i class="fa fa-search fa-lg hide-on-mobile" aria-hidden="true"></i>
-            </span>
-    </nav>
-</header>
 <div class="container padding-width">
     <div class="row wrapper-register">
-        <h2 class="align-center">Hi <span>...</span>!</h2>
-        <form action="">
-            <label for="">Full Name</label>
-            <input required class="custom-input" type="text" name="fullname" value="Nguyen Duy Nhat">
+        <h2 class="align-center">Hi
+            <span>...</span>!</h2>
+        <form action="/home/user-info" method="post">
+            {{#each accounts}}
             <label for="">Username</label>
-            <input required readonly="true" class="custom-input" type="text" name="username" value="nguyenduynhat">
+            <input required readonly="true" class="custom-input" type="text" name="username" value="{{UserName}}">
             <label for="">Password</label>
-            <input required class="custom-input" type="password" name="password" value="123456">
-            <label class="gender">Gender</label><br />
+            <input required class="custom-input" type="password" name="password" value="{{Account_Password}}"> {{/each}} {{#each customers}}
+            <label for="">Full Name</label>
+            <input required class="custom-input" type="text" name="fullname" value="{{Customer_Name}}">
+            <label class="gender">Gender</label>
+            <br/>
             <input class="gender-select" checked id="male" type="radio" name="gender">
             <label class="gender-select" for="male">Male</label>
             <input class="gender-select" id="female" type="radio" name="gender">
-            <label class="gender-select" for="female">Female</label><br /><br />
+            <label class="gender-select" for="female">Female</label>
+            <br/>
+            <br/>
             <label for="">Phone</label>
-            <input required class="custom-input" type="text" name="phone" value="0123546798">
+            <input required class="custom-input" type="text" name="phone" value="{{Phone}}">
             <label for="">Email</label>
-            <input required class="custom-input" type="email" name="email" value="example@gmail.com">
+            <input required class="custom-input" type="email" name="email" value="{{Email}}"> {{/each}}
             <div class="row">
                 <div class="col-half">
-                    <button type="submit" class="btn btn--orange"><span>Submit</span></button>
+                    <button type="submit" class="btn btn--orange">
+                        <span>Submit</span>
+                    </button>
                 </div>
                 <div class="col-half">
-                    <button type="submit" class="btn"><span>Cancel</span></button>
+                    <button type="submit" class="btn">
+                        <span>Cancel</span>
+                    </button>
                 </div>
             </div>
         </form>

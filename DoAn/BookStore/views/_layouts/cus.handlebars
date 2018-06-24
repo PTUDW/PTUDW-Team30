@@ -23,21 +23,26 @@
             </div>
             <ul class="menu">
                 <li class="menu-item active">
-                    <a href="/home">
+                    <a href="/home/home-customer">
                         <i class="fa fa-home" aria-hidden="true"></i> Home</a>
                 </li>
                 <li class="menu-item">
-                    <a href="/log/login">
-                        <i class="fa fa-user" aria-hidden="true"></i> Login</a>
+                    <a href="/home/user-info">
+                        <i class="fa fa-user" aria-hidden="true"></i> My Account</a>
                 </li>
                 <li class="menu-item">
-                    <a href="/log/register">
-                        <i class="fa fa-star" aria-hidden="true"></i> Register</a>
+                    <a href="/buy/order-track">
+                        <i class="fa fa-cart-plus" aria-hidden="true"></i> Order Track</a>
                 </li>
                 <li class="menu-item">
-                    <a href="/buy">
+                    <a href="/buy/cart">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</a>
-                    <span class="badges-cart">0</span>
+                    <span class="badges-cart">7</span>
+                </li>
+                <li class="customer-login hide-on-mobile">
+                    Hello
+                    <span>{{layoutVM.username}}</span>! Welcom to my Bookstore!
+                    <a href="/">Logout</a>
                 </li>
             </ul>
             <span class="search">
@@ -60,9 +65,10 @@
                                 <label>Kind</label>
                                 <select required class="custom-input" id="select1">
                                     <option>All</option>
-                                    {{#each layoutVM.kinds}}
-                                    <option>{{Kind_Name}}</option>
-                                    {{/each}}
+                                    <option>A</option>
+                                    <option>B</option>
+                                    <option>C</option>
+                                    <option>D</option>
                                 </select>
                                 <label>Price</label>
                                 <select required class="custom-input" id="select2">
@@ -75,9 +81,10 @@
                                 <label>Publisher</label>
                                 <select required class="custom-input" id="select3">
                                     <option>All</option>
-                                    {{#each layoutVM.publishers}}
-                                    <option>{{Publisher}}</option>
-                                    {{/each}}
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
                                 </select>
                             </div>
                         </form>
@@ -101,7 +108,7 @@
                                 <div class="dropdown-content">
                                     <ul class=" item-categories sub-menu collapse" id="service">
                                         <li>
-                                            <a href="/home/books-by-category">Categories 1</a>
+                                            <a href="books-by-category">Categories 1</a>
                                         </li>
                                         <li>
                                             <a href="books-by-category.html">Categories 2</a>

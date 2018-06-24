@@ -1,0 +1,287 @@
+<header>
+    <nav class="nav-bar row">
+        <div class="btn-toggle-wrapper hide-on-desktop" id="btn-menu">
+            <span class="btn-toggle"></span>
+        </div>
+        <ul class="menu">
+            <li class="menu-item active">
+                <a href="admin/managing-books" class="active">
+                    <i class="fa fa-book" aria-hidden="true"></i> Managing Books
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="admin/managing-kinds">
+                    <i class="fa fa-sitemap" aria-hidden="true"></i> Managing Kinds
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="admin/managing-issuingHouses">
+                    <i class="fa fa-address-card" aria-hidden="true"></i> Managing Issuing houses
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="admin/managing-orders" class="">
+                    <i class="fa fa-truck" aria-hidden="true"></i> Managing Orders
+                </a>
+            </li>
+            <li class="customer-login hide-on-mobile">
+                Hi
+                <span>admin</span>! Welcom to Bookstore!
+                <br/>
+                <a href="/home" class="logout">Logout</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="container padding-width">
+    <div class="manager-container">
+        <div class="manager-content">
+            <div class="tab-content content-managing-items content-wrapper-wide active">
+                <div class="content-wrapper">
+                    <div class="search-item-wrapper">
+                        <input type="text" class="custom-input" placeholder="Typing Book ID or Name">
+                        <button class="btn-search">
+                            <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="add-item-btn">
+                        <button class="btn btn--small btn-add">
+                            <span>
+                                <i class="fa fa-plus" aria-hidden="true"></i> Add book</span>
+                        </button>
+                    </div>
+                </div>
+                <table class="table-manager">
+                    <thead>
+                        <tr>
+                            <th>Book Image</th>
+                            <th>Book ID</th>
+                            <th>Book Name</th>
+                            <th>Author</th>
+                            <th>Publisher</th>
+                            <th>Issuing house</th>
+                            <th>Kind</th>
+                            <th>Price</th>
+                            <th>Amount</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <center>
+                                    <img src="img/product-1.png" alt="book" width="20px" height="30px">
+                                </center>
+                            </td>
+                            <td>1</td>
+                            <td>Book1</td>
+                            <td>Nguyen Nhat Anh</td>
+                            <td>Kim Dong</td>
+                            <td>Issuing house</td>
+                            <td>Action</td>
+                            <td>$56</td>
+                            <td>167</td>
+                            <td>
+                                <button id="book1" class="btn btn--small btn--orange" data-type="edit">
+                                    <span>
+                                        <i class="fa fa-pencil" aria-hidden="true"></i> Edit</span>
+                                </button>
+                                <button class="btn btn--small btn--red" data-type="remove">
+                                    <span>
+                                        <i class="fa fa-trash" aria-hidden="true"></i> Remove</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <center>
+                                    <img src="img/product-1.png" alt="book" width="20px" height="30px">
+                                </center>
+                            </td>
+                            <td>2</td>
+                            <td>Book2</td>
+                            <td>Nguyen Nhat Anh</td>
+                            <td>Kim Dong</td>
+                            <td>Issuing house</td>
+                            <td>Action</td>
+                            <td>$56</td>
+                            <td>167</td>
+                            <td>
+                                <button id="book1" class="btn btn--small btn--orange" data-type="edit">
+                                    <span>
+                                        <i class="fa fa-pencil" aria-hidden="true"></i> Edit</span>
+                                </button>
+                                <button class="btn btn--small btn--red" data-type="remove">
+                                    <span>
+                                        <i class="fa fa-trash" aria-hidden="true"></i> Remove</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <center>
+                                    <img src="img/product-1.png" alt="book" width="20px" height="30px">
+                                </center>
+                            </td>
+                            <td>3</td>
+                            <td>Book3</td>
+                            <td>Nguyen Nhat Anh</td>
+                            <td>Kim Dong</td>
+                            <td>Issuing house</td>
+                            <td>Action</td>
+                            <td>$56</td>
+                            <td>167</td>
+                            <td>
+                                <button id="book1" class="btn btn--small btn--orange" data-type="edit">
+                                    <span>
+                                        <i class="fa fa-pencil" aria-hidden="true"></i> Edit</span>
+                                </button>
+                                <button class="btn btn--small btn--red" data-type="remove">
+                                    <span>
+                                        <i class="fa fa-trash" aria-hidden="true"></i> Remove</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <center>
+                                    <img src="img/product-1.png" alt="book" width="20px" height="30px">
+                                </center>
+                            </td>
+                            <td>4</td>
+                            <td>Book4</td>
+                            <td>Nguyen Nhat Anh</td>
+                            <td>Kim Dong</td>
+                            <td>Issuing house</td>
+                            <td>Novel</td>
+                            <td>$56</td>
+                            <td>167</td>
+                            <td>
+                                <button id="book1" class="btn btn--small btn--orange" data-type="edit">
+                                    <span>
+                                        <i class="fa fa-pencil" aria-hidden="true"></i> Edit</span>
+                                </button>
+                                <button class="btn btn--small btn--red" data-type="remove">
+                                    <span>
+                                        <i class="fa fa-trash" aria-hidden="true"></i> Remove</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <center>
+                                    <img src="img/product-1.png" alt="book" width="20px" height="30px">
+                                </center>
+                            </td>
+                            <td>5</td>
+                            <td>Book5</td>
+                            <td>Nguyen Nhat Anh</td>
+                            <td>Kim Dong</td>
+                            <td>Issuing house</td>
+                            <td>Action</td>
+                            <td>$56</td>
+                            <td>167</td>
+                            <td>
+                                <button id="book1" class="btn btn--small btn--orange" data-type="edit">
+                                    <span>
+                                        <i class="fa fa-pencil" aria-hidden="true"></i> Edit</span>
+                                </button>
+                                <button class="btn btn--small btn--red" data-type="remove">
+                                    <span>
+                                        <i class="fa fa-trash" aria-hidden="true"></i> Remove</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <center>
+                                    <img src="img/product-1.png" alt="book" width="20px" height="30px">
+                                </center>
+                            </td>
+                            <td>6</td>
+                            <td>Book6</td>
+                            <td>Nguyen Nhat Anh</td>
+                            <td>Kim Dong</td>
+                            <td>Issuing house</td>
+                            <td>Action</td>
+                            <td>$56</td>
+                            <td>167</td>
+                            <td>
+                                <button class="btn btn--small btn--orange" data-type="edit">
+                                    <span>
+                                        <i class="fa fa-pencil" aria-hidden="true"></i> Edit</span>
+                                </button>
+                                <button class="btn btn--small btn--red" data-type="remove">
+                                    <span>
+                                        <i class="fa fa-trash" aria-hidden="true"></i> Remove</span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="popup-item-add">
+                    <div class="popup-box">
+                        <i class="fa fa-close close-popup"></i>
+                        <div class="outer">
+                            <div class="container">
+                                <label>Book Image</label>
+                                <input id="b-img" type="file" class="custom-input" required="true">
+                                <hr>
+                                <label>Book ID</label>
+                                <input id="b-id" type="text" class="custom-input" required="true">
+                                <label>Book Name</label>
+                                <input id="b-name" type="text" class="custom-input" required="true">
+                                <label>Author</label>
+                                <input id="b-author" type="text" class="custom-input" required="true">
+                                <label>Publisher</label>
+                                <input id="b-publisher" type="text" class="custom-input" required="true">
+                                <label>Issuing house</label>
+                                <input id="b-issuingHouse" type="text" class="custom-input" required="true">
+                                <label>Kind</label>
+                                <input id="b-kind" type="text" class="custom-input" required="true">
+                                <label>Price</label>
+                                <input id="b-price" type="text" class="custom-input" required="true">
+                                <label>Amount</label>
+                                <input id="b-amount" type="number" class="custom-input" required="true" min="0">
+                                <button type="reset" class="btn" id="b-add">
+                                    <span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="popup-item-edit">
+                    <div class="popup-box">
+                        <i class="fa fa-close close-popup"></i>
+                        <div class="outer">
+                            <div class="container">
+                                <label>Book Image</label>
+                                <input type="file" class="custom-input" required="true">
+                                <hr>
+                                <label>Book ID</label>
+                                <input type="text" class="custom-input" required="true">
+                                <label>Book Name</label>
+                                <input type="text" class="custom-input" required="true">
+                                <label>Author</label>
+                                <input type="text" class="custom-input" required="true">
+                                <label>Publisher</label>
+                                <input type="text" class="custom-input" required="true">
+                                <label>Issuing house</label>
+                                <input type="text" class="custom-input" required="true">
+                                <label>Kind</label>
+                                <input type="text" class="custom-input" required="true">
+                                <label>Price</label>
+                                <input type="text" class="custom-input" required="true">
+                                <label>Amount</label>
+                                <input type="number" class="custom-input" required="true" min="0">
+                                <button class="btn">
+                                    <span>Edit</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
