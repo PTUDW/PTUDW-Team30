@@ -21,9 +21,11 @@
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</a>
                 <span class="badges-cart">0</span>
             </li>
-            <!-- <li class="customer-login hide-on-mobile">
-                Hello <span>Tien</span>! Welcom to my Bookstore!
-            </li> -->
+            {{!-- {{#if showError}}
+            <li class="customer-login hide-on-mobile">
+                Hello <span>{{username}}</span>! Welcom to my Bookstore!
+            </li>
+            {{/if}} --}}
         </ul>
         <span class="search">
             <input id="search-bar" class="search-bar hide-on-mobile" placeholder="Search" type="text">
@@ -99,9 +101,10 @@
                                 </ul>
                             </div>
                         </div>
+                        {{#each categories}}
                         <div class="dropdown">
                             <li class="item-categories">
-                                <a href="books-by-category.html">Foreign language
+                                <a href="books-by-category.html">{{Category_Name}}
                                     <i class=""></i>
                                     <span class="arrow"></span>
                                 </a>
@@ -109,7 +112,7 @@
                             <div class="dropdown-content">
                                 <ul class=" item-categories sub-menu collapse" id="service">
                                     <li>
-                                        <a href="books-by-category.html">Categories 1</a>
+                                        <a href="books-by-category">Categories 1</a>
                                     </li>
                                     <li>
                                         <a href="books-by-category.html">Categories 2</a>
@@ -120,68 +123,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="dropdown">
-                            <li class="item-categories">
-                                <a href="books-by-category.html">Story
-                                    <i class=""></i>
-                                    <span class="arrow"></span>
-                                </a>
-                            </li>
-                            <div class="dropdown-content">
-                                <ul class=" item-categories sub-menu collapse" id="service">
-                                    <li>
-                                        <a href="books-by-category.html">Categories 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="books-by-category.html">Categories 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="books-by-category.html">Categories 3</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="dropdown">
-                            <li class="item-categories">
-                                <a href="books-by-category.html">Poetry
-                                    <i class=""></i>
-                                    <span class="arrow"></span>
-                                </a>
-                            </li>
-                            <div class="dropdown-content">
-                                <ul class=" item-categories sub-menu collapse" id="service">
-                                    <li>
-                                        <a href="books-by-category.html">Categories 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="books-by-category.html">Categories 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="books-by-category.html">Categories 3</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-
-                        <li class="item-categories">
-                            <a href="books-by-category.html">Novel</a>
-                        </li>
-                        <li class="item-categories">
-                            <a href="books-by-category.html">Science</a>
-                        </li>
-                        <li class="item-categories">
-                            <a href="books-by-category.html">Literature</a>
-                        </li>
-                        <li class="item-categories">
-                            <a href="books-by-category.html">Common sense</a>
-                        </li>
-                        <li class="item-categories">
-                            <a href="books-by-category.html">Specialized</a>
-                        </li>
-                        <li class="item-categories">
-                            <a href="books-by-category.html">Magazine</a>
-                        </li>
+                        {{/each}}
                     </ul>
                 </div>
                 <div class="container-categories">
@@ -189,21 +131,11 @@
                         <i id="btn-categories" class="fa fa-chevron-down right hide-on-desktop" aria-hidden="true"></i>
                     </h2>
                     <ul class="menu-categories">
+                        {{#each authors}}
                         <li class="item-categories">
-                            <a href="#">Nguyen Nhat Anh</a>
+                            <a href="#">{{Author}}</a>
                         </li>
-                        <li class="item-categories">
-                            <a href="#">Trang Ha</a>
-                        </li>
-                        <li class="item-categories">
-                            <a href="#">Hamlet Truong</a>
-                        </li>
-                        <li class="item-categories">
-                            <a href="#">Nguyen Phong Viet</a>
-                        </li>
-                        <li class="item-categories">
-                            <a href="#">Nguyen Ngoc Thach</a>
-                        </li>
+                        {{/each}}
                     </ul>
                 </div>
                 <div class="container-categories">
@@ -211,21 +143,11 @@
                         <i id="btn-categories" class="fa fa-chevron-down right hide-on-desktop" aria-hidden="true"></i>
                     </h2>
                     <ul class="menu-categories">
+                        {{#each publishers}}
                         <li class="item-categories">
-                            <a href="#">NXB Kim Đong</a>
+                            <a href="#">{{Publisher}}</a>
                         </li>
-                        <li class="item-categories">
-                            <a href="#">NXB Tre</a>
-                        </li>
-                        <li class="item-categories">
-                            <a href="#">NXB Tong hop TP.HCM</a>
-                        </li>
-                        <li class="item-categories">
-                            <a href="#">NXB Giao duc</a>
-                        </li>
-                        <li class="item-categories">
-                            <a href="#">NXB Lao dong</a>
-                        </li>
+                       {{/each}}
                     </ul>
                 </div>
             </aside>

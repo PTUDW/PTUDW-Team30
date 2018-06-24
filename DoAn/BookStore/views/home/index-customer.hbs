@@ -1,571 +1,647 @@
-
-    <header>
-        <nav class="nav-bar row">
-            <div class="btn-toggle-wrapper hide-on-desktop" id="btn-menu">
-                <span class="btn-toggle"></span>
-            </div>
-            <ul class="menu">
-                <li class="menu-item active">
-                    <a href="home-customer">
-                        <i class="fa fa-home" aria-hidden="true"></i> Home</a>
-                </li>
-                <li class="menu-item">
-                    <a href="user-info">
-                        <i class="fa fa-user" aria-hidden="true"></i> My Account</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/buy/order-track">
-                        <i class="fa fa-cart-plus" aria-hidden="true"></i> Order Track</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/buy/cart">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</a>
-                    <span class="badges-cart">7</span>
-                </li>
-                <li class="customer-login hide-on-mobile">
-                    Hi <span>...</span>! Welcom to Bookstore!<br/>
-                    <a href="/home" class="logout">Logout</a>
-                </li>
-            </ul>
-            <span class="search">
-                <input id="search-bar" class="search-bar hide-on-mobile" placeholder="Search" type="text">
-                <i class="fa fa-search fa-2x hide-on-desktop" aria-hidden="true"></i>
-                <i class="fa fa-search fa-lg hide-on-mobile" aria-hidden="true"></i>
-            </span>
-        </nav>
-    </header>
-    <div class="container padding-width">
-        <div class="row">
-            <div class="col-aside">
-                <aside class="section-categories row">
-                    <div class="container-categories">
-                        <h2>Search
-                            <i id="btn-categories" class="fa fa-chevron-down right hide-on-desktop" aria-hidden="true"></i>
-                        </h2>
-                        <br>
-                        <form>
-                            <div class="form-group">
-                                <label>Kind</label>
-                                <select required class="custom-input" id="select1">
-                                    <option>All</option>
-                                    <option>A</option>
-                                    <option>B</option>
-                                    <option>C</option>
-                                    <option>D</option>
-                                </select>
-                                <label>Price</label>
-                                <select required class="custom-input" id="select2">
-                                    <option>All</option>
-                                    <option>0 - 50.000</option>
-                                    <option>51.000 - 100.000</option>
-                                    <option>101.000 - 200.000</option>
-                                    <option>201.000 - ...</option>
-                                </select>
-                                <label>Publisher</label>
-                                <select required class="custom-input" id="select3">
-                                    <option>All</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
-                            </div>
-                        </form>
-                        <button type="submit" class="btn btn--orange"><span class="fa fa-search fa-lg"></span></button>
-                        <hr>
-                    </div>
-                    <div class="container-categories">
-                        <h2>Categories
-                            <i id="btn-categories" class="fa fa-chevron-down right hide-on-desktop" aria-hidden="true"></i>
-                        </h2>
-                        <ul class="menu-categories">
-                           <div class="dropdown">
-                                <li class="item-categories"><a href="books-by-category.html">Encyclopedias <i class=""></i><span class="arrow"></span></a>
-                                </li>                 
-                                <div class="dropdown-content">
-                                    <ul class=" item-categories sub-menu collapse" id="service">
-                                      <li><a href="books-by-category.html">Categories 1</a></li>
-                                      <li><a href="books-by-category.html">Categories 2</a></li>
-                                      <li><a href="books-by-category.html">Categories 3</a></li>
-                                  </ul>
-                              </div>
-                          </div>
-                          <div class="dropdown">
-                            <li class="item-categories"><a href="books-by-category.html">Foreign language <i class=""></i><span class="arrow"></span></a></li>                 
+<header>
+    <nav class="nav-bar row">
+        <div class="btn-toggle-wrapper hide-on-desktop" id="btn-menu">
+            <span class="btn-toggle"></span>
+        </div>
+        <ul class="menu">
+            <li class="menu-item active">
+                <a href="home-customer">
+                    <i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            </li>
+            <li class="menu-item">
+                <a href="user-info">
+                    <i class="fa fa-user" aria-hidden="true"></i> My Account</a>
+            </li>
+            <li class="menu-item">
+                <a href="/buy/order-track">
+                    <i class="fa fa-cart-plus" aria-hidden="true"></i> Order Track</a>
+            </li>
+            <li class="menu-item">
+                <a href="/buy/cart">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</a>
+                <span class="badges-cart">7</span>
+            </li>
+            <li class="customer-login hide-on-mobile">
+                Hello
+                <span>{{name}}</span>! Welcom to my Bookstore!
+            </li>
+        </ul>
+        <span class="search">
+            <input id="search-bar" class="search-bar hide-on-mobile" placeholder="Search" type="text">
+            <i class="fa fa-search fa-2x hide-on-desktop" aria-hidden="true"></i>
+            <i class="fa fa-search fa-lg hide-on-mobile" aria-hidden="true"></i>
+        </span>
+    </nav>
+</header>
+<div class="container padding-width">
+    <div class="row">
+        <div class="col-aside">
+            <aside class="section-categories row">
+                <div class="container-categories">
+                    <h2>Search
+                        <i id="btn-categories" class="fa fa-chevron-down right hide-on-desktop" aria-hidden="true"></i>
+                    </h2>
+                    <br>
+                    <form>
+                        <div class="form-group">
+                            <label>Kind</label>
+                            <select required class="custom-input" id="select1">
+                                <option>All</option>
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                                <option>D</option>
+                            </select>
+                            <label>Price</label>
+                            <select required class="custom-input" id="select2">
+                                <option>All</option>
+                                <option>0 - 50.000</option>
+                                <option>51.000 - 100.000</option>
+                                <option>101.000 - 200.000</option>
+                                <option>201.000 - ...</option>
+                            </select>
+                            <label>Publisher</label>
+                            <select required class="custom-input" id="select3">
+                                <option>All</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
+                    </form>
+                    <button type="submit" class="btn btn--orange">
+                        <span class="fa fa-search fa-lg"></span>
+                    </button>
+                    <hr>
+                </div>
+                <div class="container-categories">
+                    <h2>Categories
+                        <i id="btn-categories" class="fa fa-chevron-down right hide-on-desktop" aria-hidden="true"></i>
+                    </h2>
+                    <ul class="menu-categories">
+                        <div class="dropdown">
+                            <li class="item-categories">
+                                <a href="books-by-category.html">Encyclopedias
+                                    <i class=""></i>
+                                    <span class="arrow"></span>
+                                </a>
+                            </li>
                             <div class="dropdown-content">
                                 <ul class=" item-categories sub-menu collapse" id="service">
-                                    <li><a href="books-by-category.html">Categories 1</a></li>
-                                    <li><a href="books-by-category.html">Categories 2</a></li>
-                                    <li><a href="books-by-category.html">Categories 3</a></li>
-                              </ul>
-                          </div>
-                      </div>
-                      <div class="dropdown">
-                        <li class="item-categories"><a href="books-by-category.html">Story <i class=""></i><span class="arrow"></span></a></li>                 
-                        <div class="dropdown-content">
-                            <ul class=" item-categories sub-menu collapse" id="service">
-                                <li><a href="books-by-category.html">Categories 1</a></li>
-                                <li><a href="books-by-category.html">Categories 2</a></li>
-                                <li><a href="books-by-category.html">Categories 3</a></li>
-                          </ul>
-                      </div>
-                  </div>
-                  <div class="dropdown">
-                    <li class="item-categories"><a href="books-by-category.html">Poetry <i class=""></i><span class="arrow"></span></a></li>                 
-                    <div class="dropdown-content">
-                        <ul class=" item-categories sub-menu collapse" id="service">
-                            <li><a href="books-by-category.html">Categories 1</a></li>
-                            <li><a href="books-by-category.html">Categories 2</a></li>
-                            <li><a href="books-by-category.html">Categories 3</a></li>
-                      </ul>
-                  </div>
-              </div>
-              
-              
-              <li class="item-categories"><a href="books-by-category.html">Novel</a></li>
-              <li class="item-categories"><a href="books-by-category.html">Science</a></li>
-              <li class="item-categories"><a href="books-by-category.html">Literature</a></li>
-              <li class="item-categories"><a href="books-by-category.html">Common sense</a></li>
-              <li class="item-categories"><a href="books-by-category.html">Specialized</a></li>
-              <li class="item-categories"><a href="books-by-category.html">Magazine</a></li>
-                        </ul>
-                    </div>
-                    <div class="container-categories">
-                        <h2>Authors
-                            <i id="btn-categories" class="fa fa-chevron-down right hide-on-desktop" aria-hidden="true"></i>
-                        </h2>
-                        <ul class="menu-categories">
-                            <li class="item-categories"><a href="#">Nguyen Nhat Anh</a></li>
-                            <li class="item-categories"><a href="#">Trang Ha</a></li>
-                            <li class="item-categories"><a href="#">Hamlet Truong</a></li>
-                            <li class="item-categories"><a href="#">Nguyen Phong Viet</a></li>
-                            <li class="item-categories"><a href="#">Nguyen Ngoc Thach</a></li>
-                        </ul>
-                    </div>
-                    <div class="container-categories">
-                        <h2>Publishers
-                            <i id="btn-categories" class="fa fa-chevron-down right hide-on-desktop" aria-hidden="true"></i>
-                        </h2>
-                        <ul class="menu-categories">
-                            <li class="item-categories"><a href="#">NXB Kim Đong</a></li>
-                            <li class="item-categories"><a href="#">NXB Tre</a></li>
-                            <li class="item-categories"><a href="#">NXB Tong hop TP.HCM</a></li>
-                            <li class="item-categories"><a href="#">NXB Giao duc</a></li>
-                            <li class="item-categories"><a href="#">NXB Lao dong</a></li>
-                        </ul>
-                    </div>
-                </aside>
-            </div>
-            <div class="col-content">
-                <section class="section-hero">    
-                </section>
-                <section class="section-display-item">
-                    <div class="container-lastest">
-                        <h2 class="title">New Books</h2>
-                        <div class="row">
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                                    <li>
+                                        <a href="books-by-category.html">Categories 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="books-by-category.html">Categories 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="books-by-category.html">Categories 3</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <li class="item-categories">
+                                <a href="books-by-category.html">Foreign language
+                                    <i class=""></i>
+                                    <span class="arrow"></span>
+                                </a>
+                            </li>
+                            <div class="dropdown-content">
+                                <ul class=" item-categories sub-menu collapse" id="service">
+                                    <li>
+                                        <a href="books-by-category.html">Categories 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="books-by-category.html">Categories 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="books-by-category.html">Categories 3</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <li class="item-categories">
+                                <a href="books-by-category.html">Story
+                                    <i class=""></i>
+                                    <span class="arrow"></span>
+                                </a>
+                            </li>
+                            <div class="dropdown-content">
+                                <ul class=" item-categories sub-menu collapse" id="service">
+                                    <li>
+                                        <a href="books-by-category.html">Categories 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="books-by-category.html">Categories 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="books-by-category.html">Categories 3</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <li class="item-categories">
+                                <a href="books-by-category.html">Poetry
+                                    <i class=""></i>
+                                    <span class="arrow"></span>
+                                </a>
+                            </li>
+                            <div class="dropdown-content">
+                                <ul class=" item-categories sub-menu collapse" id="service">
+                                    <li>
+                                        <a href="books-by-category.html">Categories 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="books-by-category.html">Categories 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="books-by-category.html">Categories 3</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <li class="item-categories">
+                            <a href="books-by-category.html">Novel</a>
+                        </li>
+                        <li class="item-categories">
+                            <a href="books-by-category.html">Science</a>
+                        </li>
+                        <li class="item-categories">
+                            <a href="books-by-category.html">Literature</a>
+                        </li>
+                        <li class="item-categories">
+                            <a href="books-by-category.html">Common sense</a>
+                        </li>
+                        <li class="item-categories">
+                            <a href="books-by-category.html">Specialized</a>
+                        </li>
+                        <li class="item-categories">
+                            <a href="books-by-category.html">Magazine</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="container-categories">
+                    <h2>Authors
+                        <i id="btn-categories" class="fa fa-chevron-down right hide-on-desktop" aria-hidden="true"></i>
+                    </h2>
+                    <ul class="menu-categories">
+                        <li class="item-categories">
+                            <a href="#">Nguyen Nhat Anh</a>
+                        </li>
+                        <li class="item-categories">
+                            <a href="#">Trang Ha</a>
+                        </li>
+                        <li class="item-categories">
+                            <a href="#">Hamlet Truong</a>
+                        </li>
+                        <li class="item-categories">
+                            <a href="#">Nguyen Phong Viet</a>
+                        </li>
+                        <li class="item-categories">
+                            <a href="#">Nguyen Ngoc Thach</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="container-categories">
+                    <h2>Publishers
+                        <i id="btn-categories" class="fa fa-chevron-down right hide-on-desktop" aria-hidden="true"></i>
+                    </h2>
+                    <ul class="menu-categories">
+                        <li class="item-categories">
+                            <a href="#">NXB Kim Đong</a>
+                        </li>
+                        <li class="item-categories">
+                            <a href="#">NXB Tre</a>
+                        </li>
+                        <li class="item-categories">
+                            <a href="#">NXB Tong hop TP.HCM</a>
+                        </li>
+                        <li class="item-categories">
+                            <a href="#">NXB Giao duc</a>
+                        </li>
+                        <li class="item-categories">
+                            <a href="#">NXB Lao dong</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+        <div class="col-content">
+            <section class="section-hero">
+            </section>
+            <section class="section-display-item">
+                <div class="container-lastest">
+                    <h2 class="title">New Books</h2>
+                    <div class="row">
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="item">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="item">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="container-lastest">
-                        <h2 class="title">Best Seller Books </h2>
-                        <div class="row">
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                </div>
+                <div class="container-lastest">
+                    <h2 class="title">Best Seller Books </h2>
+                    <div class="row">
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="container-lastest">
-                        <h2 class="title">Top Reading Books</h2>
-                        <div class="row">
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                </div>
+                <div class="container-lastest">
+                    <h2 class="title">Top Reading Books</h2>
+                    <div class="row">
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
-                            <div class="container col-desktop">
-                                <div class="container-product row">
-                                    <div class="img-product col-1">
-                                        <img src="img/product-1.png" alt="book">
-                                    </div>
-                                    <div class="info-product col-2">
-                                        <h4 class="item-name">Book1</h4>
-                                        <p class="cost-item">$25</p>
-                                        <button class="cart">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                    </div>
+                        </div>
+                        <div class="container col-desktop">
+                            <div class="container-product row">
+                                <div class="img-product col-1">
+                                    <img src="img/product-1.png" alt="book">
+                                </div>
+                                <div class="info-product col-2">
+                                    <h4 class="item-name">Book1</h4>
+                                    <p class="cost-item">$25</p>
+                                    <button class="cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
-            </div>
+                </div>
+            </section>
         </div>
     </div>
+</div>

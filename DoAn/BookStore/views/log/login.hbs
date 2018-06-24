@@ -21,15 +21,16 @@
     <div class="row wrapper-login">
         <h2 class="align-center">Login</h2>
         <span class="wrong-password align-center">Password is incorrect</span>
-        <!-- <form action="login.html"> -->
+        <form action="/home" method="post">
         <label for="">Username</label>
         <input id="login-username" class="custom-input" type="text" name="username">
         <label for="">Password</label>
-        <input id="login-password" class="custom-input" type="password" name="password">
+        <input id="login-password" class="custom-input" type="password" name="rawPWD">
         <input type="checkbox" id="remember">
         <label for="remember">Remember password?</label>
-        <button id="btn-login" type="submit" class="btn"><a href="index-customer.html"><span>Login</span></a></button>
-        <!-- </form> -->
+        <button id="btn-login" type="submit" class="btn">
+            <span>Login</span></button>
+        </form>
         <div class="register-link">
             <a href="register.html">Don't have account?</a>
         </div>
