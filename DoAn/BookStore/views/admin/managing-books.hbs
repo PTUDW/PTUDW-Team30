@@ -69,7 +69,7 @@
                         <tr>
                             <td>
                                 <center>
-                                    <img src="/img/product-1.png" alt="book" width="20px" height="30px">
+                                    <img src="/img/{{Image}}" alt="book" width="20px" height="30px">
                                 </center>
                             </td>
                             <td>{{Book_ID}}</td>
@@ -78,9 +78,9 @@
                             <td>{{Price}}</td>
                             <td>{{Quantity}}</td>
                             <td>
-                                <a class="btn btn-primary btn-xs pull-right" href="#" role="button">
-                                    <span class="glyphicon glyphicon-wrench"></span>
-                                </a>
+                                <button id="book1" class="btn btn--small btn--orange" data-type="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span></button>
+                                <button class="btn btn--small btn--red" data-type="remove"><span><i class="fa fa-trash" aria-hidden="true"></i> Remove</span></button>
+                                
                             </td>
                         </tr>
                         {{/each}}
