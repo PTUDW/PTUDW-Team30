@@ -54,42 +54,24 @@
                         <tr>
                             <th>Kind ID</th>
                             <th>Kind Name</th>
-                            <th>Catelogies belonging</th>
                             <th>Description</th>
+                            <th>Catelogies belonging</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>English</td>
-                            <td>Foreign language</td>
-                            <td>... is the common language of the world</td>
-                            <td>
-                                <button id="book1" class="btn btn--small btn--orange" data-type="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span></button>
-                                <button class="btn btn--small btn--red" data-type="remove"><span><i class="fa fa-trash" aria-hidden="true"></i> Remove</span></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Japanese</td>
-                            <td>Foreign language</td>
-                            <td>abc</td>
-                            <td>
-                                <button id="book1" class="btn btn--small btn--orange" data-type="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span></button>
-                                <button class="btn btn--small btn--red" data-type="remove"><span><i class="fa fa-trash" aria-hidden="true"></i> Remove</span></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Korean</td>
-                            <td>Foreign language</td>
-                            <td>def</td>
-                            <td>
-                                <button id="book1" class="btn btn--small btn--orange" data-type="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span></button>
-                                <button class="btn btn--small btn--red" data-type="remove"><span><i class="fa fa-trash" aria-hidden="true"></i> Remove</span></button>
-                            </td>
-                        </tr>
+                        {{#each kind}}
+                            <tr>
+                                <td>{{Kind_ID}}</td>
+                                <td>{{Kind_Name}}</td>
+                                <td>{{Description}}</td>
+                                <td>{{Category_ID}}</td>
+                                <td>
+                                    <button id="book1" class="btn btn--small btn--orange" data-type="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span></button>
+                                    <button class="btn btn--small btn--red" data-type="remove"><span><i class="fa fa-trash" aria-hidden="true"></i> Remove</span></button>
+                                </td>
+                            </tr>
+                        {{/each}}
                     </tbody>
                 </table>
                 <div class="popup-item-add">

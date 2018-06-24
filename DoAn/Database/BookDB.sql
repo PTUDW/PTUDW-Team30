@@ -1,6 +1,6 @@
-Create Database BookDB;
+Create Database BookStoreDB;
 
-Use BookDB;
+Use BookStoreDB;
 
 Create Table Category
 (
@@ -198,3 +198,10 @@ INSERT INTO `customer` (`Customer_Name`, `Phone`, `Email`, `Gender`, `Account_ID
 ('Nguyễn A', '01212014235', 'a@gmail.com', b'1', 8),
 ('Trần B', '01212259135', 'b@gmail.com', b'0', 9),
 ('Võ C', '01212019562', 'c@gmail.com', b'0', 10);
+
+
+insert into `Orders`(`Order_Date`, `Consignee`, `Consignee_Phone`, `Consignee_Address`, `Note`, `Total`, `Order_Status`, `Customer_ID`) values
+('2015-05-15 00:00:00', 'Nguyễn Tâm', '01212019561', '1A, Phan Đăng Lưu', 'Giao giờ hành chính', 200, 1, 1);
+
+insert into `OrderDetail` (`Order_ID`, `Book_ID`, `Quantity`) values
+(1,1,1);
