@@ -22,7 +22,8 @@ module.exports = (req, res, next) => {
             authors: author,
             publishers: publisher,
             kinds: kind,
-            username: req.session.name
+            username: req.session.name,
+            idCustomer: req.session.idCustomer
         };
         next();
     });

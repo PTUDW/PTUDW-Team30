@@ -91,48 +91,12 @@
                             <i id="btn-categories" class="fa fa-chevron-down right hide-on-desktop" aria-hidden="true"></i>
                         </h2>
                         <ul class="menu-categories">
-                            <div class="dropdown">
-                                <li class="item-categories">
-                                    <a href="books-by-category.html">Encyclopedias
-                                        <i class=""></i>
-                                        <span class="arrow"></span>
-                                    </a>
-                                </li>
-                                <div class="dropdown-content">
-                                    <ul class=" item-categories sub-menu collapse" id="service">
-                                        <li>
-                                            <a href="/home/books-by-category">Categories 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="books-by-category.html">Categories 2</a>
-                                        </li>
-                                        <li>
-                                            <a href="books-by-category.html">Categories 3</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
                             {{#each layoutVM.categories}}
                             <div class="dropdown">
                                 <li class="item-categories">
                                     <a href="books-by-category.html">{{Category_Name}}
-                                        <i class=""></i>
-                                        <span class="arrow"></span>
                                     </a>
                                 </li>
-                                <div class="dropdown-content">
-                                    <ul class=" item-categories sub-menu collapse" id="service">
-                                        <li>
-                                            <a href="books-by-category">Categories 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="books-by-category.html">Categories 2</a>
-                                        </li>
-                                        <li>
-                                            <a href="books-by-category.html">Categories 3</a>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                             {{/each}}
                         </ul>

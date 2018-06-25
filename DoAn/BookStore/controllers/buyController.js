@@ -103,27 +103,6 @@ router.post('/order-success', (req, res) => {
         Customer_ID: req.session.idCustomer
     }
     ordersRepo.add(order);
-    // var items = [];
-    // var totalPrice = new Int16Array();
-    // Promise.all(arr_p).then(result => {
-    //     for (var i = result.length - 1; i >= 0; i--) {
-    //         var pro = result[i][0];
-    //         var item = {
-    //             Product: pro,
-    //             Quantity: req.session.cart[i].Quantity,
-    //             Amount: pro.Price * req.session.cart[i].Quantity
-    //         };
-    //         items.push(item);
-    //         totalPrice = +totalPrice + (+item.Amount);
-    //     }
-
-    //     var vm = {
-    //         items: items,
-    //         total: totalPrice,
-    //         layout: 'cus-noleftmenu.handlebars'
-    //     };
-    //     res.render('buy/order', vm);
-    // });
 
     var vm = {
         Order_ID: req.body.orderid,
@@ -139,33 +118,50 @@ router.post('/order-success', (req, res) => {
     res.render('buy/order-success', vm);
 });
 
-router.get('/order-track', (req, res) => {
-    var vm = {
-        layout: 'cus-noleftmenu.handlebars'
-    }
-    res.render('buy/order-track', vm);
+router.get('/order-track/:idCustomer', (req, res) => {
+    ordersRepo.loadbyID(req.params.idCustomer).then(rows => {
+        var vm = {
+            orders: rows,
+            layout: 'cus-noleftmenu.handlebars'
+        }
+        res.render('buy/order-track', vm);
+    })
 });
 
-router.get('/order-detail', (req, res) => {
-    var vm = {
-        layout: 'cus-noleftmenu.handlebars'
-    }
-    res.render('buy/order-detail-cus', vm);
+router.get('/order-detail/:idCustomer/:idOrder', (req, res) => {
+    var t1 = ordersRepo.loadbyIDOrder(req.params.idOrder);
+    var t2 = ordersRepo.getInfo(req.params.idOrder);
+
+    Promise.all([t1, t2]).then(([order, orderdetail]) => {
+        var vm = {
+            orders: order,
+            orderdetails: orderdetail,
+            layout: 'cus-noleftmenu.handlebars'
+        };
+        res.render('buy/order-detail-cus', vm);
+    });
 });
 
 router.post('/add', (req, res) => {
-    var item = {
-        ProId: req.body.bookid,
-        Quantity: 1
-    };
-    cartRepo.add(req.session.cart, item);
-    bookRepo.loadAll().then(rows => {
+    if (req.session.isLogged == false) {
         var vm = {
-            books: rows,
-            layout: 'cus.handlebars'
+            layout: 'guess-noleftmenu.handlebars'
+        }
+        res.render('log/login', vm);
+    } else {
+        var item = {
+            ProId: req.body.bookid,
+            Quantity: 1
         };
-        res.render('home', vm);
-    });
+        cartRepo.add(req.session.cart, item);
+        bookRepo.loadAll().then(rows => {
+            var vm = {
+                books: rows,
+                layout: 'cus.handlebars'
+            };
+            res.render('home', vm);
+        });
+    }
 });
 
 router.post('/remove', (req, res) => {

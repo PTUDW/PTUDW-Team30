@@ -2,60 +2,40 @@
     <h2 class="align-center">Order infomation</h2>
     <div class="row wrapper-order">
         <div class="col-order-1">
+            {{#each orders}}
             <label for="">Order ID</label>
-            <input readonly class="custom-input" type="text" name="orderid" value="1">
-            <label for="">Customer ID</label>
-            <input readonly class="custom-input" type="text" name="customerid" value="1">
+            <input readonly class="custom-input" type="text" name="orderid" value="{{Order_ID}}">
             <label for="">Consignee Name</label>
-            <input readonly class="custom-input" type="text" name="fullname" value="Vo Thi Thanh Truc">
+            <input readonly class="custom-input" type="text" name="fullname" value="{{Consignee}}">
             <label for="">Consignee Phone</label>
-            <input readonly class="custom-input" type="text" name="phone" value="01234567890">
+            <input readonly class="custom-input" type="text" name="phone" value="{{Consignee_Phone}}">
             <label for="">Consignee Address</label>
-            <input readonly class="custom-input" type="text" name="address" value="12, Cong Hoa">
+            <input readonly class="custom-input" type="text" name="address" value="{{Consignee_Address}}">
             <label for="">Note</label>
-            <textarea readonly rows="4" cols="50" class="custom-input" type="text" name="address">delivery after 17:00pm</textarea>
+            <textarea readonly rows="4" cols="50" class="custom-input" type="text" name="address">{{Note}}</textarea>
+            {{/each}}
         </div>
         <div class="col-order-2">
             <table class="cart-table">
+                {{#each orderdetails}}
                 <tr class="container-cart">
                     <td class="item-img">
                         <img src="img/specials-1.png" alt="book">
                     </td>
                     <td class="item-info">
-                        <h4 class="item-name">Making</h4>
-                        <span class="item-cost">Price: $40</span>
+                        <h4 class="item-name">{{Book_Name}}</h4>
+                        <span class="item-cost">Price: ${{Price}}</span>
                         <br>
-                        <span class="qty">Quantity: 1</span>
+                        <span class="qty">Quantity: {{Quantity}}</span>
                     </td>
                 </tr>
-                <tr class="container-cart">
-                    <td class="item-img">
-                        <img src="img/specials-1.png" alt="book">
-                    </td>
-                    <td class="item-info">
-                        <h4 class="item-name">Things</h4>
-                        <span class="item-cost">Price: $40</span>
-                        <br>
-                        <span class="qty">Quantity: 1</span>
-                    </td>
-                </tr>
-                <tr class="container-cart">
-                    <td class="item-img">
-                        <img src="img/specials-1.png" alt="book">
-                    </td>
-                    <td class="item-info">
-                        <h4 class="item-name">Happen</h4>
-                        <span class="item-cost">Price: $40</span>
-                        <br>
-                        <span class="qty">Quantity: 1</span>
-                    </td>
-                </tr>
+                {{/each}}
             </table>
         </div>
     </div>
     <div class="row">
         <button class="btn btn-buy btn--orange btn--large">
-            <a href="order-track">
+            <a href="/buy/order-track/{{layoutVM.idCustomer}}">
                 <span>Back</span>
         </button>
     </div>

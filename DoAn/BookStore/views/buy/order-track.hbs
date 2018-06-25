@@ -8,13 +8,14 @@
                 <th>Status</th>
                 <th></th>
             </tr>
+            {{#each orders}}
             <tr>
-                <td>1</td>
-                <td>Vo Thi Thanh Truc</td>
-                <td>$300</td>
-                <td>Shipping</td>
+                <td>{{Order_ID}}</td>
+                <td>{{Consignee}}</td>
+                <td>{{Total}}</td>
+                <td>{{Order_Status}}</td>
                 <td>
-                    <a href="order-detail">
+                    <a href="/buy/order-detail/{{Customer_ID}}/{{Order_ID}}">
                         <button id="" class="btn btn--small btn--orange" data-type="detail">
                             <span>
                                 <i class="fa fa-eye" aria-hidden="true"></i> Detail</span>
@@ -22,6 +23,7 @@
                     </a>
                 </td>
             </tr>
+            {{/each}}
         </table>
     </div>
 </div>

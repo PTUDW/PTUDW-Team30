@@ -5,6 +5,21 @@ exports.loadAll = () => {
     return db.load(sql);
 }
 
+exports.loadbyID = id => {
+    var sql = `select * from orders where Customer_ID = ${id}`;
+    return db.load(sql);
+}
+
+exports.loadbyIDOrder = id => {
+    var sql = `select * from orders where Order_ID= ${id}`;
+    return db.load(sql);
+}
+
+exports.loaddetailbyID = id => {
+    var sql = `select * from orderdetail where Order_ID = ${id}`;
+    return db.load(sql);
+}
+
 exports.getMaxID = () => {
     var sql = `select MAX(Order_ID) AS idmax from orders`;
     return db.load(sql);
@@ -20,4 +35,11 @@ exports.add = order => {
 	values('${order.Order_ID}', '${order.Order_Date}', '${order.Consignee}', '${order.Consignee_Phone}', '${order.Consignee_Address}', '${order.Note}', '${order.Total}'
 	, '${order.Order_Status}', '${order.Customer_ID}')`;
     return db.save(sql);
+}
+
+exports.getInfo = id => {
+    var sql = `select book.Book_Name, book.Price, orderdetail.Quantity
+    from book INNER JOIN orderdetail ON orderdetail.Book_ID = book.Book_ID
+    where orderdetail.Order_ID = ${id}`;
+    return db.load(sql);
 }
