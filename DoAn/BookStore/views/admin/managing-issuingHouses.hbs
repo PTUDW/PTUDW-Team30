@@ -1,38 +1,4 @@
-<header>
-    <nav class="nav-bar row">
-        <div class="btn-toggle-wrapper hide-on-desktop" id="btn-menu">
-            <span class="btn-toggle"></span>
-        </div>
-        <ul class="menu">
-            <li class="menu-item active">
-                <a href="managing-books" class="active">
-                    <i class="fa fa-book" aria-hidden="true"></i> Managing Books
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="managing-kinds">
-                    <i class="fa fa-sitemap" aria-hidden="true"></i> Managing Kinds
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="managing-issuingHouses">
-                    <i class="fa fa-address-card" aria-hidden="true"></i> Managing Issuing houses
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="managing-orders" class="">
-                    <i class="fa fa-truck" aria-hidden="true"></i> Managing Orders
-                </a>
-            </li>
-            <li class="customer-login hide-on-mobile">
-                Hi
-                <span>admin</span>! Welcom to Bookstore!
-                <br/>
-                <a href="/home" class="logout">Logout</a>
-            </li>
-        </ul>
-    </nav>
-</header>
+
 <div class="container padding-width">
     <div class="manager-container">
         <div class="manager-content">
@@ -50,47 +16,29 @@
                     </div>
                 </div>
                 <table class="table-manager">
-                    <tr>
-                        <th>Issuing house ID</th>
-                        <th>Issuing house Name</th>
-                        <th>Address</th>
-                        <th>Contact</th>
-                        <th>Information</th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>BachvietBooks</td>
-                        <td>196, Cong Hoa</td>
-                        <td>0288888888</td>
-                        <td>sfhkdsjghkhkfdkhfkadhfkjfhkaj</td>
-                        <td>
-                            <button id="book1" class="btn btn--small btn--orange" data-type="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span></button>
-                            <button class="btn btn--small btn--red" data-type="remove"><span><i class="fa fa-trash" aria-hidden="true"></i> Remove</span></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>BachvietBooks</td>
-                        <td>196, Cong Hoa</td>
-                        <td>0288888888</td>
-                        <td>sfhkdsjghkhkfdkhfkadhfkjfhkaj</td>
-                        <td>
-                            <button id="book1" class="btn btn--small btn--orange" data-type="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span></button>
-                            <button class="btn btn--small btn--red" data-type="remove"><span><i class="fa fa-trash" aria-hidden="true"></i> Remove</span></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>BachvietBooks</td>
-                        <td>196, Cong Hoa</td>
-                        <td>0288888888</td>
-                        <td>sfhkdsjghkhkfdkhfkadhfkjfhkaj</td>
-                        <td>
-                            <button id="book1" class="btn btn--small btn--orange" data-type="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span></button>
-                            <button class="btn btn--small btn--red" data-type="remove"><span><i class="fa fa-trash" aria-hidden="true"></i> Remove</span></button>
-                        </td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Issuing house ID</th>
+                            <th>Issuing house Name</th>
+                            <th>Contact</th>
+                            <th>Address</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each issuingHouse}}
+                            <tr>
+                                <td>{{IssuingHouse_ID}}</td>
+                                <td>{{IssuingHouse_Name}}</td>
+                                <td>{{Contact}}</td>
+                                <td>{{Address}}</td>
+                                <td>
+                                    <button id="book1" class="btn btn--small btn--orange" data-type="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span></button>
+                                    <button class="btn btn--small btn--red" data-type="remove"><span><i class="fa fa-trash" aria-hidden="true"></i> Remove</span></button>
+                                </td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
                 </table>
                 <div class="popup-item-add">
                     <div class="popup-box">

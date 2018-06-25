@@ -1,22 +1,53 @@
 var express = require('express');
 
 var router = express.Router();
+var bookRepo = require('../repos/bookRepo');
+var kindRepo = require('../repos/kindRepo');
+var ordersRepo = require('../repos/ordersRepo');
+var issuingHousesRepo = require('../repos/issuingHousesRepo');
 
 router.get('/', (req, res) => {
-    res.render('admin/index-admin');
+    bookRepo.loadAll().then(rows => {
+        console.log(rows);
+        var vm = {
+        	layout:'mainAdmin.handlebars',
+            book: rows
+        };
+        res.render('admin/managing-books', vm);
+    });
 });
 
-
 router.get('/managing-books', (req, res) => {
-    res.render('admin/managing-books');
+	bookRepo.loadAll().then(rows => {
+        console.log(rows);
+        var vm = {
+        	layout:'mainAdmin.handlebars',
+            book: rows
+        };
+        res.render('admin/managing-books', vm);
+    });
 });
 
 router.get('/managing-kinds', (req, res) => {
-    res.render('admin/managing-kinds');
+	kindRepo.loadAll().then(rows => {
+        console.log(rows);
+        var vm = {
+        	layout:'mainAdmin.handlebars',
+            kind: rows
+        };
+        res.render('admin/managing-kinds', vm);
+    });
 });
 
 router.get('/managing-orders', (req, res) => {
-    res.render('admin/managing-orders');
+	ordersRepo.loadAll().then(rows => {
+        console.log(rows);
+        var vm = {
+        	layout:'mainAdmin.handlebars',
+            orders: rows
+        };
+        res.render('admin/managing-orders', vm);
+    });
 });
 
 router.get('/order-detail', (req, res) => {
@@ -24,7 +55,14 @@ router.get('/order-detail', (req, res) => {
 });
 
 router.get('/managing-issuingHouses', (req, res) => {
-    res.render('admin/managing-issuingHouses');
+    issuingHousesRepo.loadAll().then(rows => {
+        console.log(rows);
+        var vm = {
+        	layout:'mainAdmin.handlebars',
+            issuingHouse: rows
+        };
+        res.render('admin/managing-issuingHouses', vm);
+    });
 });
 
 module.exports = router;

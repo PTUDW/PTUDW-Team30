@@ -1,38 +1,4 @@
-<header>
-    <nav class="nav-bar row">
-        <div class="btn-toggle-wrapper hide-on-desktop" id="btn-menu">
-            <span class="btn-toggle"></span>
-        </div>
-        <ul class="menu">
-            <li class="menu-item active">
-                <a href="managing-books" class="active">
-                    <i class="fa fa-book" aria-hidden="true"></i> Managing Books
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="managing-kinds">
-                    <i class="fa fa-sitemap" aria-hidden="true"></i> Managing Kinds
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="managing-issuingHouses">
-                    <i class="fa fa-address-card" aria-hidden="true"></i> Managing Issuing houses
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="managing-orders" class="">
-                    <i class="fa fa-truck" aria-hidden="true"></i> Managing Orders
-                </a>
-            </li>
-            <li class="customer-login hide-on-mobile">
-                Hi
-                <span>admin</span>! Welcom to Bookstore!
-                <br/>
-                <a href="/home" class="logout">Logout</a>
-            </li>
-        </ul>
-    </nav>
-</header>
+
 <div class="container padding-width">
     <div class="manager-container">
         <div class="manager-content">
@@ -46,102 +12,38 @@
                     </div>
                 </div>
                 <table class="table-manager">
-                    <tr>
-                        <th>Order Date</th>
-                        <th>Order ID</th>
-                        <th>Customer ID</th>
-                        <th>Consignee</th>
-                        <th>Consignee phone</th>
-                        <th>Consignee address</th>
-                        <th>Note</th>
-                        <th>Total</th>
-                        <th>Status</th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <td>01/01/2018</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>Nguyen A</td>
-                        <td>01234567890</td>
-                        <td>89, Kim Dong</td>
-                        <td>delivery after 17:00pm</td>
-                        <td>$100</td>
-                        <td>Shipping</td>
-                        <td>
-                            <a href="order-detail"><button class="btn btn--small" data-type="detail"><span><i class="" aria-hidden="true"></i> Detail</span></button>
-                            </td>
-                        </tr>
+                    <thead>
                         <tr>
-                            <td>01/01/2018</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>Nguyen A</td>
-                            <td>01234567890</td>
-                            <td>89, Kim Dong</td>
-                            <td>delivery after 17:00pm</td>
-                            <td>$100</td>
-                            <td>Shipping</td>
-                            <td>
-                                <a href="order-detail"><button class="btn btn--small" data-type="detail"><span><i class="" aria-hidden="true"></i> Detail</span></button></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>01/01/2018</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>Nguyen A</td>
-                        <td>01234567890</td>
-                        <td>89, Kim Dong</td>
-                        <td>delivery after 17:00pm</td>
-                        <td>$100</td>
-                        <td>Shipping</td>
-                        <td>
-                            <a href="order-detail"><button class="btn btn--small" data-type="detail"><span><i class="" aria-hidden="true"></i> Detail</span></button></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>01/01/2018</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>Nguyen A</td>
-                        <td>01234567890</td>
-                        <td>89, Kim Dong</td>
-                        <td>delivery after 17:00pm</td>
-                        <td>$100</td>
-                        <td>Shipping</td>
-                        <td>
-                            <a href="order-detail"><button class="btn btn--small" data-type="detail"><span><i class="" aria-hidden="true"></i> Detail </span></button></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>01/01/2018</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>Nguyen A</td>
-                        <td>01234567890</td>
-                        <td>89, Kim Dong</td>
-                        <td>delivery after 17:00pm</td>
-                        <td>$100</td>
-                        <td>Shipping</td>
-                        <td>
-                            <a href="order-detail"><button class="btn btn--small" data-type="detail"><span><i class="" aria-hidden="true"></i> Detail</span></button></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>01/01/2018</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>Nguyen A</td>
-                        <td>01234567890</td>
-                        <td>89, Kim Dong</td>
-                        <td>delivery after 17:00pm</td>
-                        <td>$100</td>
-                        <td>Shipping</td>
-                        <td>
-                            <a href="order-detail"><button class="btn btn--small" data-type="detail"><span><i class="" aria-hidden="true"></i> Detail</span></button></a>
-                        </td>
-                    </tr>
+                            <th>Order Date</th>
+                            <th>Order ID</th>
+                            <th>Customer ID</th>
+                            <th>Consignee</th>
+                            <th>Consignee phone</th>
+                            <th>Consignee address</th>
+                            <th>Note</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each orders}}
+                            <tr>
+                                <td>{{Order_Date}}</td>
+                                <td>{{Order_ID}}</td>
+                                <td>{{Customer_ID}}</td>
+                                <td>{{Consignee}}</td>
+                                <td>{{Consignee_Phone}}</td>
+                                <td>{{Consignee_Address}}</td>
+                                <td>{{Note}}</td>
+                                <td>{{Total}}</td>
+                                <td>{{Order_Status}}</td>
+                                <td>
+                                    <a href="order-detail"><button class="btn btn--small" data-type="detail"><span><i class="" aria-hidden="true"></i> Detail</span></button>
+                                </td>
+                            </tr>
+                        {{/each}}
+                    </tbody>     
                 </table>
             </div>
         </div>

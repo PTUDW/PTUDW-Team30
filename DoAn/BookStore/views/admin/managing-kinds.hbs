@@ -1,38 +1,4 @@
-<header>
-    <nav class="nav-bar row">
-        <div class="btn-toggle-wrapper hide-on-desktop" id="btn-menu">
-            <span class="btn-toggle"></span>
-        </div>
-        <ul class="menu">
-            <li class="menu-item active">
-                <a href="managing-books" class="active">
-                    <i class="fa fa-book" aria-hidden="true"></i> Managing Books
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="managing-kinds">
-                    <i class="fa fa-sitemap" aria-hidden="true"></i> Managing Kinds
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="managing-issuingHouses">
-                    <i class="fa fa-address-card" aria-hidden="true"></i> Managing Issuing houses
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="managing-orders" class="">
-                    <i class="fa fa-truck" aria-hidden="true"></i> Managing Orders
-                </a>
-            </li>
-            <li class="customer-login hide-on-mobile">
-                Hi
-                <span>admin</span>! Welcom to Bookstore!
-                <br/>
-                <a href="/home" class="logout">Logout</a>
-            </li>
-        </ul>
-    </nav>
-</header>
+
 <div class="container padding-width">
     <div class="manager-container">
         <div class="manager-content">
@@ -54,42 +20,24 @@
                         <tr>
                             <th>Kind ID</th>
                             <th>Kind Name</th>
-                            <th>Catelogies belonging</th>
                             <th>Description</th>
+                            <th>Catelogies belonging</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>English</td>
-                            <td>Foreign language</td>
-                            <td>... is the common language of the world</td>
-                            <td>
-                                <button id="book1" class="btn btn--small btn--orange" data-type="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span></button>
-                                <button class="btn btn--small btn--red" data-type="remove"><span><i class="fa fa-trash" aria-hidden="true"></i> Remove</span></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Japanese</td>
-                            <td>Foreign language</td>
-                            <td>abc</td>
-                            <td>
-                                <button id="book1" class="btn btn--small btn--orange" data-type="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span></button>
-                                <button class="btn btn--small btn--red" data-type="remove"><span><i class="fa fa-trash" aria-hidden="true"></i> Remove</span></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Korean</td>
-                            <td>Foreign language</td>
-                            <td>def</td>
-                            <td>
-                                <button id="book1" class="btn btn--small btn--orange" data-type="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span></button>
-                                <button class="btn btn--small btn--red" data-type="remove"><span><i class="fa fa-trash" aria-hidden="true"></i> Remove</span></button>
-                            </td>
-                        </tr>
+                        {{#each kind}}
+                            <tr>
+                                <td>{{Kind_ID}}</td>
+                                <td>{{Kind_Name}}</td>
+                                <td>{{Description}}</td>
+                                <td>{{Category_ID}}</td>
+                                <td>
+                                    <button id="book1" class="btn btn--small btn--orange" data-type="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span></button>
+                                    <button class="btn btn--small btn--red" data-type="remove"><span><i class="fa fa-trash" aria-hidden="true"></i> Remove</span></button>
+                                </td>
+                            </tr>
+                        {{/each}}
                     </tbody>
                 </table>
                 <div class="popup-item-add">
@@ -98,22 +46,15 @@
                         <div class="outer">
                             <div class="container">
                                 <label>Kind ID</label>
-                                <input id="k-id" type="text" class="custom-input" required="true" value="1" readonly>
+                                <input id="k-id" type="text" class="custom-input" required="false" value="1" readonly>
                                 <label>Kind Name</label>
                                 <input id="k-name" type="text" class="custom-input" required="true">
                                 <label>Catelogies belonging</label>
                                 <select id="k-catelogy" required class="custom-input" id="select1">
-                                        <option>Encyclopedias</option>
-                                        <option>Foreign language</option>
-                                        <option>Story</option>
-                                        <option>Poetry</option>
-                                        <option>Novel</option>
-                                        <option>Science</option>
-                                        <option>Literature</option>
-                                        <option>Common sense</option>
-                                        <option>Specialized</option>
-                                        <option>Magazine</option>
-                                    </select>
+                                    {{#each Category}}
+                                        <option>{{Category_Name}}</option>
+                                    {{/each}}
+                                </select>
                                 <label>Description</label>
                                 <input id="k-des" type="text" class="custom-input" required="true">
                                 <button type="reset" id="k-add" class="btn"><span>Add</span></button>
@@ -132,17 +73,10 @@
                                 <input type="text" class="custom-input" required="true">
                                 <label>Catelogies belonging</label>
                                 <select required class="custom-input" id="select1">
-                                        <option>Encyclopedias</option>
-                                        <option>Foreign language</option>
-                                        <option>Story</option>
-                                        <option>Poetry</option>
-                                        <option>Novel</option>
-                                        <option>Science</option>
-                                        <option>Literature</option>
-                                        <option>Common sense</option>
-                                        <option>Specialized</option>
-                                        <option>Magazine</option>
-                                    </select>
+                                    {{#each Category}}
+                                        <option>{{Category_Name}}</option>
+                                    {{/each}}
+                                </select>
                                 <label>Description</label>
                                 <input type="text" class="custom-input" required="true">
                                 <button class="btn"><span>Edit</span></button>
