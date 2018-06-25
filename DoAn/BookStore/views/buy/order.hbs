@@ -4,66 +4,40 @@
         <div class="row wrapper-order">
             <div class="col-order-1">
                 <label for="">Order ID</label>
-                <input readonly class="custom-input" type="text" name="orderid" value="1">
-                <label for="">Customer ID</label>
-                <input readonly class="custom-input" type="text" name="customerid" value="1">
+                <input readonly class="custom-input" type="text" name="orderid" value="{{orderid}}">
                 <label for="">Consignee Name
                     <span class="required-symbol">(*)</span>
                 </label>
-                <input required class="custom-input" type="text" name="fullname" value="Vo Thi Thanh Truc">
+                <input required class="custom-input" type="text" name="fullname" placeholder="Input your name" onclick="refrClock()">
                 <label for="">Consignee Phone
                     <span class="required-symbol">(*)</span>
                 </label>
-                <input required class="custom-input" type="text" name="phone" value="01234567890">
+                <input required class="custom-input" type="text" name="phone" placeholder="Input your phone">
                 <label for="">Consignee Address
                     <span class="required-symbol">(*)</span>
                 </label>
-                <input required class="custom-input" type="text" name="address" value="12, Cong Hoa">
+                <input required class="custom-input" type="text" name="address" placeholder="Input your address">
                 <label for="">Note</label>
-                <textarea rows="4" cols="50" class="custom-input" type="text" name="address"></textarea>
+                <textarea rows="4" cols="50" class="custom-input" type="text" name="note"></textarea>
             </div>
             <div class="col-order-2">
                 <table class="cart-table">
+                    {{#each items}}
                     <tr class="container-cart">
                         <td class="item-img">
-                            <img src="img/specials-1.png" alt="book">
+                            <img src="img/specials-1.png" alt="item">
                         </td>
                         <td class="item-info">
-                            <h4 class="item-name">Making</h4>
-                            <span class="item-cost">$40</span>
+                            <h4 class="item-name">{{Product.Book_Name}}</h4>
+                            <span class="item-cost">${{Product.Price}}</span>
                             <br>
                             <span class="qty">Quantity:</span>
-                            <input type="number" class="qty-input" value="1" name="qty" min="1">
-                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            <input type="number" class="qty-input" name="qty" value="{{Quantity}}" required="true" min="1">
                         </td>
                     </tr>
-                    <tr class="container-cart">
-                        <td class="item-img">
-                            <img src="img/specials-1.png" alt="book">
-                        </td>
-                        <td class="item-info">
-                            <h4 class="item-name">Things</h4>
-                            <span class="item-cost">$40</span>
-                            <br>
-                            <span class="qty">Quantity:</span>
-                            <input type="number" class="qty-input" value="1" name="qty" min="1">
-                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                        </td>
-                    </tr>
-                    <tr class="container-cart">
-                        <td class="item-img">
-                            <img src="img/specials-1.png" alt="book">
-                        </td>
-                        <td class="item-info">
-                            <h4 class="item-name">Happen</h4>
-                            <span class="item-cost">$40</span>
-                            <br>
-                            <span class="qty">Quantity:</span>
-                            <input type="number" class="qty-input" value="1" name="qty" min="1">
-                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                        </td>
-                    </tr>
+                    {{/each}}
                 </table>
+                <p class="product-price" style="text-align: center">Total price: ${{total}}</p>
             </div>
         </div>
         <div class="row">
@@ -73,5 +47,7 @@
                 </a>
             </button>
         </div>
+        <input class="custom-input" type="text" id="clock" name="clock" value="" hidden="true">
+        <input class="custom-input" type="text" name="total" value="{{total}}" hidden="true">
     </form>
 </div>

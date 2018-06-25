@@ -4,23 +4,23 @@
         <table class="order-info">
             <tr>
                 <td class="order-info--key">Order ID:</td>
-                <td class="order-info--value">12543</td>
+                <td class="order-info--value">{{Order_ID}}</td>
             </tr>
             <tr>
                 <td class="order-info--key">Full name:</td>
-                <td class="order-info--value">Vo Thi Thanh Truc</td>
+                <td class="order-info--value">{{Consignee}}</td>
             </tr>
             <tr>
                 <td class="order-info--key">Phone:</td>
-                <td class="order-info--value">01234567890</td>
+                <td class="order-info--value">{{Consignee_Phone}}</td>
             </tr>
             <tr>
                 <td class="order-info--key">Address:</td>
-                <td class="order-info--value">ward 1, district 3, Ho Chi Minh City</td>
+                <td class="order-info--value">{{Consignee_Address}}</td>
             </tr>
             <tr class="total-cost">
                 <td class="order-info--key">Total cost:</td>
-                <td class="order-info--value">135.800 VND</td>
+                <td class="order-info--value">${{Total}}</td>
             </tr>
         </table>
         <div class="btn-wrapper">

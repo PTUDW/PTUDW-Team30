@@ -1,4 +1,7 @@
 var express = require('express');
+var cartRepo = require('../repos/cartRepo');
+var bookRepo = require('../repos/bookRepo');
+var ordersRepo = require('../repos/ordersRepo');
 
 var router = express.Router();
 
@@ -17,21 +20,120 @@ router.get('/', (req, res) => {
 });
 
 router.get('/cart', (req, res) => {
-    var vm = {
-        layout: 'cus-noleftmenu.handlebars'
+    var arr_p = [];
+    for (var i = 0; i < req.session.cart.length; i++) {
+        var cartItem = req.session.cart[i];
+        var p = bookRepo.single(cartItem.ProId);
+        arr_p.push(p);
     }
-    res.render('buy/cart', vm);
+    var items = [];
+    var totalPrice = new Int16Array();
+
+    Promise.all(arr_p).then(result => {
+        for (var i = result.length - 1; i >= 0; i--) {
+            var pro = result[i][0];
+            var item = {
+                Product: pro,
+                Quantity: req.session.cart[i].Quantity,
+                Amount: pro.Price * req.session.cart[i].Quantity
+            };
+            items.push(item);
+            totalPrice = +totalPrice + (+item.Amount);
+        }
+        var vm = {
+            items: items,
+            total: totalPrice,
+            layout: 'cus-noleftmenu.handlebars'
+        };
+        res.render('buy/cart', vm);
+    });
 });
 
 router.get('/order', (req, res) => {
-    var vm = {
-        layout: 'cus-noleftmenu.handlebars'
+    var arr_p = [];
+    for (var i = 0; i < req.session.cart.length; i++) {
+        var cartItem = req.session.cart[i];
+        var p = bookRepo.single(cartItem.ProId);
+        arr_p.push(p);
     }
-    res.render('buy/order', vm);
+    var items = [];
+    var totalPrice = new Int16Array();
+    ordersRepo.getMaxID().then(rows => {
+        Promise.all(arr_p).then(result => {
+            for (var i = result.length - 1; i >= 0; i--) {
+                var pro = result[i][0];
+                var item = {
+                    Product: pro,
+                    Quantity: req.session.cart[i].Quantity,
+                    Amount: pro.Price * req.session.cart[i].Quantity
+                };
+                items.push(item);
+                totalPrice = +totalPrice + (+item.Amount);
+            }
+            var vm = {
+                items: items,
+                total: totalPrice,
+                orderid: rows[0].idmax + 1,
+                layout: 'cus-noleftmenu.handlebars'
+            };
+            res.render('buy/order', vm);
+        });
+    });
 });
 
 router.post('/order-success', (req, res) => {
+    for (var i = 0; i < req.session.cart.length; i++) {
+        var cartItem = req.session.cart[i];
+        var orderdetail = {
+            Order_ID: req.body.orderid,
+            Book_ID: cartItem.ProId,
+            Quantity: cartItem.Quantity
+        }
+        ordersRepo.adddetail(orderdetail);
+    }
+    var order = {
+        Order_ID: req.body.orderid,
+        Order_Date: req.body.clock,
+        Consignee: req.body.fullname,
+        Consignee_Phone: req.body.phone,
+        Consignee_Address: req.body.address,
+        Note: req.body.note,
+        Total: req.body.total,
+        Order_Status: 0,
+        Customer_ID: req.session.idCustomer
+    }
+    ordersRepo.add(order);
+    // var items = [];
+    // var totalPrice = new Int16Array();
+    // Promise.all(arr_p).then(result => {
+    //     for (var i = result.length - 1; i >= 0; i--) {
+    //         var pro = result[i][0];
+    //         var item = {
+    //             Product: pro,
+    //             Quantity: req.session.cart[i].Quantity,
+    //             Amount: pro.Price * req.session.cart[i].Quantity
+    //         };
+    //         items.push(item);
+    //         totalPrice = +totalPrice + (+item.Amount);
+    //     }
+
+    //     var vm = {
+    //         items: items,
+    //         total: totalPrice,
+    //         layout: 'cus-noleftmenu.handlebars'
+    //     };
+    //     res.render('buy/order', vm);
+    // });
+
     var vm = {
+        Order_ID: req.body.orderid,
+        Order_Date: req.body.clock,
+        Consignee: req.body.fullname,
+        Consignee_Phone: req.body.phone,
+        Consignee_Address: req.body.address,
+        Note: req.body.note,
+        Total: req.body.total,
+        Order_Status: 0,
         layout: 'cus-noleftmenu.handlebars'
     }
     res.render('buy/order-success', vm);
@@ -49,6 +151,26 @@ router.get('/order-detail', (req, res) => {
         layout: 'cus-noleftmenu.handlebars'
     }
     res.render('buy/order-detail-cus', vm);
+});
+
+router.post('/add', (req, res) => {
+    var item = {
+        ProId: req.body.bookid,
+        Quantity: 1
+    };
+    cartRepo.add(req.session.cart, item);
+    bookRepo.loadAll().then(rows => {
+        var vm = {
+            books: rows,
+            layout: 'cus.handlebars'
+        };
+        res.render('home', vm);
+    });
+});
+
+router.post('/remove', (req, res) => {
+    cartRepo.remove(req.session.cart, req.body.ProId);
+    res.redirect('cart');
 });
 
 module.exports = router;

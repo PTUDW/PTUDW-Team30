@@ -13,35 +13,53 @@ router.get('/', (req, res) => {
         req.session.isLogged == false;
         req.session.destroy();
     }
-    res.render('home/index');
+    bookRepo.loadAll().then(rows => {
+        var vm = {
+            books: rows
+        };
+        res.render('home/index', vm);
+    });
 });
 
 router.get('/home', (req, res) => {
-    res.render('home/index');
+    bookRepo.loadAll().then(rows => {
+        var vm = {
+            books: rows
+        };
+        res.render('home/index', vm);
+    });
 });
 
 router.get('/home-customer', (req, res) => {
-    var vm = {
-        layout: 'cus.handlebars'
-    }
-    res.render('home/index', vm);
+    bookRepo.loadAll().then(rows => {
+        var vm = {
+            books: rows,
+            layout: 'cus.handlebars'
+        };
+        res.render('home/index', vm);
+    });
 });
 
 router.get('/about', (req, res) => {
     res.render('home/about');
 });
 
-router.get('/view-product', (req, res) => {
-    if (req.session.isLogged == true) {
-        var vm = {
-            layout: 'cus.handlebars'
+router.get('/view-product/:book_id', (req, res) => {
+    var bookid = req.params.book_id;
+    bookRepo.single(bookid).then(rows => {
+        if (req.session.isLogged == true) {
+            var vm = {
+                product: rows[0],
+                layout: 'cus.handlebars'
+            }
+        } else {
+            var vm = {
+                book: rows[0],
+                layout: 'main.handlebars'
+            }
         }
-    } else {
-        var vm = {
-            layout: 'main.handlebars'
-        }
-    }
-    res.render('home/view-product', vm);
+        res.render('home/view-product', vm);
+    });
 });
 
 router.get('/books-by-category', (req, res) => {
@@ -73,14 +91,18 @@ router.post('/', (req, res) => {
     };
     accountRepo.login(user).then(rows => {
         if (rows.length > 0) {
-            var vm = {
-                name: req.body.username,
-                layout: 'cus.handlebars'
-            };
-            req.session.isLogged = true;
-            req.session.name = req.body.username;
-            req.session.idAccount = rows[0].Account_ID;
-            res.render('home/index', vm);
+            bookRepo.loadAll().then(rows2 => {
+                var vm = {
+                    name: req.body.username,
+                    books: rows2,
+                    layout: 'cus.handlebars'
+                };
+                req.session.isLogged = true;
+                req.session.name = req.body.username;
+                req.session.idAccount = rows[0].Account_ID;
+                req.session.cart = [];
+                res.render('home/index', vm);
+            });
         } else {
             var vm = {
                 showError: true,

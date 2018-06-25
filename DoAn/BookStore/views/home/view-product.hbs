@@ -2,22 +2,23 @@
     <div class="row">
         <div class="col-content">
             <div class="img-product col-2">
-                <p align="center" class="product-title">Bước chân theo dấu mặt trời</p>
+                {{#with book}}
+                <p align="center" class="product-title">{{Book_Name}}</p>
                 <img src="/img/product-1.png" alt="book" style="margin-right: 10px;float: left">
-                <p class="product-price">Price: 50.000₫</p>
+                <p class="product-price">Price: ${{Price}}</p>
                 <p>Publisher:
-                    <a href="#">NXB Kim Dong</a>
+                    <a href="#">{{Publisher}}</a>
                 </p>
                 <p>Authors:
-                    <a href="#">Nguyen Nhat Anh</a>
+                    <a href="#">{{Author}}</a>
                 </p>
                 <p>Category:
                     <a href="#">Encyclopedias</a>
                 </p>
-                <p>Viewed: 100</p>
+                <p>Viewed: {{View_Number}}</p>
                 <p>Sold: 10</p>
                 <div class="quantity-box">
-                    <p class="quantity-label">Quantity:</p>
+                    <p class="quantity-label">Quantity: {{Quantity}}</p>
                     <p class="tiki-number-input">
                         <div class="input-group bootstrap-touchspin">
                             <span class="input-group-btn">
@@ -34,13 +35,9 @@
                     <button type="submit" style="background-image:url('img/btn-buy.png');width: 145px;height: 40px;">Add to cart</button>
                 </div>
                 <div class="row"></div>
-                <p>Describe: It is a long established fact that a reader will be distracted by the readable content of a page
-                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution
-                    of letters, as opposed to using 'Content here, content here', making it look like readable English. Many
-                    desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and
-                    a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have
-                    evolved over the years, sometimes by accident, sometimes on purpose.
+                <p>{{Description}}
                 </p>
+                {{/with}}
             </div>
             <section class="section-display-item">
                 <div class="container-lastest">
