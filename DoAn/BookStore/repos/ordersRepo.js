@@ -38,7 +38,7 @@ exports.add = order => {
 }
 
 exports.getInfo = id => {
-    var sql = `select book.Book_Name, book.Price, orderdetail.Quantity
+    var sql = `select book.Book_Name, book.Price, book.Image, orderdetail.Quantity
     from book INNER JOIN orderdetail ON orderdetail.Book_ID = book.Book_ID
     where orderdetail.Order_ID = ${id}`;
     return db.load(sql);

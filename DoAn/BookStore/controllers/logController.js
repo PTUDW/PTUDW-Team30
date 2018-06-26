@@ -9,6 +9,7 @@ router.get('/login', (req, res) => {
         layout: 'guess-noleftmenu.handlebars'
     };
     res.render('log/login', vm);
+    Map
 });
 
 router.get('/register', (req, res) => {

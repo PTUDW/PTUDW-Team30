@@ -1,97 +1,50 @@
-<header>
-    <nav class="nav-bar row">
-        <div class="btn-toggle-wrapper hide-on-desktop" id="btn-menu">
-            <span class="btn-toggle"></span>
-        </div>
-        <ul class="menu">
-            <li class="menu-item active">
-                <a href="managing-books" class="active">
-                    <i class="fa fa-book" aria-hidden="true"></i> Managing Books
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="managing-kinds">
-                    <i class="fa fa-sitemap" aria-hidden="true"></i> Managing Kinds
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="managing-issuingHouses">
-                    <i class="fa fa-address-card" aria-hidden="true"></i> Managing Issuing houses
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="managing-orders" class="">
-                    <i class="fa fa-truck" aria-hidden="true"></i> Managing Orders
-                </a>
-            </li>
-            <li class="customer-login hide-on-mobile">
-                Hi
-                <span>admin</span>! Welcom to Bookstore!
-                <br/>
-                <a href="/home" class="logout">Logout</a>
-            </li>
-        </ul>
-    </nav>
-</header>
 <div class="container padding-width">
     <h2 class="align-center">Order infomation</h2>
     <div class="row wrapper-order">
         <div class="col-order-1">
-            <label for="">Order ID</label>
-            <input readonly class="custom-input" type="text" name="orderid" value="1">
-            <label for="">Customer ID</label>
-            <input readonly class="custom-input" type="text" name="customerid" value="1">
-            <label for="">Consignee Name</label>
-            <input readonly class="custom-input" type="text" name="fullname" value="Vo Thi Thanh Truc">
-            <label for="">Consignee Phone</label>
-            <input readonly class="custom-input" type="text" name="phone" value="01234567890">
-            <label for="">Consignee Address</label>
-            <input readonly class="custom-input" type="text" name="address" value="12, Cong Hoa">
-            <label for="">Note</label>
-            <textarea readonly rows="4" cols="50" class="custom-input" type="text" name="address">delivery after 17:00pm</textarea>
+            {{#each orders}}
+                <label for="">Order ID</label>
+                <input readonly class="custom-input" type="text" name="order_Id" value="{{Order_ID}}">
+                <label for="">Order Date</label>
+                <input readonly class="custom-input" type="text" name="order_Date" value="{{Order_Date}}">
+                <label for="">Customer ID</label>
+                <input readonly class="custom-input" type="text" name="customer_Id" value="{{Customer_ID}}">
+                <label for="">Consignee Name</label>
+                <input readonly class="custom-input" type="text" name="consignee" value="{{Consignee}}">
+                <label for="">Consignee Phone</label>
+                <input readonly class="custom-input" type="text" name="consignee_Phone" value="{{Consignee_Phone}}">
+                <label for="">Consignee Address</label>
+                <input readonly class="custom-input" type="text" name="consignee_Address" value="{{Consignee_Address}}">
+                <label for="">Note</label>
+                <textarea readonly rows="4" cols="50" class="custom-input" type="text" name="note">{{Note}}</textarea>
+                <label for="">Total</label>
+                <input readonly class="custom-input" type="text" name="total" value="{{Total}}">
+            {{/each}}
         </div>
         <div class="col-order-2">
             <table class="cart-table">
-                <tr class="container-cart">
-                    <td class="item-img">
-                        <img src="img/specials-1.png" alt="book">
-                    </td>
-                    <td class="item-info">
-                        <h4 class="item-name">Making</h4>
-                        <span class="item-cost">Price: $40</span><br>
-                        <span class="qty">Quantity: 1</span>
-                    </td>
-                </tr>
-                <tr class="container-cart">
-                    <td class="item-img">
-                        <img src="img/specials-1.png" alt="book">
-                    </td>
-                    <td class="item-info">
-                        <h4 class="item-name">Things</h4>
-                        <span class="item-cost">Price: $40</span><br>
-                        <span class="qty">Quantity: 1</span>
-                    </td>
-                </tr>
-                <tr class="container-cart">
-                    <td class="item-img">
-                        <img src="img/specials-1.png" alt="book">
-                    </td>
-                    <td class="item-info">
-                        <h4 class="item-name">Happen</h4>
-                        <span class="item-cost">Price: $40</span><br>
-                        <span class="qty">Quantity: 1</span>
-                    </td>
-                </tr>
+                {{#each orderdetails}}
+                    <tr class="container-cart">
+                        <td class="item-img">
+                            <img src="/img/books/{{Image}}" alt="book">
+                        </td>
+                        <td class="item-info">
+                            <h4 class="item-name">{{Book_Name}}</h4>
+                            <span class="item-cost">Price: {{Price}}</span><br>
+                            <span class="qty" name="quantity">Quantity: {{Quantity}}</span>
+                        </td>
+                    </tr>
+                {{/each}}
             </table>
         </div>
     </div>
     <div class="status-change">
         <label>Status</label>
-        <select required class="custom-input" id="select-status">
-                    <option>New</option>
-                    <option>Shipping</option>
-                    <option>Deliveried</option>
-                </select>
+        <select required class="custom-input" id="select-status" name="status">
+            {{#each orders}}
+            <option value="{{Status}}"></option>
+            {{/each}}
+        </select>
     </div>
     <div class="row">
         <button type="submit" class="btn btn-buy btn--orange btn--large"><a href="managing-orders"><span>Submit</span></button>

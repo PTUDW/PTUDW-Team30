@@ -45,19 +45,19 @@
                         <i class="fa fa-close close-popup"></i>
                         <div class="outer">
                             <div class="container">
-                                <label>Kind ID</label>
-                                <input id="k-id" type="text" class="custom-input" required="false" value="1" readonly>
-                                <label>Kind Name</label>
-                                <input id="k-name" type="text" class="custom-input" required="true">
-                                <label>Catelogies belonging</label>
-                                <select id="k-catelogy" required class="custom-input" id="select1">
-                                    {{#each Category}}
-                                        <option>{{Category_Name}}</option>
-                                    {{/each}}
-                                </select>
-                                <label>Description</label>
-                                <input id="k-des" type="text" class="custom-input" required="true">
-                                <button type="reset" id="k-add" class="btn"><span>Add</span></button>
+                                <form action="managing-kinds" method="POST" role="form">
+                                    <label>Kind Name</label>
+                                    <input name="kind_Name" type="text" class="custom-input" required="true">
+                                    <label>Description</label>
+                                    <input name="description" type="text" class="custom-input" required="true">
+                                    <label>Catelogies belonging</label>
+                                    <select name="category" required class="custom-input" id="select1">
+                                        {{#each Category}}
+                                            <option>{{Category_Name}}</option>
+                                        {{/each}}
+                                    </select>
+                                    <button type="reset" class="btn"><span>Add</span></button>
+                                </from>
                             </div>
                         </div>
                     </div>
@@ -67,19 +67,22 @@
                         <i class="fa fa-close close-popup"></i>
                         <div class="outer">
                             <div class="container">
-                                <label>Kind ID</label>
-                                <input type="text" class="custom-input" required="true">
-                                <label>Kind Name</label>
-                                <input type="text" class="custom-input" required="true">
-                                <label>Catelogies belonging</label>
-                                <select required class="custom-input" id="select1">
-                                    {{#each Category}}
-                                        <option>{{Category_Name}}</option>
-                                    {{/each}}
-                                </select>
-                                <label>Description</label>
-                                <input type="text" class="custom-input" required="true">
-                                <button class="btn"><span>Edit</span></button>
+                                <form action="managing-kinds" method="POST" role="form">
+                                    <label>Kind ID</label>
+                                    <input name="kind_Name" type="text" class="custom-input" required="true" value="{{Kind_ID}}">
+                                    <label>Kind Name</label>
+                                    <input name="kind_Name" type="text" class="custom-input" required="true" value="{{Kind_Name}}">
+                                    <label>Description</label>
+                                    <input name="description" type="text" class="custom-input" required="true" value="{{Description}}">
+                                    <label>Catelogies belonging</label>
+                                    <select name="category" required class="custom-input" id="select1">
+                                        <option value="{{Category_ID}}">{{Category_ID}}</option>
+                                        {{#each Category}}
+                                            <option>{{Category_Name}}</option>
+                                        {{/each}}
+                                    </select>
+                                    <button type="reset" class="btn"><span>Edit</span></button>
+                                </from>
                             </div>
                         </div>
                     </div>

@@ -34,7 +34,7 @@
                         <tr>
                             <td>
                                 <center>
-                                    <img src="/img/{{Image}}" alt="book" width="20px" height="30px">
+                                    <img src="/img/books/{{Image}}" alt="book" width="40px" height="50px">
                                 </center>
                             </td>
                             <td>{{Book_ID}}</td>
@@ -57,28 +57,34 @@
                         <i class="fa fa-close close-popup"></i>
                         <div class="outer">
                             <div class="container">
-                                <label>Book Image</label>
-                                <input id="b-img" type="file" class="custom-input" required="true">
-                                <hr>
-                                <label>Book ID</label>
-                                <input id="b-id" type="text" class="custom-input" required="true">
-                                <label>Book Name</label>
-                                <input id="b-name" type="text" class="custom-input" required="true">
-                                <label>Author</label>
-                                <input id="b-author" type="text" class="custom-input" required="true">
-                                <label>Publisher</label>
-                                <input id="b-publisher" type="text" class="custom-input" required="true">
-                                <label>Issuing house</label>
-                                <input id="b-issuingHouse" type="text" class="custom-input" required="true">
-                                <label>Kind</label>
-                                <input id="b-kind" type="text" class="custom-input" required="true">
-                                <label>Price</label>
-                                <input id="b-price" type="text" class="custom-input" required="true">
-                                <label>Amount</label>
-                                <input id="b-amount" type="number" class="custom-input" required="true" min="0">
-                                <button type="reset" class="btn" id="b-add">
-                                    <span>Add</span>
-                                </button>
+                                <form action="managinng-books" method="POST" role="form">
+                                    <label>Book Image</label>
+                                    <input type="file" class="custom-input" required="true" name="image">
+                                    <hr>
+                                    <label>Book Name</label>
+                                    <input type="text" class="custom-input" required="true" name="book_Name">
+                                    <label>Author</label>
+                                    <input type="text" class="custom-input" required="true" name="author">
+                                    <label>Publisher</label>
+                                    <input type="text" class="custom-input" required="true" name="publisher">
+                                    <label>Publish Date</label>
+                                    <input type="datetime" class="custom-input" required="true"
+                                    name="publish_Date">
+                                    <label>Price</label>
+                                    <input type="price" class="custom-input" required="true" min="0" name="price">
+                                    <label>Quantity</label>
+                                    <input type="number" class="custom-input" required="true" min="0" name="quantity">
+                                    <label>Description</label>
+                                    <input type="text" class="custom-input" required="true" name="description">                   
+                                    <label>Kind</label>
+                                    <select name="kind_Id" required class="custom-input" id="select1">
+                                        {<option value="" selected>1</option>
+                                        <option value="">2</option>
+                                    </select>
+                                    <button type="reset" class="btn"><a href="managing-books">
+                                        <span>Add</span>
+                                    </a></button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -88,28 +94,34 @@
                         <i class="fa fa-close close-popup"></i>
                         <div class="outer">
                             <div class="container">
-                                <label>Book Image</label>
-                                <input type="file" class="custom-input" required="true">
-                                <hr>
-                                <label>Book ID</label>
-                                <input type="text" class="custom-input" required="true">
-                                <label>Book Name</label>
-                                <input type="text" class="custom-input" required="true">
-                                <label>Author</label>
-                                <input type="text" class="custom-input" required="true">
-                                <label>Publisher</label>
-                                <input type="text" class="custom-input" required="true">
-                                <label>Issuing house</label>
-                                <input type="text" class="custom-input" required="true">
-                                <label>Kind</label>
-                                <input type="text" class="custom-input" required="true">
-                                <label>Price</label>
-                                <input type="text" class="custom-input" required="true">
-                                <label>Amount</label>
-                                <input type="number" class="custom-input" required="true" min="0">
-                                <button class="btn">
-                                    <span>Edit</span>
-                                </button>
+                                <form action="managing-books" method="POST" role="form">
+                                {{#with Book}}
+                                    <label>Book Image</label>
+                                    <input type="file" class="custom-input" required="true" name="image" value="{{Image}}">
+                                    <hr>
+                                    <label>Book Name</label>
+                                    <input type="text" class="custom-input" required="true" name="book_Name" value="{{Book_Name}}">
+                                    <label>Author</label>
+                                    <input type="text" class="custom-input" required="true" name="author" value="{{Author}}">
+                                    <label>Publisher</label>
+                                    <input type="text" class="custom-input" required="true" name="publisher" value="{{Publisher}}">
+                                    <label>Publish Date</label>
+                                    <input type="datetime" class="custom-input" required="true"
+                                    name="publish_Date" value="{{Publish_Date}}">
+                                    <label>Price</label>
+                                    <input type="price" class="custom-input" required="true" min="0" name="price" value="{{Price}}">
+                                    <label>Quantity</label>
+                                    <input type="number" class="custom-input" required="true" min="0" name="quantity" value="{{Quantity}}">
+                                    <label>Description</label>
+                                    <input type="text" class="custom-input" required="true name="description" value="{{Description}}">                   
+                                    <label>Kind</label>
+                                    <select name="kind_Id" required class="custom-input" id="select1">
+                                        <option value="" selected>1</option>
+                                        <option value="">2</option>
+                                    </select>
+                                    <button class="btn"><a href="managing-books"><span>Edit</span></a></button>
+                                    {{/with}}
+                                </form>
                             </div>
                         </div>
                     </div>
