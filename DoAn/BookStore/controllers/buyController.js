@@ -49,9 +49,12 @@ router.get('/cart', (req, res) => {
     });
 });
 
-router.get('/order', (req, res) => {
+router.post('/order', (req, res) => {
     var arr_p = [];
-    for (var i = 0; i < req.session.cart.length; i++) {
+    var qty = req.body.qty;
+    for (var i = req.session.cart.length - 1; i >= 0; i--) {
+        req.session.cart[i].Quantity = qty[i];
+        console.log(req.session.cart[i]);
         var cartItem = req.session.cart[i];
         var p = bookRepo.single(cartItem.ProId);
         arr_p.push(p);
@@ -115,6 +118,7 @@ router.post('/order-success', (req, res) => {
         Order_Status: 0,
         layout: 'cus-noleftmenu.handlebars'
     }
+    req.session.cart = [];
     res.render('buy/order-success', vm);
 });
 

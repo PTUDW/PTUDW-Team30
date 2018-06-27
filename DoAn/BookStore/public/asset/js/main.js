@@ -209,3 +209,13 @@ function refrClock() {
     if (month < 10) { month = "0" + month }
     document.getElementById("clock").value = year + '-' + month + '-' + date + ' ' + h + ':' + m + ':' + s;
 }
+
+function plus() {
+    document.getElementById("qty").value = ++document.getElementById("qty").value;
+}
+
+function minus() {
+    if (document.getElementById("qty").value > 1) {
+        document.getElementById("qty").value = --document.getElementById("qty").value;
+    }
+}

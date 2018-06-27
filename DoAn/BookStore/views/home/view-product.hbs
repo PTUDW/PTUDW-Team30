@@ -21,13 +21,13 @@
                         <p class="tiki-number-input">
                             <div class="input-group bootstrap-touchspin">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default bootstrap-touchspin-down" type="button">-</button>
+                                    <button class="btn btn-default bootstrap-touchspin-down" type="button" onclick="minus()">-</button>
                                 </span>
                                 <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span>
                                 <input id="qty" type="tel" name="qty" value="1" min="1" max="100" class="form-control" style="display: block;">
                                 <span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default bootstrap-touchspin-up" type="button" click=b tnup>+</button>
+                                    <button class="btn btn-default bootstrap-touchspin-up" type="button" onclick="plus()">+</button>
                                 </span>
                             </div>
                         </p>
@@ -43,7 +43,7 @@
                 <div class="container-lastest">
                     <h2 class="title">Same type</h2>
                     <div class="row">
-                        {{#each bauthors}}
+                        {{#each bkinds}}
                         <form action="/buy/add" method="post">
                             <div class="container col-desktop">
                                 <div class="container-product row">
@@ -94,11 +94,3 @@
         </div>
     </div>
 </div>
-{{!--
-<script type="text/javascript">
-    var count = 0;
-    $('button').click(function () {
-        count++;
-        $(this).text("clicked " + count + " times");
-    });
-</script> --}}

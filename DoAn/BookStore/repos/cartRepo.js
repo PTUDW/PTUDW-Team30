@@ -1,7 +1,7 @@
 exports.add = (cart, item) => {
     for (i = cart.length - 1; i >= 0; i--) {
         if (cart[i].ProId === item.ProId) {
-            cart[i].Quantity += item.Quantity;
+            cart[i].Quantity = +cart[i].Quantity + +item.Quantity;
             return;
         }
     }

@@ -25,14 +25,14 @@
                     {{#each items}}
                     <tr class="container-cart">
                         <td class="item-img">
-                            <img src="img/specials-1.png" alt="item">
+                            <img src="/img/books/{{Product.Image}}" alt="book" height="250" width="250">
                         </td>
                         <td class="item-info">
                             <h4 class="item-name">{{Product.Book_Name}}</h4>
                             <span class="item-cost">${{Product.Price}}</span>
                             <br>
                             <span class="qty">Quantity:</span>
-                            <input type="number" class="qty-input" name="qty" value="{{Quantity}}" required="true" min="1">
+                            <input Readonly type="number" class="qty-input" name="qty" value="{{Quantity}}" required="true" min="1">
                         </td>
                     </tr>
                     {{/each}}

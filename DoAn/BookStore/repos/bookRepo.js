@@ -5,12 +5,6 @@ exports.loadAll = () => {
     return db.load(sql);
 }
 
-exports.loadAllBook = () => {
-    var sql = `select book.Book_ID,book.Book_Name,book.Author,book.Publisher,book.Publish_Date,book.Image,book.Price,Book.Quantity,book.View_Number,book.Description,kind.Kind_Name
-            from book, kind where book.Kind_ID = kind.Kind_ID ORDER BY book.Book_ID ASC`;
-    return db.load(sql);
-}
-
 exports.loadAuthor = () => {
     var sql = 'select DISTINCT Author from book limit 5';
     return db.load(sql);
@@ -21,11 +15,20 @@ exports.loadPublisher = () => {
     return db.load(sql);
 }
 
+exports.loadbyAuthor = author => {
+    var sql = `select * from book where Author = "${author}"`;
+    return db.load(sql);
+}
+
+exports.loadbyPublisher = publisher => {
+    var sql = `select * from book where Publisher = "${publisher}"`;
+    return db.load(sql);
+}
+
 exports.single = proId => {
     var sql = `select * from book where Book_ID = ${proId}`;
     return db.load(sql);
 }
-
 
 exports.add = (b) => {
     var sql = `insert into book(Book_Name,Author,Publisher,Publish_Date,Image,Price,Quantity,View_Number,Description,Kind_ID)
@@ -39,19 +42,19 @@ exports.update = (b) => {
     return db.save(sql);
 }
 
-exports.getKindById = id =>{
-	var sql = `select kind.Kind_ID kind.Kind_Name from kind, book where book.Kind_ID = ${id} and kind.Kind_ID = book.Kind_ID`;
-	return db.load(sql);
+exports.getKindById = id => {
+    var sql = `select kind.Kind_ID kind.Kind_Name from kind, book where book.Kind_ID = ${id} and kind.Kind_ID = book.Kind_ID`;
+    return db.load(sql);
 
 }
 
 exports.bestView = () => {
-    var sql = `select MAX(View_Number) from book limit 10`;
+    var sql = `SELECT * FROM book ORDER BY View_Number DESC LIMIT 10`;
     return db.load(sql);
 }
 
 exports.bestSell = () => {
-    var sql = `SELECT Book_ID, SUM(Quantity) FROM orderdetail GROUP BY Book_ID`;
+    var sql = `SELECT * FROM book ORDER BY Sold DESC LIMIT 10`;
     return db.load(sql);
 }
 
@@ -65,4 +68,7 @@ exports.samePublisher = name => {
     return db.load(sql);
 }
 
-
+exports.getbyKind = id => {
+    var sql = `select * from book where Kind_ID = ${id}`;
+    return db.load(sql);
+}

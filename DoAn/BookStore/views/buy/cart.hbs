@@ -4,11 +4,12 @@
     <form id="frmRemoveItem" method="post" action="/buy/remove" hidden="true">
 			<input id="txtProId_R" type="text" name="ProId">
 		</form>
+        <form action="/buy/order" method="post">
     <table class="cart-table">
         {{#each items}}
         <tr class="container-cart">
             <td class="item-img">
-                <img src="img/specials-1.png" alt="item">
+                <img src="/img/books/{{Product.Image}}" alt="book" height="250" width="250">
             </td>
             <td class="item-info">
                 <h4 class="item-name">{{Product.Book_Name}}</h4>
@@ -29,6 +30,7 @@
             <span>Order Now</span>
         </a>
     </button>
+    </form>
     <button class="btn btn-buy">
         <a href="/home/home-customer">
             <span>Continue Shopping</span>

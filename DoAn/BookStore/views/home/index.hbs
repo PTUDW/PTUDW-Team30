@@ -30,37 +30,51 @@
         <div class="container-lastest">
             <h2 class="title">Best Seller Books </h2>
             <div class="row">
-                <div class="container col-desktop">
-                    <div class="container-product row">
-                        <div class="img-product col-1">
-                            <img src="/img/product-1.png" alt="book">
-                        </div>
-                        <div class="info-product col-2">
-                            <h4 class="item-name">Book1</h4>
-                            <p class="cost-item">$25</p>
-                            <button class="cart">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                        </div>
-                    </div>
+                {{#each bestsells}}
+                <form action="/buy/add" method="post">
+                    <div class="container col-desktop">
+                        <div class="container-product row">
+                            <div class="img-product col-1">
+                                <a href="/home/view-product/{{Book_ID}}">
+                                    <img src="/img/books/{{Image}}" alt="book" height="150" width="150">
+                                </a>
+                            </div>
+                            <div class="info-product col-2">
+                                <input name="bookid" type="hidden" value="{{Book_ID}}">
+                                <h4 class="item-name" name="bookname" height="150" width="150">{{Book_Name}}</h4>
+                                <p class="cost-item" name="price">${{Price}}</p>
+                                <button class="cart" id="addtoCart">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
+                </form>
                 </div>
+                </div>
+                </div>
+                {{/each}}
             </div>
         </div>
         <div class="container-lastest">
             <h2 class="title">Top Reading Books</h2>
             <div class="row">
-                <div class="container col-desktop">
-                    <div class="container-product row">
-                        <div class="img-product col-1">
-                            <img src="/img/product-1.png" alt="book">
-                        </div>
-                        <div class="info-product col-2">
-                            <h4 class="item-name">Book1</h4>
-                            <p class="cost-item">$25</p>
-                            <button class="cart">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                        </div>
-                    </div>
+                 {{#each bestviews}}
+                <form action="/buy/add" method="post">
+                    <div class="container col-desktop">
+                        <div class="container-product row">
+                            <div class="img-product col-1">
+                                <a href="/home/view-product/{{Book_ID}}">
+                                    <img src="/img/books/{{Image}}" alt="book" height="150" width="150">
+                                </a>
+                            </div>
+                            <div class="info-product col-2">
+                                <input name="bookid" type="hidden" value="{{Book_ID}}">
+                                <h4 class="item-name" name="bookname" height="150" width="150">{{Book_Name}}</h4>
+                                <p class="cost-item" name="price">${{Price}}</p>
+                                <button class="cart" id="addtoCart">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
+                </form>
                 </div>
+                </div>
+                </div>
+                {{/each}}
             </div>
         </div>
     </section>

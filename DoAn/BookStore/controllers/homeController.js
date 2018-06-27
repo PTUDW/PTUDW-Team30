@@ -14,35 +14,44 @@ router.get('/', (req, res) => {
         req.session.isLogged == false;
         req.session.destroy();
     }
-    bookRepo.loadAll().then(rows => {
+    var t1 = bookRepo.loadAll();
+    var t2 = bookRepo.bestView();
+    var t3 = bookRepo.bestSell();
+    Promise.all([t1, t2, t3]).then(([book, bestview, bestsell]) => {
         var vm = {
-            books: rows
-        };
+            books: book,
+            bestviews: bestview,
+            bestsells: bestsell
+        }
         res.render('home/index', vm);
     });
 });
 
 router.get('/home', (req, res) => {
-    // bookRepo.loadAll().then(rows => {
-    //     var vm = {
-    //         books: rows
-    //     };
-    //     res.render('home/index', vm);
-    // });
-    bookRepo.bestView().then(rows => {
+    var t1 = bookRepo.loadAll();
+    var t2 = bookRepo.bestView();
+    var t3 = bookRepo.bestSell();
+    Promise.all([t1, t2, t3]).then(([book, bestview, bestsell]) => {
         var vm = {
-            books: rows
-        };
+            books: book,
+            bestviews: bestview,
+            bestsells: bestsell
+        }
         res.render('home/index', vm);
     });
 });
 
 router.get('/home-customer', (req, res) => {
-    bookRepo.loadAll().then(rows => {
+    var t1 = bookRepo.loadAll();
+    var t2 = bookRepo.bestView();
+    var t3 = bookRepo.bestSell();
+    Promise.all([t1, t2, t3]).then(([book, bestview, bestsell]) => {
         var vm = {
-            books: rows,
+            books: book,
+            bestviews: bestview,
+            bestsells: bestsell,
             layout: 'cus.handlebars'
-        };
+        }
         res.render('home/index', vm);
     });
 });
@@ -54,24 +63,23 @@ router.get('/about', (req, res) => {
 router.get('/view-product/:book_id', (req, res) => {
     var bookid = req.params.book_id;
     bookRepo.single(bookid).then(rows => {
-        var t1 = bookRepo.loadbyAuthor(rows[0].Author);
+        var t1 = bookRepo.getbyKind(rows[0].Kind_ID);
         var t2 = bookRepo.loadbyPublisher(rows[0].Publisher);
-        Promise.all([t1, t2]).then(([bauthor, bpuhlisher]) => {
-            console.log(bauthor);
-            console.log(bpuhlisher);
-
+        Promise.all([t1, t2]).then(([bkind, bpublisher]) => {
+            console.log("bkind: " + bkind);
+            console.log("bpublisher: " + bpublisher);
             if (req.session.isLogged == true) {
                 var vm = {
                     book: rows[0],
-                    bauthors: bauthor,
-                    bpuhlishers: bpuhlisher,
+                    bkinds: bkind,
+                    bpublishers: bpublisher,
                     layout: 'cus.handlebars'
                 }
             } else {
                 var vm = {
                     book: rows[0],
-                    bauthors: bauthor,
-                    bpuhlishers: bpuhlisher,
+                    bkinds: bkind,
+                    bpublishers: bpublisher,
                     layout: 'main.handlebars'
                 }
             }
