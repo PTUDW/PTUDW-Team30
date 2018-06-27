@@ -1,7 +1,8 @@
 var db = require('../fn/db');
+var config = require('../config/config');
 
 exports.loadAll = () => {
-    var sql = 'select * from book';
+    var sql = 'select * from book ORDER BY Publish_Date DESC limit 10';
     return db.load(sql);
 }
 
@@ -15,13 +16,23 @@ exports.loadPublisher = () => {
     return db.load(sql);
 }
 
-exports.loadbyAuthor = author => {
-    var sql = `select * from book where Author = "${author}"`;
+exports.loadbyAuthor = (author, offset) => {
+    var sql = `select * from book where Author = "${author}" limit ${config.PRODUCTS_PER_PAGE} offset ${offset}`;
     return db.load(sql);
 }
 
-exports.loadbyPublisher = publisher => {
-    var sql = `select * from book where Publisher = "${publisher}"`;
+exports.countAuthor = author => {
+    var sql = `select count(*) as total from book where Author = "${author}"`;
+    return db.load(sql);
+}
+
+exports.loadbyPublisher = (publisher, offset) => {
+    var sql = `select * from book where Publisher = "${publisher}" limit ${config.PRODUCTS_PER_PAGE} offset ${offset}`;
+    return db.load(sql);
+}
+
+exports.countPublisher = publisher => {
+    var sql = `select count(*) as total from book where Publisher = "${publisher}"`;
     return db.load(sql);
 }
 
@@ -45,7 +56,6 @@ exports.update = (b) => {
 exports.getKindById = id => {
     var sql = `select kind.Kind_ID kind.Kind_Name from kind, book where book.Kind_ID = ${id} and kind.Kind_ID = book.Kind_ID`;
     return db.load(sql);
-
 }
 
 exports.bestView = () => {
@@ -58,17 +68,28 @@ exports.bestSell = () => {
     return db.load(sql);
 }
 
-exports.sameKind = id => {
-    var sql = `select * from book where Kind_ID = (select Kind_ID from kind where Kind_Name = "${id}")`;
+exports.sameKind = (id, offset) => {
+    var sql = `select * from book where Kind_ID = (select Kind_ID from kind where Kind_Name = "${id}") limit ${config.PRODUCTS_PER_PAGE} offset ${offset}`;
+    return db.load(sql);
+}
+
+exports.countKind = id => {
+    var sql = `select count(*) as total from book where Kind_ID = (select Kind_ID from kind where Kind_Name = "${id}")`;
     return db.load(sql);
 }
 
 exports.samePublisher = name => {
-    var sql = `select * from book where Publisher = ${name}`;
+    var sql = `select * from book where Publisher = "${name}"`;
     return db.load(sql);
 }
 
 exports.getbyKind = id => {
     var sql = `select * from book where Kind_ID = ${id}`;
     return db.load(sql);
+}
+
+exports.updateView = (id, view) => {
+    var sql = `update book set View_Number = '${view}'
+    where Book_ID = '${id}'`;
+    return db.save(sql);
 }

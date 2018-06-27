@@ -63,11 +63,10 @@ router.get('/about', (req, res) => {
 router.get('/view-product/:book_id', (req, res) => {
     var bookid = req.params.book_id;
     bookRepo.single(bookid).then(rows => {
+        bookRepo.updateView(bookid, +rows[0].View_Number + 1);
         var t1 = bookRepo.getbyKind(rows[0].Kind_ID);
-        var t2 = bookRepo.loadbyPublisher(rows[0].Publisher);
+        var t2 = bookRepo.samePublisher(rows[0].Publisher);
         Promise.all([t1, t2]).then(([bkind, bpublisher]) => {
-            console.log("bkind: " + bkind);
-            console.log("bpublisher: " + bpublisher);
             if (req.session.isLogged == true) {
                 var vm = {
                     book: rows[0],
@@ -89,17 +88,52 @@ router.get('/view-product/:book_id', (req, res) => {
 });
 
 router.get('/books-by-category/:kind_name', (req, res) => {
+
+    var page = req.query.page;
+    if (!page) {
+        page = 1;
+    }
+    if (page <= 1)
+        var pageb = 1;
+    else var pageb = page - 1;
+
+    var pagea = +page + 1;
+    var offset = (page - 1) * config.PRODUCTS_PER_PAGE;
+
     var kindname = req.params.kind_name;
-    bookRepo.sameKind(kindname).then(rows => {
+
+    var p1 = bookRepo.sameKind(kindname, offset);
+    var p2 = bookRepo.countKind(kindname);
+    Promise.all([p1, p2]).then(([rows, countRows]) => {
+        var total = countRows[0].total;
+        var nPages = total / config.PRODUCTS_PER_PAGE;
+        if (total % config.PRODUCTS_PER_PAGE > 0) {
+            nPages++;
+        }
+        if (page === total)
+            pagea = total;
+        var numbers = [];
+        for (i = 1; i <= nPages; i++) {
+            numbers.push({
+                value: i,
+                isCurPage: i === +page
+            });
+        }
         if (req.session.isLogged == false) {
             var vm = {
                 books: rows,
+                page_numbers: numbers,
+                pageb: pageb,
+                pagea: pagea,
                 layout: 'main.handlebars'
             }
             res.render('home/books-by-category', vm);
         } else {
             var vm = {
                 books: rows,
+                page_numbers: numbers,
+                pageb: pageb,
+                pagea: pagea,
                 layout: 'cus.handlebars'
             }
             res.render('home/books-by-category', vm);
@@ -109,16 +143,48 @@ router.get('/books-by-category/:kind_name', (req, res) => {
 
 router.get('/books-by-author/:author', (req, res) => {
     var author = req.params.author;
-    bookRepo.loadbyAuthor(author).then(rows => {
+    var page = req.query.page;
+    if (!page) {
+        page = 1;
+    }
+    if (page <= 1)
+        var pageb = 1;
+    else var pageb = page - 1;
+    var pagea = +page + 1;
+    var offset = (page - 1) * config.PRODUCTS_PER_PAGE;
+
+    var p1 = bookRepo.loadbyAuthor(author, offset);
+    var p2 = bookRepo.countAuthor(author);
+    Promise.all([p1, p2]).then(([rows, countRows]) => {
+        var total = countRows[0].total;
+        var nPages = total / config.PRODUCTS_PER_PAGE;
+        if (total % config.PRODUCTS_PER_PAGE > 0) {
+            nPages++;
+        }
+        if (page === total)
+            pagea = total;
+        var numbers = [];
+        for (i = 1; i <= nPages; i++) {
+            numbers.push({
+                value: i,
+                isCurPage: i === +page
+            });
+        }
         if (req.session.isLogged == false) {
             var vm = {
                 books: rows,
+                page_numbers: numbers,
+                pageb: pageb,
+                pagea: pagea,
                 layout: 'main.handlebars'
             }
             res.render('home/books-by-author', vm);
         } else {
             var vm = {
                 books: rows,
+                page_numbers: numbers,
+                pageb: pageb,
+                pagea: pagea,
                 layout: 'cus.handlebars'
             }
             res.render('home/books-by-author', vm);
@@ -128,16 +194,48 @@ router.get('/books-by-author/:author', (req, res) => {
 
 router.get('/books-by-publisher/:publisher', (req, res) => {
     var publisher = req.params.publisher;
-    bookRepo.loadbyPublisher(publisher).then(rows => {
+    var page = req.query.page;
+    if (!page) {
+        page = 1;
+    }
+    if (page <= 1)
+        var pageb = 1;
+    else var pageb = page - 1;
+    var pagea = +page + 1;
+    var offset = (page - 1) * config.PRODUCTS_PER_PAGE;
+
+    var p1 = bookRepo.loadbyPublisher(publisher, offset);
+    var p2 = bookRepo.countPublisher(publisher);
+    Promise.all([p1, p2]).then(([rows, countRows]) => {
+        var total = countRows[0].total;
+        var nPages = total / config.PRODUCTS_PER_PAGE;
+        if (total % config.PRODUCTS_PER_PAGE > 0) {
+            nPages++;
+        }
+        if (page === total)
+            pagea = total;
+        var numbers = [];
+        for (i = 1; i <= nPages; i++) {
+            numbers.push({
+                value: i,
+                isCurPage: i === +page
+            });
+        }
         if (req.session.isLogged == false) {
             var vm = {
                 books: rows,
+                page_numbers: numbers,
+                pageb: pageb,
+                pagea: pagea,
                 layout: 'main.handlebars'
             }
             res.render('home/books-by-publisher', vm);
         } else {
             var vm = {
                 books: rows,
+                page_numbers: numbers,
+                pageb: pageb,
+                pagea: pagea,
                 layout: 'cus.handlebars'
             }
             res.render('home/books-by-publisher', vm);
@@ -170,18 +268,25 @@ router.post('/', (req, res) => {
     };
     accountRepo.login(user).then(rows => {
         if (rows.length > 0) {
-            bookRepo.loadAll().then(rows2 => {
+            if (rows[0].Account_Type === 1) {
                 var vm = {
-                    name: req.body.username,
-                    books: rows2,
-                    layout: 'cus.handlebars'
-                };
-                req.session.isLogged = true;
-                req.session.name = req.body.username;
-                req.session.idAccount = rows[0].Account_ID;
-                req.session.cart = [];
-                res.render('home/index', vm);
-            });
+                    layout: 'mainAdmin.handlebars'
+                }
+                res.render('admin/managing-books', vm);
+            } else {
+                bookRepo.loadAll().then(rows2 => {
+                    var vm = {
+                        name: req.body.username,
+                        books: rows2,
+                        layout: 'cus.handlebars'
+                    };
+                    req.session.isLogged = true;
+                    req.session.name = req.body.username;
+                    req.session.idAccount = rows[0].Account_ID;
+                    req.session.cart = [];
+                    res.render('home/index', vm);
+                });
+            }
         } else {
             var vm = {
                 showError: true,

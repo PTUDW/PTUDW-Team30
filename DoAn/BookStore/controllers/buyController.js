@@ -50,38 +50,45 @@ router.get('/cart', (req, res) => {
 });
 
 router.post('/order', (req, res) => {
-    var arr_p = [];
-    var qty = req.body.qty;
-    for (var i = req.session.cart.length - 1; i >= 0; i--) {
-        req.session.cart[i].Quantity = qty[i];
-        console.log(req.session.cart[i]);
-        var cartItem = req.session.cart[i];
-        var p = bookRepo.single(cartItem.ProId);
-        arr_p.push(p);
-    }
-    var items = [];
-    var totalPrice = new Int16Array();
-    ordersRepo.getMaxID().then(rows => {
-        Promise.all(arr_p).then(result => {
-            for (var i = result.length - 1; i >= 0; i--) {
-                var pro = result[i][0];
-                var item = {
-                    Product: pro,
-                    Quantity: req.session.cart[i].Quantity,
-                    Amount: pro.Price * req.session.cart[i].Quantity
+    if (req.session.cart.length > 0) {
+        var arr_p = [];
+        var qty = req.body.qty;
+        for (var i = req.session.cart.length - 1; i >= 0; i--) {
+            req.session.cart[i].Quantity = qty[i];
+            console.log(req.session.cart[i]);
+            var cartItem = req.session.cart[i];
+            var p = bookRepo.single(cartItem.ProId);
+            arr_p.push(p);
+        }
+        var items = [];
+        var totalPrice = new Int16Array();
+        ordersRepo.getMaxID().then(rows => {
+            Promise.all(arr_p).then(result => {
+                for (var i = result.length - 1; i >= 0; i--) {
+                    var pro = result[i][0];
+                    var item = {
+                        Product: pro,
+                        Quantity: req.session.cart[i].Quantity,
+                        Amount: pro.Price * req.session.cart[i].Quantity
+                    };
+                    items.push(item);
+                    totalPrice = +totalPrice + (+item.Amount);
+                }
+                var vm = {
+                    items: items,
+                    total: totalPrice,
+                    orderid: rows[0].idmax + 1,
+                    layout: 'cus-noleftmenu.handlebars'
                 };
-                items.push(item);
-                totalPrice = +totalPrice + (+item.Amount);
-            }
-            var vm = {
-                items: items,
-                total: totalPrice,
-                orderid: rows[0].idmax + 1,
-                layout: 'cus-noleftmenu.handlebars'
-            };
-            res.render('buy/order', vm);
+                res.render('buy/order', vm);
+            });
         });
-    });
+    } else {
+        var vm = {
+            layout: 'cus-noleftmenu.handlebars'
+        };
+        res.render('buy/cart', vm);
+    }
 });
 
 router.post('/order-success', (req, res) => {

@@ -31,42 +31,23 @@
                 </div>
                 <ul class="pagination pagination_type1">
                     <li class="pagination__item">
-                        <a href="#0" class="pagination__number">←
+                        <a href="?page={{pageb}}" class="pagination__number">←
                             <span class="pagination__control pagination__control_prev">prev</span>
                         </a>
                     </li>
-                    <li class="pagination__item">
-                        <span class="pagination__number pagination__number_active">1</span>
+                    {{#each page_numbers}}
+		            {{#if isCurPage}}
+                    <li class="pagination__item"><a href="?page={{value}}">
+                        <span class="pagination__number pagination__number_active">{{value}}</span></a>
                     </li>
-                    <li class="pagination__item">
-                        <a href="#2" class="pagination__number" id="pagination2">2</a>
+                    {{else}}
+                    <li class="pagination__item"><a href="?page={{value}}">
+                        <span class="pagination__number pagination__number_active">{{value}}</span></a>
                     </li>
+                    {{/if}}
+                    {{/each}}
                     <li class="pagination__item">
-                        <a href="#3" class="pagination__number" id="pagination3">3</a>
-                    </li>
-                    <li class="pagination__item">
-                        <a href="#4" class="pagination__number" id="pagination4">4</a>
-                    </li>
-                    <li class="pagination__item">
-                        <a href="#5" class="pagination__number" id="pagination5">5</a>
-                    </li>
-                    <li class="pagination__item">
-                        <a href="#6" class="pagination__number" id="pagination6">6</a>
-                    </li>
-                    <li class="pagination__item">
-                        <a href="#7" class="pagination__number" id="pagination7">7</a>
-                    </li>
-                    <li class="pagination__item">
-                        <a href="#8" class="pagination__number" id="pagination8">8</a>
-                    </li>
-                    <li class="pagination__item">
-                        <a href="#9" class="pagination__number" id="pagination9">9</a>
-                    </li>
-                    <li class="pagination__item">
-                        <a href="#10" class="pagination__number" id="pagination10">10</a>
-                    </li>
-                    <li class="pagination__item">
-                        <a href="#11" class="pagination__number">
+                        <a href="?page={{pagea}}" class="pagination__number">
                             <span class="pagination__control pagination__control_next">next</span>→</a>
                     </li>
                 </ul>

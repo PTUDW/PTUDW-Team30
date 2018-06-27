@@ -1,3 +1,4 @@
 module.exports = {
-    nameuser: 'admin'
+    nameuser: 'admin',
+    PRODUCTS_PER_PAGE: 1
 }

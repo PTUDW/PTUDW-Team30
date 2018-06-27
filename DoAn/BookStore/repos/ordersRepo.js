@@ -12,8 +12,7 @@ exports.loadAllOrder = () => {
 }
 
 exports.loadbyID = id => {
-    var sql = `select orders.Order_ID,orders.Order_Date, orders.Order_Status,orders.Consignee,orders.Consignee_Phone,orders.Consignee_Address,orders.Note,orders.Total,customer.Customer_Name
-                 from orders, customer where orders.Customer_ID = customer.Customer_ID and orders.Customer_ID = ${id}`;
+    var sql = `select * from orders  where Customer_ID = ${id} ORDER BY Order_ID DESC`
     return db.load(sql);
 }
 
