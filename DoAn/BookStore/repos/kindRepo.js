@@ -1,7 +1,22 @@
 var db = require('../fn/db');
 
 exports.loadAll = () => {
-    var sql = 'select * from kind';
+    var sql = `select * from kind`;
+    return db.load(sql);
+}
+
+exports.load5 = () => {
+    var sql = `select DISTINCT Kind_Name from kind limit 5`;
+    return db.load(sql);
+}
+
+// exports.loadbyCategory = () => {
+//     var sql = 'select * from category';
+//     return db.load(sql);
+// }
+
+exports.single = id => {
+    var sql = `select * from kind where Kind_ID = ${id}`;
     return db.load(sql);
 }
 
@@ -9,7 +24,6 @@ exports.loadbyCategory = () => {
     var sql = 'select * from category';
     return db.load(sql);
 }
-
 
 exports.add = (k) => {
     var sql = `insert into kind(Kind_Name,Description,Category_ID) values('${k.kind_Name}', '${k.description}', '${k.category_Id}')`;

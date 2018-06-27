@@ -3,77 +3,91 @@
         <div class="col-content">
             <div class="img-product col-2">
                 {{#with book}}
-                <p align="center" class="product-title">{{Book_Name}}</p>
-                <img src="/img/books/{{Image}}" alt="book" style="margin-right: 10px;float: left" height="400" width="350">
-                <p class="product-price">Price: ${{Price}}</p>
-                <p>Publisher:
-                    <a href="#">{{Publisher}}</a>
-                </p>
-                <p>Authors:
-                    <a href="#">{{Author}}</a>
-                </p>
-                <p>Category:
-                    <a href="#">Encyclopedias</a>
-                </p>
-                <p>Viewed: {{View_Number}}</p>
-                <p>Sold: 10</p>
-                <div class="quantity-box">
-                    <p class="quantity-label">Quantity: {{Quantity}}</p>
-                    <p class="tiki-number-input">
-                        <div class="input-group bootstrap-touchspin">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default bootstrap-touchspin-down" type="button">-</button>
-                            </span>
-                            <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span>
-                            <input id="qty" type="tel" name="qty" value="1" min="1" max="100" class="form-control" style="display: block;">
-                            <span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
-                            <span class="input-group-btn">
-                                <button class="btn btn-default bootstrap-touchspin-up" type="button" click=b tnup>+</button>
-                            </span>
-                        </div>
+                <form action="/buy/add" method="post">
+                    <input name="bookid" type="hidden" value="{{Book_ID}}" hidden="true">
+                    <p align="center" class="product-title">{{Book_Name}}</p>
+                    <img src="/img/books/{{Image}}" alt="book" style="margin-right: 10px;float: left" height="400" width="350">
+                    <p class="product-price">Price: ${{Price}}</p>
+                    <p>Publisher:
+                        <a href="/home/books-by-publisher/{{Publisher}}">{{Publisher}}</a>
                     </p>
-                    <button type="submit" style="background-image:url('img/btn-buy.png');width: 145px;height: 40px;">Add to cart</button>
-                </div>
-                <div class="row"></div>
-                <p>{{Description}}
-                </p>
+                    <p>Authors:
+                        <a href="/home/books-by-author/{{Author}}">{{Author}}</a>
+                    </p>
+                    <p>Viewed: {{View_Number}}</p>
+                    <p>Sold: 10</p>
+                    <div class="quantity-box">
+                        <p class="quantity-label">Quantity: {{Quantity}}</p>
+                        <p class="tiki-number-input">
+                            <div class="input-group bootstrap-touchspin">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default bootstrap-touchspin-down" type="button">-</button>
+                                </span>
+                                <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span>
+                                <input id="qty" type="tel" name="qty" value="1" min="1" max="100" class="form-control" style="display: block;">
+                                <span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default bootstrap-touchspin-up" type="button" click=b tnup>+</button>
+                                </span>
+                            </div>
+                        </p>
+                        <button type="submit" style="background-image:url('img/btn-buy.png');width: 145px;height: 40px;">Add to cart</button>
+                    </div>
+                    <div class="row"></div>
+                    <p>{{Description}}
+                    </p>
+                </form>
                 {{/with}}
             </div>
             <section class="section-display-item">
                 <div class="container-lastest">
                     <h2 class="title">Same type</h2>
                     <div class="row">
-                        <div class="container col-desktop">
-                            <div class="container-product row">
-                                <div class="img-product col-1">
-                                    <img src="/img/product-1.png" alt="book">
-                                </div>
-                                <div class="info-product col-2">
-                                    <h4 class="item-name">Book1</h4>
-                                    <p class="cost-item">$25</p>
-                                    <button class="cart">
-                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                </div>
-                            </div>
+                        {{#each bauthors}}
+                        <form action="/buy/add" method="post">
+                            <div class="container col-desktop">
+                                <div class="container-product row">
+                                    <div class="img-product col-1">
+                                        <a href="/home/view-product/{{Book_ID}}">
+                                            <img src="/img/books/{{Image}}" alt="book" height="150" width="150">
+                                        </a>
+                                    </div>
+                                    <div class="info-product col-2">
+                                        <input name="bookid" type="hidden" value="{{Book_ID}}">
+                                        <h4 class="item-name" name="bookname" height="150" width="150">{{Book_Name}}</h4>
+                                        <p class="cost-item" name="price">${{Price}}</p>
+                                        <button class="cart" id="addtoCart">
+                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
+                        </form>
                         </div>
+                        </div>
+                        </div>
+                        {{/each}}
                     </div>
                 </div>
                 <div class="container-lastest">
                     <h2 class="title">Same Publishers</h2>
                     <div class="row">
-                        <div class="container col-desktop">
-                            <div class="container-product row">
-                                <div class="img-product col-1">
-                                    <img src="/img/product-1.png" alt="book">
-                                </div>
-                                <div class="info-product col-2">
-                                    <h4 class="item-name">Book1</h4>
-                                    <p class="cost-item">$25</p>
-                                    <button class="cart">
-                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                                </div>
-                            </div>
+                        {{#each bpublishers}}
+                        <form action="/buy/add" method="post">
+                            <div class="container col-desktop">
+                                <div class="container-product row">
+                                    <div class="img-product col-1">
+                                        <a href="/home/view-product/{{Book_ID}}">
+                                            <img src="/img/books/{{Image}}" alt="book" height="150" width="150">
+                                        </a>
+                                    </div>
+                                    <div class="info-product col-2">
+                                        <input name="bookid" type="hidden" value="{{Book_ID}}">
+                                        <h4 class="item-name" name="bookname" height="150" width="150">{{Book_Name}}</h4>
+                                        <p class="cost-item" name="price">${{Price}}</p>
+                                        <button class="cart" id="addtoCart">
+                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
+                        </form>
                         </div>
+                        </div>
+                        </div>
+                        {{/each}}
                     </div>
                 </div>
             </section>

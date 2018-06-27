@@ -9,3 +9,8 @@ exports.loadbyID = id => {
     var sql = `select * from category where Category_ID= ${id}`;
     return db.load(sql);
 }
+
+exports.single = id => {
+    var sql = `select * from category where Category_ID = ${id}`;
+    return db.load(sql);
+}

@@ -149,10 +149,17 @@ router.post('/add', (req, res) => {
         }
         res.render('log/login', vm);
     } else {
-        var item = {
-            ProId: req.body.bookid,
-            Quantity: 1
-        };
+        if (req.body.qty > 1) {
+            var item = {
+                ProId: req.body.bookid,
+                Quantity: req.body.qty
+            };
+        } else {
+            var item = {
+                ProId: req.body.bookid,
+                Quantity: 1
+            };
+        }
         cartRepo.add(req.session.cart, item);
         bookRepo.loadAll().then(rows => {
             var vm = {

@@ -3,6 +3,7 @@ var categoryRepo = require('../repos/categoryRepo');
 var bookRepo = require('../repos/bookRepo');
 var accountRepo = require('../repos/accountRepo');
 var customerRepo = require('../repos/customerRepo');
+var kindRepo = require('../repos/kindRepo');
 
 var config = require('../config/config.js');
 
@@ -22,7 +23,13 @@ router.get('/', (req, res) => {
 });
 
 router.get('/home', (req, res) => {
-    bookRepo.loadAll().then(rows => {
+    // bookRepo.loadAll().then(rows => {
+    //     var vm = {
+    //         books: rows
+    //     };
+    //     res.render('home/index', vm);
+    // });
+    bookRepo.bestView().then(rows => {
         var vm = {
             books: rows
         };
@@ -47,23 +54,87 @@ router.get('/about', (req, res) => {
 router.get('/view-product/:book_id', (req, res) => {
     var bookid = req.params.book_id;
     bookRepo.single(bookid).then(rows => {
-        if (req.session.isLogged == true) {
-            var vm = {
-                product: rows[0],
-                layout: 'cus.handlebars'
+        var t1 = bookRepo.loadbyAuthor(rows[0].Author);
+        var t2 = bookRepo.loadbyPublisher(rows[0].Publisher);
+        Promise.all([t1, t2]).then(([bauthor, bpuhlisher]) => {
+            console.log(bauthor);
+            console.log(bpuhlisher);
+
+            if (req.session.isLogged == true) {
+                var vm = {
+                    book: rows[0],
+                    bauthors: bauthor,
+                    bpuhlishers: bpuhlisher,
+                    layout: 'cus.handlebars'
+                }
+            } else {
+                var vm = {
+                    book: rows[0],
+                    bauthors: bauthor,
+                    bpuhlishers: bpuhlisher,
+                    layout: 'main.handlebars'
+                }
             }
-        } else {
-            var vm = {
-                book: rows[0],
-                layout: 'main.handlebars'
-            }
-        }
-        res.render('home/view-product', vm);
+            res.render('home/view-product', vm);
+        });
     });
 });
 
-router.get('/books-by-category', (req, res) => {
-    res.render('home/books-by-category');
+router.get('/books-by-category/:kind_name', (req, res) => {
+    var kindname = req.params.kind_name;
+    bookRepo.sameKind(kindname).then(rows => {
+        if (req.session.isLogged == false) {
+            var vm = {
+                books: rows,
+                layout: 'main.handlebars'
+            }
+            res.render('home/books-by-category', vm);
+        } else {
+            var vm = {
+                books: rows,
+                layout: 'cus.handlebars'
+            }
+            res.render('home/books-by-category', vm);
+        }
+    });
+});
+
+router.get('/books-by-author/:author', (req, res) => {
+    var author = req.params.author;
+    bookRepo.loadbyAuthor(author).then(rows => {
+        if (req.session.isLogged == false) {
+            var vm = {
+                books: rows,
+                layout: 'main.handlebars'
+            }
+            res.render('home/books-by-author', vm);
+        } else {
+            var vm = {
+                books: rows,
+                layout: 'cus.handlebars'
+            }
+            res.render('home/books-by-author', vm);
+        }
+    });
+});
+
+router.get('/books-by-publisher/:publisher', (req, res) => {
+    var publisher = req.params.publisher;
+    bookRepo.loadbyPublisher(publisher).then(rows => {
+        if (req.session.isLogged == false) {
+            var vm = {
+                books: rows,
+                layout: 'main.handlebars'
+            }
+            res.render('home/books-by-publisher', vm);
+        } else {
+            var vm = {
+                books: rows,
+                layout: 'cus.handlebars'
+            }
+            res.render('home/books-by-publisher', vm);
+        }
+    });
 });
 
 router.get('/user-info', (req, res) => {

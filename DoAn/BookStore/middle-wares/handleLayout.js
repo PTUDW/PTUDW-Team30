@@ -15,13 +15,15 @@ module.exports = (req, res, next) => {
     var t2 = bookRepo.loadAuthor();
     var t3 = bookRepo.loadPublisher();
     var t4 = kindRepo.loadAll();
+    var t5 = kindRepo.load5();
 
-    Promise.all([t1, t2, t3, t4]).then(([category, author, publisher, kind]) => {
+    Promise.all([t1, t2, t3, t4, t5]).then(([category, author, publisher, kind, kind5]) => {
         res.locals.layoutVM = {
             categories: category,
             authors: author,
             publishers: publisher,
             kinds: kind,
+            kind5: kind5,
             username: req.session.name,
             idCustomer: req.session.idCustomer
         };

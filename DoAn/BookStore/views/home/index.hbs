@@ -7,22 +7,22 @@
             <div class="row">
                 {{#each books}}
                 <form action="/buy/add" method="post">
-                <div class="container col-desktop">
-                    <div class="container-product row">
-                        <div class="img-product col-1">
-                            <a href="/home/view-product/{{Book_ID}}">
-                                <img src="/img/books/{{Image}}" alt="book" height="150" width="150">
-                            </a>
-                        </div>
-                        <div class="info-product col-2">
-                            <input name="bookid" type="hidden" value="{{Book_ID}}">
-                            <h4 class="item-name" name="bookname" height="150" width="150">{{Book_Name}}</h4>
-                            <p class="cost-item" name="price">${{Price}}</p>
-                            <button class="cart" id="addtoCart">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
-                            </form>
-                        </div>
-                    </div>
+                    <div class="container col-desktop">
+                        <div class="container-product row">
+                            <div class="img-product col-1">
+                                <a href="/home/view-product/{{Book_ID}}">
+                                    <img src="/img/books/{{Image}}" alt="book" height="150" width="150">
+                                </a>
+                            </div>
+                            <div class="info-product col-2">
+                                <input name="bookid" type="hidden" value="{{Book_ID}}">
+                                <h4 class="item-name" name="bookname" height="150" width="150">{{Book_Name}}</h4>
+                                <p class="cost-item" name="price">${{Price}}</p>
+                                <button class="cart" id="addtoCart">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
+                </form>
+                </div>
+                </div>
                 </div>
                 {{/each}}
             </div>

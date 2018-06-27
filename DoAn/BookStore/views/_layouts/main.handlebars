@@ -67,8 +67,8 @@
                                 <label>Price</label>
                                 <select required class="custom-input" id="select2">
                                     <option>All</option>
-                                    <option>0 - 50.000</option>
-                                    <option>51.000 - 100.000</option>
+                                    <option>$0 - $5</option>
+                                    <option>$5 - $10</option>
                                     <option>101.000 - 200.000</option>
                                     <option>201.000 - ...</option>
                                 </select>
@@ -91,10 +91,10 @@
                             <i id="btn-categories" class="fa fa-chevron-down right hide-on-desktop" aria-hidden="true"></i>
                         </h2>
                         <ul class="menu-categories">
-                            {{#each layoutVM.categories}}
+                            {{#each layoutVM.kind5}}
                             <div class="dropdown">
                                 <li class="item-categories">
-                                    <a href="books-by-category.html">{{Category_Name}}
+                                    <a href="/home/books-by-category/{{Kind_Name}}">{{Kind_Name}}
                                     </a>
                                 </li>
                             </div>
@@ -108,7 +108,7 @@
                         <ul class="menu-categories">
                             {{#each layoutVM.authors}}
                             <li class="item-categories">
-                                <a href="#">{{Author}}</a>
+                                <a href="/home/books-by-author/{{Author}}">{{Author}}</a>
                             </li>
                             {{/each}}
                         </ul>
@@ -120,7 +120,7 @@
                         <ul class="menu-categories">
                             {{#each layoutVM.publishers}}
                             <li class="item-categories">
-                                <a href="#">{{Publisher}}</a>
+                                <a href="/home/books-by-publisher/{{Publisher}}">{{Publisher}}</a>
                             </li>
                             {{/each}}
                         </ul>
