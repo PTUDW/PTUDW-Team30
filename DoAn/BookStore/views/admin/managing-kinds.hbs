@@ -31,7 +31,7 @@
                                 <td>{{Kind_ID}}</td>
                                 <td>{{Kind_Name}}</td>
                                 <td>{{Description}}</td>
-                                <td>{{Category_ID}}</td>
+                                <td>{{Category_Name}}</td>
                                 <td>
                                     <button id="book1" class="btn btn--small btn--orange" data-type="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span></button>
                                     <button class="btn btn--small btn--red" data-type="remove"><span><i class="fa fa-trash" aria-hidden="true"></i> Remove</span></button>
@@ -67,15 +67,14 @@
                         <i class="fa fa-close close-popup"></i>
                         <div class="outer">
                             <div class="container">
+                            {{#with kind}}
                                 <form action="managing-kinds" method="POST" role="form">
-                                    <label>Kind ID</label>
-                                    <input name="kind_Name" type="text" class="custom-input" required="true" value="{{Kind_ID}}">
                                     <label>Kind Name</label>
                                     <input name="kind_Name" type="text" class="custom-input" required="true" value="{{Kind_Name}}">
                                     <label>Description</label>
                                     <input name="description" type="text" class="custom-input" required="true" value="{{Description}}">
                                     <label>Catelogies belonging</label>
-                                    <select name="category" required class="custom-input" id="select1">
+                                    <select name="category_Id" required class="custom-input" id="select1">
                                         <option value="{{Category_ID}}">{{Category_ID}}</option>
                                         {{#each Category}}
                                             <option>{{Category_Name}}</option>
@@ -83,6 +82,7 @@
                                     </select>
                                     <button type="reset" class="btn"><span>Edit</span></button>
                                 </from>
+                            {{/with}}
                             </div>
                         </div>
                     </div>

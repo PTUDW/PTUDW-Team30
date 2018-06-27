@@ -109,9 +109,9 @@ function editBtn() {
         $('.popup-item-edit').addClass('show');
         var currentRow = _this.parentsUntil("tbody").children('td');
         var currentInput = $('.popup-item-edit .container').children('input');
-        for (var i = 0; i < currentInput.length; i++) {
-            $(currentInput[i]).val($(currentRow[i]).text());
-        }
+        // for (var i = 0; i < currentInput.length; i++) {
+        //     $(currentInput[i]).val($(currentRow[i]).text());
+        // }
 
     })
 }

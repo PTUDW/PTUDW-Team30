@@ -7,7 +7,7 @@ var ordersRepo = require('../repos/ordersRepo');
 var issuingHousesRepo = require('../repos/issuingHousesRepo');
 
 router.get('/', (req, res) => {
-    bookRepo.loadAll().then(rows => {
+    bookRepo.loadAllBook().then(rows => {
         //console.log(rows);
         var vm = {
         	layout:'mainAdmin.handlebars',
@@ -18,29 +18,17 @@ router.get('/', (req, res) => {
 });
 
 router.get('/managing-books', (req, res) => {
-    var t1 = bookRepo.loadAll();
-    var t2 = bookRepo.getKindById(req.params.Book_ID);
-
-    Promise.all([t1, t2]).then(([book, kind]) => {
-        var vm = {
-            books: book,
-            kinds: kind,
-            layout: 'mainAdmin.handlebars'
-        };
-        res.render('admin/managing-books', vm);
-    });
-
-
-
-	bookRepo.loadAll().then(rows => {
+    bookRepo.loadAllBook().then(rows => {
         //console.log(rows);
         var vm = {
-        	layout:'mainAdmin.handlebars',
+            layout:'mainAdmin.handlebars',
             book: rows
         };
         res.render('admin/managing-books', vm);
     });
 });
+
+
 
 router.post('/managing-books', (req, res) => {
     var book = {
@@ -74,7 +62,7 @@ router.post('/managing-books', (req, res) => {
 });
 
 router.get('/managing-kinds', (req, res) => {
-	kindRepo.loadAll().then(rows => {
+	kindRepo.loadAllKind().then(rows => {
         //console.log(rows);
         var vm = {
         	layout:'mainAdmin.handlebars',
@@ -84,8 +72,37 @@ router.get('/managing-kinds', (req, res) => {
     });
 });
 
+
+router.post('/managing-kinds', (req, res) => {
+    var kind = {
+        Kind_Name:req.body.kind_Name,
+        Description:req.body.description,
+        Category_ID:req.body.category_Id,
+    }
+    kindRepo.add(kind);
+
+    var vm = {
+        Kind_Name:req.body.kind_Name,
+        Description:req.body.description,
+        Category_ID:req.body.category_Id,
+        layout: 'mainAdmin.handlebars'
+    }
+    res.render('admin/managing-kinds', vm);
+});
+
+router.get('/managing-kinds', (req, res) => {
+    kindRepo.single(req.query.id).then(k => {
+        // console.log(c);
+        var vm = {
+            Kind: k
+        };
+        res.render('managing-kinds', vm);
+    });
+});
+
+
 router.get('/managing-orders', (req, res) => {
-	ordersRepo.loadAll().then(rows => {
+	ordersRepo.loadAllOrder().then(rows => {
         //console.log(rows);
         var vm = {
         	layout:'mainAdmin.handlebars',
