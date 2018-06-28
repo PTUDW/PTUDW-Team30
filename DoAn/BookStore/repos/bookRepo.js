@@ -43,7 +43,7 @@ exports.single = proId => {
 
 exports.add = (b) => {
     var sql = `insert into book(Book_Name,Author,Publisher,Publish_Date,Image,Price,Quantity,View_Number,Description,Kind_ID)
-    		 values('${b.book_Name}', '${b.author}', '${b.publisher}', '${b.publish_Date}', '${b.image}', '${b.price}', '${b.quantity}',0, '${b.description}', '${b.kind_Id}')`;
+    		 values('${b.book_Name}', '${b.author}', '${b.publisher}', '${b.publish_Date}', '${b.image}', '${b.price}', '${b.quantity}',"New", '${b.description}', '${b.kind_Id}')`;
     return db.save(sql);
 }
 
@@ -108,4 +108,16 @@ exports.delete = (id) => {
 exports.searchBooks = (kind, pricemin, pricemax, publisher, author) => {
     var sql = `SELECT * from book where book.Book_Name LIKE "%${kind}%" AND (Price BETWEEN ${pricemin} AND ${pricemax}) AND book.Publisher LIKE "%${publisher}%" AND book.Author LIKE "%${author}%"`;
     return db.load(sql);
+}
+
+exports.updateSold = (id, qty) => {
+    var sql = `update book set Sold = (Sold + ${qty})
+    where Book_ID = '${id}'`;
+    return db.save(sql);
+}
+
+exports.updateSQuantity = (id, qty) => {
+    var sql = `update book set Quantity = (Quantity - ${qty})
+    where Book_ID = '${id}'`;
+    return db.save(sql);
 }

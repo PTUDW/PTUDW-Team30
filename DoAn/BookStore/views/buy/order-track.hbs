@@ -3,6 +3,7 @@
         <table class="table-manager">
             <tr>
                 <th>Order ID</th>
+                <th>Order Date</th>
                 <th>Customer Name</th>
                 <th>Total Cost</th>
                 <th>Status</th>
@@ -11,8 +12,9 @@
             {{#each orders}}
             <tr>
                 <td>{{Order_ID}}</td>
+                <td>{{Order_Date}}</td>
                 <td>{{Consignee}}</td>
-                <td>{{Total}}</td>
+                <td>{{Total}}</td>  
                 <td>{{Order_Status}}</td>
                 <td>
                     <a href="/buy/order-detail/{{Customer_ID}}/{{Order_ID}}">

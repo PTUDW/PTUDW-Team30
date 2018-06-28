@@ -55,7 +55,6 @@ router.post('/order', (req, res) => {
         var qty = req.body.qty;
         for (var i = req.session.cart.length - 1; i >= 0; i--) {
             req.session.cart[i].Quantity = qty[i];
-            console.log(req.session.cart[i]);
             var cartItem = req.session.cart[i];
             var p = bookRepo.single(cartItem.ProId);
             arr_p.push(p);
@@ -99,6 +98,8 @@ router.post('/order-success', (req, res) => {
             Book_ID: cartItem.ProId,
             Quantity: cartItem.Quantity
         }
+        bookRepo.updateSold(cartItem.ProId, cartItem.Quantity);
+        bookRepo.updateSQuantity(cartItem.ProId, cartItem.Quantity);
         ordersRepo.adddetail(orderdetail);
     }
     var order = {

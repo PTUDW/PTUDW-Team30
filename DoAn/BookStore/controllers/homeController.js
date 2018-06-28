@@ -362,12 +362,17 @@ router.post('/', (req, res) => {
                     }
                     //res.render('admin', vm);
             } else {
-                bookRepo.loadAll().then(rows2 => {
+                var t1 = bookRepo.loadAll();
+                var t2 = bookRepo.bestView();
+                var t3 = bookRepo.bestSell();
+                Promise.all([t1, t2, t3]).then(([book, bestview, bestsell]) => {
                     var vm = {
                         name: req.body.username,
-                        books: rows2,
+                        books: book,
+                        bestviews: bestview,
+                        bestsells: bestsell,
                         layout: 'cus.handlebars'
-                    };
+                    }
                     req.session.isLogged = true;
                     req.session.name = req.body.username;
                     req.session.idAccount = rows[0].Account_ID;
@@ -378,7 +383,8 @@ router.post('/', (req, res) => {
         } else {
             var vm = {
                 showError: true,
-                errorMsg: 'Login failed'
+                errorMsg: 'Login failed',
+                layout: 'guess-noleftmenu.handlebars'
             };
             res.render('log/login', vm);
         }

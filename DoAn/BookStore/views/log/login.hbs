@@ -1,6 +1,9 @@
 <div class="container padding-width">
     <div class="row wrapper-login">
         <h2 class="align-center">Login</h2>
+        {{#if showError}}
+        <h4 style="color: red; text-align: center">{{errorMsg}}</h1>
+        {{/if}}
         <span class="wrong-password align-center">Password is incorrect</span>
         <form action="/home" method="post">
             <label for="">Username</label>
