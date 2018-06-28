@@ -105,3 +105,7 @@ exports.delete = (id) => {
     return db.save(sql);
 }
 
+exports.searchBooks = (kind, pricemin, pricemax, publisher, author) => {
+    var sql = `SELECT * from book where book.Book_Name LIKE "%${kind}%" AND (Price BETWEEN ${pricemin} AND ${pricemax}) AND book.Publisher LIKE "%${publisher}%" AND book.Author LIKE "%${author}%"`;
+    return db.load(sql);
+}

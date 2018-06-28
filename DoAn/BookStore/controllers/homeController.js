@@ -87,6 +87,94 @@ router.get('/view-product/:book_id', (req, res) => {
     });
 });
 
+router.post('/books-by-search', (req, res) => {
+    var kind, pricemin, pricemax, publisher, author;
+    if (req.body.searchPrice.length > 3) {
+        pricemin = req.body.searchPrice.substring(1, 3);
+        pricemax = req.body.searchPrice.substring(7, 9);
+        if (pricemin == 00)
+            pricemin = +0;
+    } else {
+        pricemin = 0;
+        pricemax = 99999;
+    }
+    if (req.body.searchKind === "All") {
+        kind = "";
+    } else kind = req.body.searchKind;
+    if (req.body.searchPublisher === "All") {
+        publisher = "";
+    } else publisher = req.body.searchpublisher;
+    if (req.body.searchAuthor === "All") {
+        author = "";
+    } else author = req.body.searchAuthor;
+    bookRepo.searchBooks(kind, pricemin, pricemax, publisher, author).then(rows => {
+        if (req.session.isLogged == true) {
+            var vm = {
+                books: rows,
+                layout: 'cus.handlebars'
+            }
+        } else {
+            var vm = {
+                books: rows,
+                layout: 'main.handlebars'
+            }
+        }
+        res.render('home/index', vm);
+    });
+
+
+    // var page = req.query.page;
+    // if (!page) {
+    //     page = 1;
+    // }
+    // if (page <= 1)
+    //     var pageb = 1;
+    // else var pageb = page - 1;
+
+    // var pagea = +page + 1;
+    // var offset = (page - 1) * config.PRODUCTS_PER_PAGE;
+
+    // var kindname = req.params.kind_name;
+
+    // var p1 = bookRepo.sameKind(kindname, offset);
+    // var p2 = bookRepo.countKind(kindname);
+    // Promise.all([p1, p2]).then(([rows, countRows]) => {
+    //     var total = countRows[0].total;
+    //     var nPages = total / config.PRODUCTS_PER_PAGE;
+    //     if (total % config.PRODUCTS_PER_PAGE > 0) {
+    //         nPages++;
+    //     }
+    //     if (page === total)
+    //         pagea = total;
+    //     var numbers = [];
+    //     for (i = 1; i <= nPages; i++) {
+    //         numbers.push({
+    //             value: i,
+    //             isCurPage: i === +page
+    //         });
+    //     }
+    //     if (req.session.isLogged == false) {
+    //         var vm = {
+    //             books: rows,
+    //             page_numbers: numbers,
+    //             pageb: pageb,
+    //             pagea: pagea,
+    //             layout: 'main.handlebars'
+    //         }
+    //         res.render('home/books-by-category', vm);
+    //     } else {
+    //         var vm = {
+    //             books: rows,
+    //             page_numbers: numbers,
+    //             pageb: pageb,
+    //             pagea: pagea,
+    //             layout: 'cus.handlebars'
+    //         }
+    //         res.render('home/books-by-category', vm);
+    //     }
+    // });
+});
+
 router.get('/books-by-category/:kind_name', (req, res) => {
 
     var page = req.query.page;
