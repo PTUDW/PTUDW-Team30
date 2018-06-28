@@ -125,6 +125,7 @@ router.get('/managing-orders', (req, res) => {
 router.get('/order-detail/:idOrder', (req, res) => {
     var t1 = ordersRepo.loadInfobyOrderID(req.params.idOrder);
     var t2 = ordersRepo.getInfo(req.params.idOrder);
+    var t3 = ordersRepo.
 
     Promise.all([t1, t2]).then(([order, orderdetail]) => {
         var vm = {

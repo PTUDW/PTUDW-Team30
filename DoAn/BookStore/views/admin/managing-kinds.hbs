@@ -52,7 +52,7 @@
                                     <input name="description" type="text" class="custom-input" required="true">
                                     <label>Catelogies belonging</label>
                                     <select name="category" required class="custom-input" id="select1">
-                                        {{#each Category}}
+                                        {{#each category}}
                                             <option>{{Category_Name}}</option>
                                         {{/each}}
                                     </select>
@@ -75,8 +75,8 @@
                                     <input name="description" type="text" class="custom-input" required="true" value="{{Description}}">
                                     <label>Catelogies belonging</label>
                                     <select name="category_Id" required class="custom-input" id="select1">
-                                        <option value="{{Category_ID}}">{{Category_ID}}</option>
-                                        {{#each Category}}
+                                        <option value="{{Category_ID}}">{{Category_Name}}</option>
+                                        {{#each category}}
                                             <option>{{Category_Name}}</option>
                                         {{/each}}
                                     </select>

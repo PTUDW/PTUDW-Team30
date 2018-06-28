@@ -93,3 +93,9 @@ exports.updateView = (id, view) => {
     where Book_ID = '${id}'`;
     return db.save(sql);
 }
+
+exports.loadAllBook = () => {
+    var sql = `select book.Book_ID,book.Book_Name,book.Author,book.Publisher,book.Publish_Date,book.Image,book.Price,Book.Quantity,book.View_Number,book.Description,kind.Kind_Name
+            from book, kind where book.Kind_ID = kind.Kind_ID ORDER BY book.Book_ID ASC`;
+    return db.load(sql);
+}
