@@ -124,65 +124,65 @@ function removeBtn() {
 }
 
 
-function detailBtn() {
-    $('.btn[data-type="edit"]').on('click', function() {
-        var _this = $(this);
-        $('.popup-item-edit').addClass('show');
-        var currentRow = _this.parentsUntil("tbody").children('td');
-        var currentInput = $('.popup-item-edit .container').children('input');
-        for(var i = 0; i < currentInput.length; i ++) {
-            $(currentInput[i]).val($(currentRow[i]).text());
-        }
+// function detailBtn() {
+//     $('.btn[data-type="edit"]').on('click', function() {
+//         var _this = $(this);
+//         $('.popup-item-edit').addClass('show');
+//         var currentRow = _this.parentsUntil("tbody").children('td');
+//         var currentInput = $('.popup-item-edit .container').children('input');
+//         for(var i = 0; i < currentInput.length; i ++) {
+//             $(currentInput[i]).val($(currentRow[i]).text());
+//         }
 
-    })
-}
+//     })
+// }
 
-function b_addBtn() {
-    $("#b-add").click(function() {
-        var b_img = $("#b-img[type=file]").val().split('\\').pop();
-        var b_id = $("#b-id").val();
-        var b_name = $("#b-name").val();
-        var b_author = $("#b-author").val();
-        var b_publisher = $("#b-publisher").val();
-        var b_issuingHouse = $("#b-issuingHouse").val();
-        var b_kind = $("#b-kind").val();
-        var b_price = $("#b-price").val();
-        var b_amount = $("#b-amount").val();
-        var additem = `<tr><td><center><img src='img/` + b_img + `' alt='item' width='20px' height='30px'></center></td><td>` + b_id + `</td><td>` + b_name + `</td><td>` + b_author + `</td><td>` + b_publisher + `</td><td>` + b_issuingHouse + `</td><td>` + b_kind + `</td><td>` + b_price + `</td><td>` + b_amount +
-            `<td><button id='item1' class='btn btn--small btn--orange' data-type='edit'><span><i class='fa fa-pencil' aria-hidden='true'></i> Edit</span></button>
-                        <button class='btn btn--small btn--red' data-type='remove'><span><i class='fa fa-trash' aria-hidden='true'></i> Remove</span></button>
-                        </td>` + `</td></tr>`;
-        $("table tbody").append(additem);
-    });
-};
+// function b_addBtn() {
+//     $("#b-add").click(function() {
+//         var b_img = $("#b-img[type=file]").val().split('\\').pop();
+//         var b_id = $("#b-id").val();
+//         var b_name = $("#b-name").val();
+//         var b_author = $("#b-author").val();
+//         var b_publisher = $("#b-publisher").val();
+//         var b_issuingHouse = $("#b-issuingHouse").val();
+//         var b_kind = $("#b-kind").val();
+//         var b_price = $("#b-price").val();
+//         var b_amount = $("#b-amount").val();
+//         var additem = `<tr><td><center><img src='img/` + b_img + `' alt='item' width='20px' height='30px'></center></td><td>` + b_id + `</td><td>` + b_name + `</td><td>` + b_author + `</td><td>` + b_publisher + `</td><td>` + b_issuingHouse + `</td><td>` + b_kind + `</td><td>` + b_price + `</td><td>` + b_amount +
+//             `<td><button id='item1' class='btn btn--small btn--orange' data-type='edit'><span><i class='fa fa-pencil' aria-hidden='true'></i> Edit</span></button>
+//                         <button class='btn btn--small btn--red' data-type='remove'><span><i class='fa fa-trash' aria-hidden='true'></i> Remove</span></button>
+//                         </td>` + `</td></tr>`;
+//         $("table tbody").append(additem);
+//     });
+// };
 
-function k_addBtn() {
-    $("#k-add").click(function() {
-        var k_id = $("#k-id").val();
-        var k_name = $("#k-name").val();
-        var k_des = $("#k-des").val();
-        var k_catelogy = $("#k-catelogy").val();
-        var additem = `<tr><td>` + k_id + `</td><td>` + k_name + `</td><td>` + k_des + `</td><td>` + k_catelogy + `<td>
-                                    <button class="btn btn--small btn--orange" data-type="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span></button>
-                                    <button class="btn btn--small btn--red" data-type="remove"><span><i class="fa fa-trash" aria-hidden="true"></i> Remove</span></button>
-                                </td></tr>`;
-        $("table tbody").append(additem);
-    });
-};
+// function k_addBtn() {
+//     $("#k-add").click(function() {
+//         var k_id = $("#k-id").val();
+//         var k_name = $("#k-name").val();
+//         var k_des = $("#k-des").val();
+//         var k_catelogy = $("#k-catelogy").val();
+//         var additem = `<tr><td>` + k_id + `</td><td>` + k_name + `</td><td>` + k_des + `</td><td>` + k_catelogy + `<td>
+//                                     <button class="btn btn--small btn--orange" data-type="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span></button>
+//                                     <button class="btn btn--small btn--red" data-type="remove"><span><i class="fa fa-trash" aria-hidden="true"></i> Remove</span></button>
+//                                 </td></tr>`;
+//         $("table tbody").append(additem);
+//     });
+// };
 
-function ih_addBtn() {
-    $("#ih-add").click(function() {
-        var ih_id = $("#ih-id").val();
-        var ih_name = $("#ih-name").val();
-        var ih_contact = $("#ih-contact").val();
-        var ih_address = $("#ih-address").val(); 
-        var additem = `<tr><td>` + ih_id + `</td><td>` + ih_name + `</td><td>` + ih_contact + `</td><td>` + ih_address + `<td>
-                                    <button class="btn btn--small btn--orange" data-type="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span></button>
-                                    <button class="btn btn--small btn--red" data-type="remove"><span><i class="fa fa-trash" aria-hidden="true"></i> Remove</span></button>
-                                </td></tr>`;
-        $("table tbody").append(additem);
-    });
-};
+// function ih_addBtn() {
+//     $("#ih-add").click(function() {
+//         var ih_id = $("#ih-id").val();
+//         var ih_name = $("#ih-name").val();
+//         var ih_contact = $("#ih-contact").val();
+//         var ih_address = $("#ih-address").val(); 
+//         var additem = `<tr><td>` + ih_id + `</td><td>` + ih_name + `</td><td>` + ih_contact + `</td><td>` + ih_address + `<td>
+//                                     <button class="btn btn--small btn--orange" data-type="edit"><span><i class="fa fa-pencil" aria-hidden="true"></i> Edit</span></button>
+//                                     <button class="btn btn--small btn--red" data-type="remove"><span><i class="fa fa-trash" aria-hidden="true"></i> Remove</span></button>
+//                                 </td></tr>`;
+//         $("table tbody").append(additem);
+//     });
+// };
 
 
 function deleteBook() {

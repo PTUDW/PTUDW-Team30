@@ -56,3 +56,8 @@ exports.singleId = (id) => {
         });
     });
 }
+
+exports.delete = (id) => {
+    var sql = `delete from Kind where Kind_ID = ${id}`;
+    return db.save(sql);
+}

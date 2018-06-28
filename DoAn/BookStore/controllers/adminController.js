@@ -8,26 +8,30 @@ var categoryRepo = require('../repos/categoryRepo');
 var issuingHousesRepo = require('../repos/issuingHousesRepo');
 
 router.get('/', (req, res) => {
-    bookRepo.loadAllBook().then(rows => {
+    var t1 = bookRepo.loadAllBook();
+    var t2 = kindRepo.loadAll();
+    Promise.all([t1, t2]).then(([b,k]) => {
         var vm = {
-            layout:'mainAdmin.handlebars',
-            book: rows
+            layout: 'mainAdmin.handlebars',
+            book: b,
+            kind: k
         };
         res.render('admin/managing-books', vm);
     });
 });
 
 router.get('/managing-books', (req, res) => {
-    bookRepo.loadAllBook().then(rows => {
+    var t1 = bookRepo.loadAllBook();
+    var t2 = kindRepo.loadAll();
+    Promise.all([t1, t2]).then(([b,k]) => {
         var vm = {
             layout: 'mainAdmin.handlebars',
-            book: rows
+            book: b,
+            kind: k
         };
         res.render('admin/managing-books', vm);
     });
 });
-
-
 
 router.post('/managing-books', (req, res) => {
     var book = {
@@ -60,6 +64,18 @@ router.post('/managing-books', (req, res) => {
     res.render('admin/managing-books', vm);
 });
 
+router.get('/deleteBook/:id', (req, res) => {
+    bookRepo.delete(req.params.id).then(value => {
+        console.log("deleted");
+        res.redirect('/admin/managing-books');
+    })
+    .catch(err => {
+        console.error(err);
+    });
+});
+
+
+
 router.get('/managing-kinds', (req, res) => {
     var t1 = kindRepo.loadAllKind();
     var t2 = categoryRepo.loadAll();
@@ -71,16 +87,7 @@ router.get('/managing-kinds', (req, res) => {
         };
         res.render('admin/managing-kinds', vm);
     });   
-    // kindRepo.loadAllKind().then(rows => {
- //        //console.log(rows);
- //        var vm = {
- //         layout:'mainAdmin.handlebars',
- //            kind: rows
- //        };
- //        res.render('admin/managing-kinds', vm);
- //    });
 });
-
 
 router.post('/managing-kinds', (req, res) => {
     var kind = {
@@ -109,6 +116,17 @@ router.get('/managing-kinds', (req, res) => {
     });
 });
 
+router.get('/deleteKind/:id', (req, res) => {
+    kindRepo.delete(req.params.id).then(value => {
+        console.log("deleted");
+        res.redirect('/admin/managing-kinds');
+    })
+    .catch(err => {
+        console.error(err);
+    });
+});
+
+
 
 router.get('/managing-orders', (req, res) => {
     ordersRepo.loadAllOrder().then(rows => {
@@ -121,13 +139,12 @@ router.get('/managing-orders', (req, res) => {
     });
 });
 
-
 router.get('/order-detail/:idOrder', (req, res) => {
     var t1 = ordersRepo.loadInfobyOrderID(req.params.idOrder);
     var t2 = ordersRepo.getInfo(req.params.idOrder);
-    var t3 = ordersRepo.
+    var t3 = ordersRepo.getStatus();
 
-    Promise.all([t1, t2]).then(([order, orderdetail]) => {
+    Promise.all([t1, t2, t3]).then(([order, orderdetail]) => {
         var vm = {
             orders: order,
             orderdetails: orderdetail,
@@ -136,6 +153,7 @@ router.get('/order-detail/:idOrder', (req, res) => {
         res.render('admin/order-detail', vm);
     });
 });
+
 
 
 router.get('/managing-issuingHouses', (req, res) => {
@@ -150,7 +168,15 @@ router.get('/managing-issuingHouses', (req, res) => {
 
 });
 
-router.post('/managing-issuingHouses/add', (req, res) => {
+router.get('/addIssuingHouse', (req, res) => {
+    var vm = {
+        showAlert: false
+    };
+    res.render('admin/managing-issuingHouses', vm);
+});
+
+router.post('/addIssuingHouse', (req, res) => {
+    console.log("added")
     var issuingHouse = {
         IssuingHouse_Name:req.body.issuingHouse_Name,
         Contact:req.body.contact,
@@ -167,17 +193,15 @@ router.post('/managing-issuingHouses/add', (req, res) => {
     res.render('admin/managing-issuingHouses', vm);
 });
 
-router.get('/deleteIH', (req, res) => {
-    var vm = {
-        issuingHouseId: req.query.id
-    }
-    res.render('admin/managing-issuingHouses', vm);
-});
-
-router.post('/deleteIH', (req, res) => {
-    issuingHousesRepo.delete(req.body.IssuingHouse_ID).then(value => {
+router.get('/deleteIssuingHouse/:id', (req, res) => {
+    issuingHousesRepo.delete(req.params.id).then(value => {
+        console.log("deleted");
         res.redirect('/admin/managing-issuingHouses');
+    })
+    .catch(err => {
+        console.error(err);
     });
 });
+
 module.exports = router;
 

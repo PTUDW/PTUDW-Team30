@@ -55,3 +55,12 @@ exports.loadInfobyOrderID = id => {
                  from orders, customer where orders.Customer_ID = customer.Customer_ID and orders.Order_ID = ${id}`;
     return db.load(sql);
 }
+
+exports.getStatus = () => {
+    var sql = `SELECT SUBSTRING(COLUMN_TYPE,5) AS 'status'
+                FROM information_schema.COLUMNS
+                WHERE TABLE_SCHEMA='bookstoredb' 
+                    AND TABLE_NAME='orders'
+                    AND COLUMN_NAME='Order_Status'`;
+    return db.load(sql);
+}

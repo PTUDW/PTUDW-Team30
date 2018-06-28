@@ -16,3 +16,8 @@ exports.update = (ih) => {
     where IssuingHouse_ID = '${k.issuingHouse_Id}'`;
     return db.save(sql);
 }
+
+exports.delete = (id) => {
+    var sql = `delete from IssuingHouse where IssuingHouse_ID = ${id}`;
+    return db.save(sql);
+}

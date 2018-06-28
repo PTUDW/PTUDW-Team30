@@ -99,3 +99,9 @@ exports.loadAllBook = () => {
             from book, kind where book.Kind_ID = kind.Kind_ID ORDER BY book.Book_ID ASC`;
     return db.load(sql);
 }
+
+exports.delete = (id) => {
+    var sql = `delete from Book where Book_ID = ${id}`;
+    return db.save(sql);
+}
+
