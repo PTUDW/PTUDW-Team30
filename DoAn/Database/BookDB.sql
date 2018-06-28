@@ -77,7 +77,7 @@ Create Table Orders
     Consignee_Address nvarchar(100),
     Note nvarchar(200),
 	Total long,
-    Order_Status int default 0,
+    Order_Status enum('new','shipping','completed'),
     Customer_ID int
 );
 

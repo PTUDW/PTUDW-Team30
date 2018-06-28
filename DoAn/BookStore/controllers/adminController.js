@@ -4,13 +4,13 @@ var router = express.Router();
 var bookRepo = require('../repos/bookRepo');
 var kindRepo = require('../repos/kindRepo');
 var ordersRepo = require('../repos/ordersRepo');
+var categoryRepo = require('../repos/categoryRepo');
 var issuingHousesRepo = require('../repos/issuingHousesRepo');
 
 router.get('/', (req, res) => {
     bookRepo.loadAllBook().then(rows => {
-        //console.log(rows);
         var vm = {
-            layout: 'mainAdmin.handlebars',
+            layout:'mainAdmin.handlebars',
             book: rows
         };
         res.render('admin/managing-books', vm);
@@ -19,7 +19,6 @@ router.get('/', (req, res) => {
 
 router.get('/managing-books', (req, res) => {
     bookRepo.loadAllBook().then(rows => {
-        //console.log(rows);
         var vm = {
             layout: 'mainAdmin.handlebars',
             book: rows
@@ -62,14 +61,24 @@ router.post('/managing-books', (req, res) => {
 });
 
 router.get('/managing-kinds', (req, res) => {
-    kindRepo.loadAllKind().then(rows => {
-        //console.log(rows);
+    var t1 = kindRepo.loadAllKind();
+    var t2 = categoryRepo.loadAll();
+    Promise.all([t1, t2]).then(([k,c]) => {
         var vm = {
-            layout: 'mainAdmin.handlebars',
-            kind: rows
+            kind: k,
+            category: c,
+            layout:'mainAdmin.handlebars'
         };
         res.render('admin/managing-kinds', vm);
-    });
+    });   
+    // kindRepo.loadAllKind().then(rows => {
+ //        //console.log(rows);
+ //        var vm = {
+ //         layout:'mainAdmin.handlebars',
+ //            kind: rows
+ //        };
+ //        res.render('admin/managing-kinds', vm);
+ //    });
 });
 
 
@@ -114,7 +123,7 @@ router.get('/managing-orders', (req, res) => {
 
 
 router.get('/order-detail/:idOrder', (req, res) => {
-    var t1 = ordersRepo.loadbyIDOrder(req.params.idOrder);
+    var t1 = ordersRepo.loadInfobyOrderID(req.params.idOrder);
     var t2 = ordersRepo.getInfo(req.params.idOrder);
 
     Promise.all([t1, t2]).then(([order, orderdetail]) => {
@@ -140,4 +149,34 @@ router.get('/managing-issuingHouses', (req, res) => {
 
 });
 
+router.post('/managing-issuingHouses/add', (req, res) => {
+    var issuingHouse = {
+        IssuingHouse_Name:req.body.issuingHouse_Name,
+        Contact:req.body.contact,
+        Address:req.body.address,
+    }
+    issuingHouseRepo.add(issuingHouse);
+
+    var vm = {
+        IssuingHouse_Name:req.body.issuingHouse_Name,
+        Contact:req.body.contact,
+        Address:req.body.address,
+        layout: 'mainAdmin.handlebars'
+    }
+    res.render('admin/managing-issuingHouses', vm);
+});
+
+router.get('/deleteIH', (req, res) => {
+    var vm = {
+        issuingHouseId: req.query.id
+    }
+    res.render('admin/managing-issuingHouses', vm);
+});
+
+router.post('/deleteIH', (req, res) => {
+    issuingHousesRepo.delete(req.body.IssuingHouse_ID).then(value => {
+        res.redirect('/admin/managing-issuingHouses');
+    });
+});
 module.exports = router;
+

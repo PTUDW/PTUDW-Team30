@@ -49,3 +49,7 @@ exports.getInfo = id => {
     where orderdetail.Order_ID = ${id}`;
     return db.load(sql);
 }
+
+exports.loadInfobyOrderID = id => {
+    var sql = `select orders.Order_ID,orders.Order_Date, orders.Order_Status,orders.Consignee,orders.Consignee_Phone,orders.Consignee_Address,orders.Note,orders.Total,customer.Customer_Name
+                 from orders, customer where orders.Customer_ID = customer.Customer_ID and orders.Order_ID = ${id}`;
