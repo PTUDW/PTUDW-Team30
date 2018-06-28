@@ -5,7 +5,7 @@
             </section>
             <section class="section-display-item">
                 <div class="container-lastest">
-                    <h2 class="title">Books by Publisher</h2>
+                    <h2 class="title">Books Search</h2>
                     <div class="row">
                         {{#each books}}
                         <form action="/buy/add" method="post">
@@ -29,28 +29,6 @@
                         {{/each}}
                     </div>
                 </div>
-                <ul class="pagination pagination_type1">
-                    <li class="pagination__item">
-                        <a href="?page={{pageb}}" class="pagination__number">←
-                            <span class="pagination__control pagination__control_prev">prev</span>
-                        </a>
-                    </li>
-                    {{#each page_numbers}}
-		            {{#if isCurPage}}
-                    <li class="pagination__item"><a href="?page={{value}}">
-                        <span class="pagination__number pagination__number_active">{{value}}</span></a>
-                    </li>
-                    {{else}}
-                    <li class="pagination__item"><a href="?page={{value}}">
-                        <span class="pagination__number pagination__number_active">{{value}}</span></a>
-                    </li>
-                    {{/if}}
-                    {{/each}}
-                    <li class="pagination__item">
-                        <a href="?page={{pagea}}" class="pagination__number">
-                            <span class="pagination__control pagination__control_next">next</span>→</a>
-                    </li>
-                </ul>
             </section>
         </div>
     </div>

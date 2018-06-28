@@ -1,4 +1,5 @@
-var express = require('express');
+var express = require('express'),
+    SHA256 = require('crypto-js/sha256');
 var categoryRepo = require('../repos/categoryRepo');
 var bookRepo = require('../repos/bookRepo');
 var accountRepo = require('../repos/accountRepo');
@@ -119,60 +120,8 @@ router.post('/books-by-search', (req, res) => {
                 layout: 'main.handlebars'
             }
         }
-        res.render('home/index', vm);
+        res.render('home/books-by-search', vm);
     });
-
-
-    // var page = req.query.page;
-    // if (!page) {
-    //     page = 1;
-    // }
-    // if (page <= 1)
-    //     var pageb = 1;
-    // else var pageb = page - 1;
-
-    // var pagea = +page + 1;
-    // var offset = (page - 1) * config.PRODUCTS_PER_PAGE;
-
-    // var kindname = req.params.kind_name;
-
-    // var p1 = bookRepo.sameKind(kindname, offset);
-    // var p2 = bookRepo.countKind(kindname);
-    // Promise.all([p1, p2]).then(([rows, countRows]) => {
-    //     var total = countRows[0].total;
-    //     var nPages = total / config.PRODUCTS_PER_PAGE;
-    //     if (total % config.PRODUCTS_PER_PAGE > 0) {
-    //         nPages++;
-    //     }
-    //     if (page === total)
-    //         pagea = total;
-    //     var numbers = [];
-    //     for (i = 1; i <= nPages; i++) {
-    //         numbers.push({
-    //             value: i,
-    //             isCurPage: i === +page
-    //         });
-    //     }
-    //     if (req.session.isLogged == false) {
-    //         var vm = {
-    //             books: rows,
-    //             page_numbers: numbers,
-    //             pageb: pageb,
-    //             pagea: pagea,
-    //             layout: 'main.handlebars'
-    //         }
-    //         res.render('home/books-by-category', vm);
-    //     } else {
-    //         var vm = {
-    //             books: rows,
-    //             page_numbers: numbers,
-    //             pageb: pageb,
-    //             pagea: pagea,
-    //             layout: 'cus.handlebars'
-    //         }
-    //         res.render('home/books-by-category', vm);
-    //     }
-    // });
 });
 
 router.get('/books-by-category/:kind_name', (req, res) => {
@@ -342,7 +291,7 @@ router.get('/user-info', (req, res) => {
         var vm = {
             accounts: account,
             customers: customer,
-            layout: 'cus-noleftmenu.handlebars'
+            layout: 'cus-noleftmenu.handlebars',
         };
         res.render('home/user-info', vm);
     });
@@ -351,16 +300,15 @@ router.get('/user-info', (req, res) => {
 router.post('/', (req, res) => {
     var user = {
         username: req.body.username,
-        // password: SHA256(req.body.rawPWD).toString()
-        password: req.body.rawPWD
+        password: SHA256(req.body.rawPWD).toString()
     };
     accountRepo.login(user).then(rows => {
         if (rows.length > 0) {
             if (rows[0].Account_Type === 1) {
                 var vm = {
-                        layout: 'mainAdmin.handlebars'
-                    }
-                    //res.render('admin', vm);
+                    layout: 'mainAdmin.handlebars'
+                }
+                res.render('admin/managing-books', vm);
             } else {
                 var t1 = bookRepo.loadAll();
                 var t2 = bookRepo.bestView();
@@ -403,16 +351,9 @@ router.post('/user-info', (req, res) => {
         Email: req.body.email,
         //Gender
     };
-    var t1 = accountRepo.update(account);
-    var t2 = customerRepo.update(customer);
-
-    Promise.all([t1, t2]).then(([account, customer]) => {
-        // var vm = {
-        //     accounts: account,
-        //     customers: customer
-        // };
-        res.redirect('/home/user-info');
-    });
+    accountRepo.update(account);
+    customerRepo.update(customer);
+    res.redirect('user-info');
 });
 
 module.exports = router;

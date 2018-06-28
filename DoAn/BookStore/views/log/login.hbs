@@ -6,10 +6,10 @@
         {{/if}}
         <span class="wrong-password align-center">Password is incorrect</span>
         <form action="/home" method="post">
-            <label for="">Username</label>
-            <input id="login-username" class="custom-input" type="text" name="username">
+            <label for="" >Username</label>
+            <input required id="login-username" class="custom-input" type="text" name="username">
             <label for="">Password</label>
-            <input id="login-password" class="custom-input" type="password" name="rawPWD">
+            <input required id="login-password" class="custom-input" type="password" name="rawPWD">
             <input type="checkbox" id="remember">
             <label for="remember">Remember password?</label>
             <button id="btn-login" type="submit" class="btn">
@@ -17,9 +17,7 @@
             </button>
         </form>
         <div class="register-link">
-            <a href="register.html">Don't have account?</a>
+            <a href="register">Don't have account?</a>
         </div>
-        <a href="index-admin.html">Go to homepage
-            <b>ADMIN</b> (temporary)</a>
     </div>
 </div>

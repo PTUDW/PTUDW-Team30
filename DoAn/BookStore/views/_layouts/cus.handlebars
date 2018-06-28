@@ -59,37 +59,42 @@
                             <i id="btn-categories" class="fa fa-chevron-down right hide-on-desktop" aria-hidden="true"></i>
                         </h2>
                         <br>
-                        <form action="" method="GET">
+                        <form action="/home/books-by-search" method="Post">
                             <div class="form-group">
                                 <label>Kind</label>
-                                <select required class="custom-input" id="select1">
+                                <select required class="custom-input" id="select1" name="searchKind">
                                     <option>All</option>
-                                    <option>A</option>
-                                    <option>B</option>
-                                    <option>C</option>
-                                    <option>D</option>
+                                    {{#each layoutVM.kinds}}
+                                    <option>{{Kind_Name}}</option>
+                                    {{/each}}
                                 </select>
                                 <label>Price</label>
-                                <select required class="custom-input" id="select2">
+                                <select required class="custom-input" id="select2" name="searchPrice">
                                     <option>All</option>
-                                    <option>0 - 50.000</option>
-                                    <option>51.000 - 100.000</option>
-                                    <option>101.000 - 200.000</option>
-                                    <option>201.000 - ...</option>
+                                    <option>$00 - $10</option>
+                                    <option>$10 - $25</option>
+                                    <option>$25 - $40</option>
+                                    <option>$40 - ...</option>
                                 </select>
                                 <label>Publisher</label>
-                                <select required class="custom-input" id="select3">
+                                <select required class="custom-input" id="select3" name="searchPublisher">
                                     <option>All</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
+                                    {{#each layoutVM.publishers}}
+                                    <option>{{Publisher}}</option>
+                                    {{/each}}
+                                </select>
+                                <label>Author</label>
+                                <select required class="custom-input" id="select4" name="searchAuthor">
+                                    <option>All</option>
+                                    {{#each layoutVM.authors}}
+                                    <option>{{Author}}</option>
+                                    {{/each}}
                                 </select>
                             </div>
+                            <button type="submit" class="btn btn--orange">
+                                <span class="fa fa-search fa-lg"></span>
+                            </button>
                         </form>
-                        <button type="submit" class="btn btn--orange">
-                            <span class="fa fa-search fa-lg"></span>
-                        </button>
                         <hr>
                     </div>
                     <div class="container-categories">

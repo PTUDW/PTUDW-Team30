@@ -110,6 +110,7 @@ exports.searchBooks = (kind, pricemin, pricemax, publisher, author) => {
     return db.load(sql);
 }
 
+
 exports.updateSold = (id, qty) => {
     var sql = `update book set Sold = (Sold + ${qty})
     where Book_ID = '${id}'`;

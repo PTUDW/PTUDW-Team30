@@ -84,7 +84,9 @@ router.post('/order', (req, res) => {
         });
     } else {
         var vm = {
-            layout: 'cus-noleftmenu.handlebars'
+            layout: 'cus-noleftmenu.handlebars',
+            showMsg: true,
+            msg: "Cart empty"
         };
         res.render('buy/cart', vm);
     }
@@ -110,7 +112,7 @@ router.post('/order-success', (req, res) => {
         Consignee_Address: req.body.address,
         Note: req.body.note,
         Total: req.body.total,
-        Order_Status: 0,
+        Order_Status: "New",
         Customer_ID: req.session.idCustomer
     }
     ordersRepo.add(order);

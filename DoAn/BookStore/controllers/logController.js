@@ -1,4 +1,5 @@
-var express = require('express');
+var express = require('express'),
+    SHA256 = require('crypto-js/sha256');
 var accountRepo = require('../repos/accountRepo');
 var customerRepo = require('../repos/customerRepo');
 
@@ -22,7 +23,7 @@ router.get('/register', (req, res) => {
 router.post('/register-success', (req, res) => {
     var account = {
         Username: req.body.username,
-        Password: req.body.password
+        Password: SHA256(req.body.password).toString()
     };
 
     accountRepo.getMaxID().then(rows => {
@@ -38,7 +39,7 @@ router.post('/register-success', (req, res) => {
         req.session.idAccount = customer.Account_ID;
     });
     var vm = {
-        layout: 'cus-noleftmenu.handlebars'
+        layout: 'guess-noleftmenu.handlebars'
     };
     res.render('log/register-success', vm);
 });

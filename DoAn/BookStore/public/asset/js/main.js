@@ -8,9 +8,9 @@ $(document).ready(function() {
         additemBtn();
         editBtn();
         removeBtn();
-        b_addBtn();
-        k_addBtn();
-        ih_addBtn();
+        // b_addBtn();
+        // k_addBtn();
+        // ih_addBtn();
     })
     // toggle button
 function toggleMenu() {
@@ -130,7 +130,7 @@ function detailBtn() {
         $('.popup-item-edit').addClass('show');
         var currentRow = _this.parentsUntil("tbody").children('td');
         var currentInput = $('.popup-item-edit .container').children('input');
-        for(var i = 0; i < currentInput.length; i ++) {
+        for (var i = 0; i < currentInput.length; i++) {
             $(currentInput[i]).val($(currentRow[i]).text());
         }
 
