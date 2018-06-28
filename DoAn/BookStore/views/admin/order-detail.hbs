@@ -2,38 +2,39 @@
     <h2 class="align-center">Order infomation</h2>
     <div class="row wrapper-order">
         <div class="col-order-1">
+            <form action="/admin/managing-orders" method="post">
             {{#each orders}}
-                <label for="">Order ID</label>
-                <input readonly class="custom-input" type="text" name="order_Id" value="{{Order_ID}}">
-                <label for="">Order Date</label>
-                <input readonly class="custom-input" type="text" name="order_Date" value="{{Order_Date}}">
-                <label for="">Customer</label>
-                <input readonly class="custom-input" type="text" name="customer_Name" value="{{Customer_Name}}">
-                <label for="">Consignee Name</label>
-                <input readonly class="custom-input" type="text" name="consignee" value="{{Consignee}}">
-                <label for="">Consignee Phone</label>
-                <input readonly class="custom-input" type="text" name="consignee_Phone" value="{{Consignee_Phone}}">
-                <label for="">Consignee Address</label>
-                <input readonly class="custom-input" type="text" name="consignee_Address" value="{{Consignee_Address}}">
-                <label for="">Note</label>
-                <textarea readonly rows="4" cols="50" class="custom-input" type="text" name="note">{{Note}}</textarea>
-                <label for="">Total</label>
-                <input readonly class="custom-input" type="text" name="total" value="{{Total}}">
-            {{/each}}
+            <label for="">Order ID</label>
+            <input readonly class="custom-input" type="text" name="order_Id" value="{{Order_ID}}">
+            <label for="">Order Date</label>
+            <input readonly class="custom-input" type="text" name="order_Date" value="{{Order_Date}}">
+            <label for="">Customer</label>
+            <input readonly class="custom-input" type="text" name="customer_Name" value="{{Customer_Name}}">
+            <label for="">Consignee Name</label>
+            <input readonly class="custom-input" type="text" name="consignee" value="{{Consignee}}">
+            <label for="">Consignee Phone</label>
+            <input readonly class="custom-input" type="text" name="consignee_Phone" value="{{Consignee_Phone}}">
+            <label for="">Consignee Address</label>
+            <input readonly class="custom-input" type="text" name="consignee_Address" value="{{Consignee_Address}}">
+            <label for="">Note</label>
+            <textarea readonly rows="4" cols="50" class="custom-input" type="text" name="note">{{Note}}</textarea>
+            <label for="">Total</label>
+            <input readonly class="custom-input" type="text" name="total" value="{{Total}}"> {{/each}}
         </div>
         <div class="col-order-2">
             <table class="cart-table">
                 {{#each orderdetails}}
-                    <tr class="container-cart">
-                        <td class="item-img">
-                            <img src="/img/books/{{Image}}" alt="book">
-                        </td>
-                        <td class="item-info">
-                            <h4 class="item-name">{{Book_Name}}</h4>
-                            <span class="item-cost">Price: {{Price}}</span><br>
-                            <span class="qty" name="quantity">Quantity: {{Quantity}}</span>
-                        </td>
-                    </tr>
+                <tr class="container-cart">
+                    <td class="item-img">
+                        <img src="/img/books/{{Image}}" alt="book">
+                    </td>
+                    <td class="item-info">
+                        <h4 class="item-name">{{Book_Name}}</h4>
+                        <span class="item-cost">Price: {{Price}}</span>
+                        <br>
+                        <span class="qty" name="quantity">Quantity: {{Quantity}}</span>
+                    </td>
+                </tr>
                 {{/each}}
             </table>
         </div>
@@ -41,12 +42,15 @@
     <div class="status-change">
         <label>Status</label>
         <select required class="custom-input" id="select-status" name="status">
-            {{#each orders}}
-                <option value="">{{status}}</option>
-            {{/each}}
+            <option>New</option>
+            <option>Shipping</option>
+            <option>Completed</option>
         </select>
     </div>
     <div class="row">
-        <button type="submit" class="btn btn-buy btn--orange btn--large"><a href="managing-orders"><span>Submit</span></button>
+        <button type="submit" class="btn btn-buy btn--orange btn--large">
+                <span>Submit</span>
+        </button>
     </div>
+    </form>
 </div>

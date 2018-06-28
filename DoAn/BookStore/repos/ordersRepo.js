@@ -64,3 +64,8 @@ exports.getStatus = () => {
                     AND COLUMN_NAME='Order_Status'`;
     return db.load(sql);
 }
+
+exports.updateStatus = (id, status) => {
+    var sql = `update orders set Order_Status = "${status}" where Order_ID = '${id}'`;
+    return db.save(sql);
+}

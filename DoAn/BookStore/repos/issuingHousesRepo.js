@@ -1,13 +1,13 @@
 var db = require('../fn/db');
 
 exports.loadAll = () => {
-	var sql = 'select * from issuingHouse';
-	return db.load(sql);
+    var sql = 'select * from issuingHouse';
+    return db.load(sql);
 }
 
 exports.add = (ih) => {
     var sql = `insert into issuinghouse(IssuingHouse_Name,Contact,Address) 
-    			values('${ih.issuingHouse_Name}', '${ih.contact}', '${ih.address}')`;
+    			values('${ih.IssuingHouse_Name}', '${ih.Contact}', '${ih.Address}')`;
     return db.save(sql);
 }
 

@@ -358,9 +358,9 @@ router.post('/', (req, res) => {
         if (rows.length > 0) {
             if (rows[0].Account_Type === 1) {
                 var vm = {
-                    layout: 'mainAdmin.handlebars'
-                }
-                res.render('admin/managing-books', vm);
+                        layout: 'mainAdmin.handlebars'
+                    }
+                    //res.render('admin', vm);
             } else {
                 bookRepo.loadAll().then(rows2 => {
                     var vm = {

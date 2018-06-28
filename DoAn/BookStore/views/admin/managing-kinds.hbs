@@ -69,6 +69,7 @@
                             <div class="container">
                             {{#with kind}}
                                 <form action="managing-kinds" method="POST" role="form">
+                                    <input type="text" hidden="true" name="Kindid" value="{{Kind_ID}}">
                                     <label>Kind Name</label>
                                     <input name="kind_Name" type="text" class="custom-input" required="true" value="{{Kind_Name}}">
                                     <label>Description</label>
