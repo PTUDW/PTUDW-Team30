@@ -21,3 +21,13 @@ exports.delete = (id) => {
     var sql = `delete from IssuingHouse where IssuingHouse_ID = ${id}`;
     return db.save(sql);
 }
+
+exports.single = Id => {
+    var sql = `select * from IssuingHouse where IssuingHouse_ID = ${id}`;
+    return db.load(sql);
+}
+
+exports.search = name => {
+    var sql = `select * from IssuingHouse where IssuingHouse_Name LIKE "%${name}%"`;
+    return db.load(sql);
+}

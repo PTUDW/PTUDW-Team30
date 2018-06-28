@@ -5,10 +5,12 @@
             <div class="tab-content content-managing-items content-wrapper-wide active">
                 <div class="content-wrapper">
                     <div class="search-item-wrapper">
-                        <input type="text" class="custom-input" placeholder="Typing Kind ID or Name">
+                    <form action="managing-kinds" method="post">
+                        <input type="text" class="custom-input" placeholder="Typing Kind Name" name ="kindname">
                         <button class="btn-search">
                                 <i class="fa fa-search fa-lg" aria-hidden="true"></i>
                             </button>
+                            </form>
                     </div>
                     <div class="add-item-btn">
                         <button class="btn btn--small btn-add"><span><i class="fa fa-plus" aria-hidden="true"></i> Add kind</span></button>
@@ -45,19 +47,19 @@
                         <i class="fa fa-close close-popup"></i>
                         <div class="outer">
                             <div class="container">
-                                <form action="managing-kinds" method="POST" role="form">
+                                <form action="addKind" method="POST" role="form">
                                     <label>Kind Name</label>
                                     <input name="kind_Name" type="text" class="custom-input" required="true">
                                     <label>Description</label>
                                     <input name="description" type="text" class="custom-input" required="true">
                                     <label>Catelogies belonging</label>
-                                    <select name="category" required class="custom-input" id="select1">
+                                    <select name="category_Name" required class="custom-input" id="select1">
                                         {{#each category}}
                                             <option>{{Category_Name}}</option>
                                         {{/each}}
                                     </select>
-                                    <button type="reset" class="btn"><span>Add</span></button>
-                                </from>
+                                    <button type="submit" class="btn"><a href="/admin/managing-kinds"><span>Add</span></a></button>
+                                </form>
                             </div>
                         </div>
                     </div>

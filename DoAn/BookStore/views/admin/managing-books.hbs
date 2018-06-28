@@ -4,10 +4,12 @@
             <div class="tab-content content-managing-items content-wrapper-wide active">
                 <div class="content-wrapper">
                     <div class="search-item-wrapper">
-                        <input type="text" class="custom-input" placeholder="Typing Book ID or Name">
+                    <form action="managing-books" method="post">
+                        <input type="text" class="custom-input" placeholder="Typing Book Name" name="bookName">
                         <button class="btn-search">
                             <i class="fa fa-search fa-lg" aria-hidden="true"></i>
                         </button>
+                    </form>
                     </div>
                     <div class="add-item-btn">
                         <button class="btn btn--small btn-add">
@@ -65,7 +67,7 @@
                         <i class="fa fa-close close-popup"></i>
                         <div class="outer">
                             <div class="container">
-                                <form action="managinng-books" method="POST" role="form">
+                                <form action="addBook" method="POST" role="form">
                                     <label>Book Image</label>
                                     <input type="file" class="custom-input" required="true" name="image">
                                     <hr>
@@ -76,7 +78,7 @@
                                     <label>Publisher</label>
                                     <input type="text" class="custom-input" required="true" name="publisher">
                                     <label>Publish Date</label>
-                                    <input type="datetime-local" class="custom-input" required="true"
+                                    <input type="text" class="custom-input" required="true" placeholder="yyyy-mm-dd hh:mm:ss"
                                     name="publish_Date">
                                     <label>Price</label>
                                     <input type="number" class="custom-input" required="true" min="0" name="price">
@@ -85,12 +87,12 @@
                                     <label>Description</label>
                                     <input type="text" class="custom-input" required="true" name="description">                   
                                     <label>Kind</label>
-                                    <select name="kind_Id" required class="custom-input" id="select1">
+                                    <select name="kind_Name" required class="custom-input" id="select1">
                                         {{#each kind}}
-                                            <option value="">{{Kind_Name}}</option>
+                                            <option>{{Kind_Name}}</option>
                                         {{/each}}
                                     </select>
-                                    <button type="reset" class="btn"><a href="managing-books">
+                                    <button type="submit" class="btn"><a href="/admin/managing-books">
                                         <span>Add</span>
                                     </a></button>
                                 </form>
@@ -103,7 +105,7 @@
                         <i class="fa fa-close close-popup"></i>
                         <div class="outer">
                             <div class="container">
-                                <form action="managing-books" method="POST" role="form">
+                                <form action="editBook" method="POST" role="form">
                                 {{#with Book}}
                                     <label>Book Image</label>
                                     <input type="file" class="custom-input" required="true" name="image" value="{{Image}}">
@@ -115,7 +117,7 @@
                                     <label>Publisher</label>
                                     <input type="text" class="custom-input" required="true" name="publisher" value="{{Publisher}}">
                                     <label>Publish Date</label>
-                                    <input type="datetime" class="custom-input" required="true"
+                                    <input type="text" class="custom-input" required="true" placeholder="yyyy-mm-dd hh:mm:ss"
                                     name="publish_Date" value="{{Publish_Date}}">
                                     <label>Price</label>
                                     <input type="price" class="custom-input" required="true" min="0" name="price" value="{{Price}}">
@@ -124,7 +126,7 @@
                                     <label>Description</label>
                                     <input type="text" class="custom-input" required="true name="description" value="{{Description}}">                   
                                     <label>Kind</label>
-                                    <select name="kind_Id" required class="custom-input" id="select1">
+                                    <select name="kind_Name" required class="custom-input" id="select1">
                                         <option value="" selected>1</option>
                                         <option value="">2</option>
                                     </select>

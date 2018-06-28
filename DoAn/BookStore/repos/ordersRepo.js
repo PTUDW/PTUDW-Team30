@@ -69,3 +69,8 @@ exports.updateStatus = (id, status) => {
     var sql = `update orders set Order_Status = "${status}" where Order_ID = '${id}'`;
     return db.save(sql);
 }
+
+exports.search = status => {
+    var sql = `select * from orders where Order_Status LIKE "%${status}%"`;
+    return db.load(sql);
+}

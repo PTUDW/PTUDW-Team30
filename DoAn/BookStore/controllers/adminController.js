@@ -47,34 +47,57 @@ router.get('/managing-books', (req, res) => {
 });
 
 router.post('/managing-books', (req, res) => {
-    var book = {
-        Book_ID: req.body.book_Id,
-        Book_Name: req.body.book_Name,
-        Author: req.body.author,
-        Publisher: req.body.publisher,
-        Publish_Date: req.body.publish_Date,
-        Image: req.body.image,
-        Price: req.body.price,
-        Quantity: req.body.quantity,
-        Description: req.body.description,
-        Kind_ID: req.body.kind_Id
-    }
-    bookRepo.add(book);
+    var book_Name = req.body.bookName;
+    bookRepo.search(book_Name).then(b => {
+        console.log(b);
+        var vm = {
+            order: b
+        };
+        //res.render('/admin/managing-kinds', vm);
+    });
+});
 
+router.get('/addBook', (req, res) => {
     var vm = {
-        Book_ID: req.body.book_Id,
-        Book_Name: req.body.book_Name,
-        Author: req.body.author,
-        Publisher: req.body.publisher,
-        Publish_Date: req.body.publish_Date,
-        Image: req.body.image,
-        Price: req.body.price,
-        Quantity: req.body.quantity,
-        Description: req.body.description,
-        Kind_ID: req.body.kind_Id,
-        layout: 'mainAdmin.handlebars'
-    }
+        showAlert: false
+    };
     res.render('admin/managing-books', vm);
+});
+
+router.post('/addBook', (req, res) => {
+    bookRepo.getByName(req.body.kind_Name).then(value =>
+    { 
+        var book = {
+            Book_ID: req.body.book_Id,
+            Book_Name: req.body.book_Name,
+            Author: req.body.author,
+            Publisher: req.body.publisher,
+            Publish_Date: req.body.publish_Date,
+            Image: req.body.image,
+            Price: req.body.price,
+            Quantity: req.body.quantity,
+            View_Number: 0,
+            Description: req.body.description,
+            Kind_ID: value[0].Kind_ID
+        }
+        bookRepo.add(book);
+
+        var vm = {
+            Book_ID: req.body.book_Id,
+            Book_Name: req.body.book_Name,
+            Author: req.body.author,
+            Publisher: req.body.publisher,
+            Publish_Date: req.body.publish_Date,
+            Image: req.body.image,
+            Price: req.body.price,
+            Quantity: req.body.quantity,
+            View_Number: 0,
+            Description: req.body.description,
+            Kind_ID: value[0].Kind_ID,
+            layout: 'mainAdmin.handlebars'
+        }
+        res.render('admin/managing-books',vm);
+    });   
 });
 
 router.get('/deleteBook/:id', (req, res) => {
@@ -102,21 +125,31 @@ router.get('/managing-kinds', (req, res) => {
     });
 });
 
-router.post('/managing-kinds', (req, res) => {
-    var kind = {
-        Kind_Name: req.body.kind_Name,
-        Description: req.body.description,
-        Category_ID: req.body.category_Id,
-    }
-    kindRepo.add(kind);
-
+router.get('/addKind', (req, res) => {
     var vm = {
+        showAlert: false
+    };
+    res.render('admin/managing-kinds', vm);
+});
+
+router.post('/addKind', (req, res) => {
+    kindRepo.getByName(req.body.category_Name).then(value =>
+    { console.log(value);
+        var kind = {
         Kind_Name: req.body.kind_Name,
         Description: req.body.description,
-        Category_ID: req.body.category_Id,
-        layout: 'mainAdmin.handlebars'
-    }
-    res.render('admin/managing-kinds', vm);
+        Category_ID: value[0].Category_ID
+        }
+        kindRepo.add(kind);
+
+        var vm = {
+            Kind_Name: req.body.kind_Name,
+            Description: req.body.description,
+            Category_ID: value[0].Category_ID,
+            layout: 'mainAdmin.handlebars'
+        }
+        res.render('admin/managing-kinds',vm);
+    });
 });
 
 router.get('/managing-kinds', (req, res) => {
@@ -126,6 +159,17 @@ router.get('/managing-kinds', (req, res) => {
             Kind: k
         };
         res.render('managing-kinds', vm);
+    });
+});
+
+router.post('/managing-kinds', (req, res) => {
+    var kind_Name = req.body.kindname;
+    kindRepo.search(kind_Name).then(k => {
+        //console.log(k);
+        var vm = {
+            Kind: k
+        };
+        //res.render('admin/managing-kinds', vm);
     });
 });
 
@@ -180,6 +224,17 @@ router.get('/managing-issuingHouses', (req, res) => {
 
 });
 
+router.post('/managing-issuingHouses', (req, res) => {
+    var issuingHouse_Name = req.body.issuingHouseName;
+    issuingHousesRepo.search(issuingHouse_Name).then(ih => {
+        console.log(ih);
+        var vm = {
+            issuingHouse: ih
+        };
+        //res.render('/admin/managing-issuingHouses', vm);
+    });
+});
+
 router.get('/addIssuingHouse', (req, res) => {
     var vm = {
         showAlert: false
@@ -204,6 +259,23 @@ router.post('/addIssuingHouse', (req, res) => {
     res.render('admin/managing-issuingHouses', vm);
 });
 
+router.get('/editIssuingHouse', (req, res) => {
+    issuingHousesRepo.single(req.query.id).then(ih => {
+        // console.log(c);
+        var vm = {
+            issuingHouse: ih
+        };
+        res.render('admin/managing-issuingHouses', vm);
+    });
+});
+
+router.post('/editIssuingHouse', (req, res) => {
+    issuingHousesRepo.update(req.body).then(value => {
+        res.redirect('/managing-issuingHouses');
+    });
+});
+
+
 router.get('/deleteIssuingHouse/:id', (req, res) => {
     issuingHousesRepo.delete(req.params.id).then(value => {
             res.redirect('/admin/managing-issuingHouses');
@@ -225,6 +297,18 @@ router.post('/managing-orders', (req, res) => {
             orders: rows
         };
         res.render('admin/managing-orders', vm);
+    });
+});
+
+
+router.post('/managing-orders', (req, res) => {
+    var order_Status = req.body.orderStatus;
+    ordersRepo.search(order_Status).then(o => {
+        // console.log(o);
+        var vm = {
+            order: o
+        };
+        //res.render('/admin/managing-orders', vm);
     });
 });
 

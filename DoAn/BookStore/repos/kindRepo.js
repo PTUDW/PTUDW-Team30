@@ -32,7 +32,7 @@ exports.loadbyCategory = () => {
 }
 
 exports.add = (k) => {
-    var sql = `insert into kind(Kind_Name,Description,Category_ID) values('${k.kind_Name}', '${k.description}', '${k.category_Id}')`;
+    var sql = `insert into kind(Kind_Name,Description,Category_ID) values('${k.Kind_Name}', '${k.Description}', '${k.Category_ID}')`;
     return db.save(sql);
 }
 
@@ -60,4 +60,14 @@ exports.singleId = (id) => {
 exports.delete = (id) => {
     var sql = `delete from Kind where Kind_ID = ${id}`;
     return db.save(sql);
+}
+
+exports.getByName = name => {
+    var sql = `select * from category where Category_Name = "${name}"`;
+    return db.load(sql);
+}
+
+exports.search = name => {
+    var sql = `select * from kind where Kind_Name LIKE "%${name}%"`;
+    return db.load(sql);
 }

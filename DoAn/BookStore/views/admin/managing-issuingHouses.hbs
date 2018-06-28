@@ -4,10 +4,12 @@
             <div class="tab-content content-managing-items content-wrapper-wide active">
                 <div class="content-wrapper">
                     <div class="search-item-wrapper">
-                        <input type="text" class="custom-input" placeholder="Typing Issuing house ID or Name">
+                    <form action="managing-issuingHouses" method="post">
+                        <input type="text" class="custom-input" placeholder="Typing Issuing house Name" name="issuingHouseName">
                         <button class="btn-search">
                                 <i class="fa fa-search fa-lg" aria-hidden="true"></i>
                             </button>
+                    </form>
                     </div>
                     <div class="add-item-btn">
                         <button class="btn btn--small btn-add"><span><i class="fa fa-plus" aria-hidden="true"></i> Add issuing house</span></button>
@@ -51,8 +53,8 @@
                                 <input type="text" name="address" class="custom-input" required="true">
                                 <label>Contact</label>
                                 <input type="text" name="contact" class="custom-input" required="true">
-                                <button id="ih-add" type="submit" class="btn"><a href="/admin/managing-issuingHouses/addIssuingHouse"><span>Add</span></a></button>
-                            </from>
+                                <button id="ih-add" type="submit" class="btn"><a href="/admin/managing-issuingHouses"><span>Add</span></a></button>
+                            </form>
                             </div>
                         </div>
                     </div>
@@ -62,16 +64,18 @@
                         <i class="fa fa-close close-popup"></i>
                         <div class="outer">
                             <div class="container">
-                            <form action="managing-issuingHouses" method="POST" role="form">
-                                <input type="text" hidden="true" name="Kindid">
+                            {{#with issuingHouse}}
+                            <form action="editIssuingHouse" method="POST" role="form">
+                                <input type="text" hidden="true" name="issuingHouse_Id" value="{{IssuingHouse_ID}}">
                                 <label>Issuing house Name</label>
-                                <input type="text" class="custom-input" required="true">
+                                <input name="issuingHouse_Name" value="{{IssuingHouse_Name}}" type="text" class="custom-input" required="true">
                                 <label>Address</label>
-                                <input type="text" class="custom-input" required="true">
+                                <input name="address" value="{{Address}}" type="text" class="custom-input" required="true">
                                 <label>Contact</label>
-                                <input type="text" class="custom-input" required="true">
+                                <input name="contact" value="{{Contact}}" type="text" class="custom-input" required="true">
                                 <button class="btn"><span>Edit</span></button>
                                 </form>
+                                {{/with}}
                             </div>
                         </div>
                     </div>
