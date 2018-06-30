@@ -5,7 +5,6 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var wnumb = require('wnumb');
 
-var bookRepo = require('./repos/bookRepo');
 
 var session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
@@ -50,8 +49,8 @@ var sessionStore = new MySQLStore({
     host: 'localhost',
     port: 3306,
     user: 'root',
-    password: '1111',
-    database: 'bookstoredb',
+    password: '',
+    database: 'bookstore',
     createDatabaseTable: true,
     schema: {
         tableName: 'sessions',

@@ -1,11 +1,10 @@
-
 <div class="container padding-width">
     <div class="manager-container">
         <div class="manager-content">
             <div class="tab-content content-managing-items content-wrapper-wide active">
                 <div class="content-wrapper">
                     <div class="search-item-wrapper">
-                    <form action="managing-orders" method="post">
+                    <form action="managingOrders" method="post">
                         <input type="text" class="custom-input" placeholder="Typing order status" name="orderStatus">
                         <button class="btn-search">
                                 <i class="fa fa-search fa-lg" aria-hidden="true"></i>
@@ -29,6 +28,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        
                         {{#each orders}}
                             <tr>
                                 <td>{{Order_Date}}</td>
@@ -39,11 +39,11 @@
                                 <td>{{Consignee_Address}}</td>
                                 <td>{{Note}}</td>
                                 <td>{{Total}}</td>
-                                <td>{{Order_Status}}</td>
+                                <td> <p class="color{{Order_Status}}">{{Order_Status}}</p> </td>
                                 <td>
                                     <a href="/admin/order-detail/{{Order_ID}}"><button class="btn btn--small" data-type="detail"><span><i class="" aria-hidden="true"></i> Detail</span></button>
                                 </td>
-                            </tr>
+                                </tr>
                         {{/each}}
                     </tbody>     
                 </table>

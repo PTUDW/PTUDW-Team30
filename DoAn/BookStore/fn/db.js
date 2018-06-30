@@ -6,8 +6,8 @@ exports.load = sql => {
             host: 'localhost',
             port: 3306,
             user: 'root',
-            password: '1111',
-            database: 'bookstoredb'
+            password: '',
+            database: 'bookstore'
         });
 
         cn.connect();
@@ -30,8 +30,8 @@ exports.save = sql => {
             host: 'localhost',
             port: 3306,
             user: 'root',
-            password: '1111',
-            database: 'bookstoredb'
+            password: '',
+            database: 'bookstore'
         });
 
         cn.connect();

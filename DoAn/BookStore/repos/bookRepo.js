@@ -2,7 +2,7 @@ var db = require('../fn/db');
 var config = require('../config/config');
 
 exports.loadAll = () => {
-    var sql = 'select * from book ORDER BY Publish_Date DESC limit 10';
+    var sql = 'select * from book ORDER BY Book_ID DESC limit 10';
     return db.load(sql);
 }
 

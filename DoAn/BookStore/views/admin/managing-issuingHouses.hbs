@@ -64,18 +64,16 @@
                         <i class="fa fa-close close-popup"></i>
                         <div class="outer">
                             <div class="container">
-                            {{#with issuingHouse}}
-                            <form action="editIssuingHouse" method="POST" role="form">
-                                <input type="text" hidden="true" name="issuingHouse_Id" value="{{IssuingHouse_ID}}">
+                            <form action="managing-issuingHouses" method="POST" role="form">
+                                <input type="text" hidden="true" name="Kindid">
                                 <label>Issuing house Name</label>
-                                <input name="issuingHouse_Name" value="{{IssuingHouse_Name}}" type="text" class="custom-input" required="true">
+                                <input type="text" class="custom-input" required="true">
                                 <label>Address</label>
-                                <input name="address" value="{{Address}}" type="text" class="custom-input" required="true">
+                                <input type="text" class="custom-input" required="true">
                                 <label>Contact</label>
-                                <input name="contact" value="{{Contact}}" type="text" class="custom-input" required="true">
+                                <input type="text" class="custom-input" required="true">
                                 <button class="btn"><span>Edit</span></button>
                                 </form>
-                                {{/with}}
                             </div>
                         </div>
                     </div>

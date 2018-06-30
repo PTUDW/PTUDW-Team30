@@ -120,13 +120,12 @@ INSERT INTO `kind` (`Kind_Name`, `Description`, `Category_ID`) VALUES
 ('Living Thinking', 'Living Thinking', 4),
 ('Developing', 'Developing', 5),
 ('Office', 'Office', 5),
-('Design', 'Design', 5),
-('VietNamese', 'The language of Viet Nam', 1);
+('Design', 'Design', 5);
 
 INSERT INTO `book` (`Book_Name`, `Author`, `Publisher`, `Publish_Date`, `Image`, `Price`, `Quantity`, `View_Number`, `Description`, `Kind_ID`) VALUES
 ('High School English Grammar and Composition', 'Wren & Martin', 'Cambrigde University', '2010-05-15 00:00:00', 'HighSchoolEnglishGrammarandComposition.jpg', 15, 10, 100, 'It provides ample guidance and practice in sentence building, correct usage, comprehension, written composition and other allied areas so as to equip the student with the ability to communicate effectively in English.', 1),
-('Timesaver For Exams - IELTS', 'Norman Whitby, Julie Moore', 'NXB Tổng hợp TP.HCM', '1996-10-10 00:00:00', 'TimesaverForExamsIELTS.jpg', 20, 20, 200, 'Chưa cập nhật', 1),
-('Bí Quyết Học Và Thi IELTS', 'Knowledge Link', 'NXB Phụ Nữ', '2000-12-01 00:00:00', 'BiQuyetHocVaThiIELTS.jpg', 15, 20, 150, 'Chưa cập nhật', 1),
+('Timesaver For Exams - IELTS', 'Norman Whitby, Julie Moore', 'NXB Tổng hợp TP.HCM', '1996-10-10 00:00:00', 'TheWomanintheDunes.jpg', 20, 20, 200, 'Chưa cập nhật', 1),
+('Bí Quyết Học Và Thi IELTS', 'Knowledge Link', 'NXB Phụ Nữ', '2000-12-01 00:00:00', 'TheWomanintheDunes.jpg', 15, 20, 150, 'Chưa cập nhật', 1),
 ('Đàm Thoại Tiếng Nhật Hiện Đại (Kèm CD)', 'Ngọc Yến', 'NXB Thanh niên', '2000-12-01 00:00:00', 'DamThoaiTiengNhatHienDai.jpg', 20, 20, 200, 'Chưa cập nhật', 2),
 ('Ngữ Pháp Tiếng Nhật Căn Bản (Tái Bản)', 'The Sakura', 'NXB Hồng Đức', '2010-05-15 00:00:00', 'NguPhapTiengNhatCanBan.jpg', 20, 20, 200, 'Chưa cập nhật', 2),
 ('Tập Viết Tiếng Nhật Căn Bản Kanji', 'Mai Ngọc', 'NXB Đại học quốc gia Hà Nội', '2010-05-15 00:00:00', 'TapVietTiengNhatCanBanKanji.jpg', 20, 20, 200, 'Chưa cập nhật', 2),

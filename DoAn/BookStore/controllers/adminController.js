@@ -51,9 +51,10 @@ router.post('/managing-books', (req, res) => {
     bookRepo.search(book_Name).then(b => {
         console.log(b);
         var vm = {
-            order: b
+            book: b,
+            layout: 'mainAdmin.handlebars'
         };
-        //res.render('/admin/managing-kinds', vm);
+        res.render('admin/managing-books', vm);
     });
 });
 
@@ -65,8 +66,7 @@ router.get('/addBook', (req, res) => {
 });
 
 router.post('/addBook', (req, res) => {
-    bookRepo.getByName(req.body.kind_Name).then(value =>
-    { 
+    bookRepo.getByName(req.body.kind_Name).then(value => {
         var book = {
             Book_ID: req.body.book_Id,
             Book_Name: req.body.book_Name,
@@ -81,23 +81,17 @@ router.post('/addBook', (req, res) => {
             Kind_ID: value[0].Kind_ID
         }
         bookRepo.add(book);
-
-        var vm = {
-            Book_ID: req.body.book_Id,
-            Book_Name: req.body.book_Name,
-            Author: req.body.author,
-            Publisher: req.body.publisher,
-            Publish_Date: req.body.publish_Date,
-            Image: req.body.image,
-            Price: req.body.price,
-            Quantity: req.body.quantity,
-            View_Number: 0,
-            Description: req.body.description,
-            Kind_ID: value[0].Kind_ID,
-            layout: 'mainAdmin.handlebars'
-        }
-        res.render('admin/managing-books',vm);
-    });   
+        var t1 = bookRepo.loadAllBook();
+        var t2 = kindRepo.loadAll();
+        Promise.all([t1, t2]).then(([b, k]) => {
+            var vm = {
+                layout: 'mainAdmin.handlebars',
+                book: b,
+                kind: k
+            };
+            res.render('admin/managing-books', vm);
+        });
+    });
 });
 
 router.get('/deleteBook/:id', (req, res) => {
@@ -133,22 +127,24 @@ router.get('/addKind', (req, res) => {
 });
 
 router.post('/addKind', (req, res) => {
-    kindRepo.getByName(req.body.category_Name).then(value =>
-    { console.log(value);
+    kindRepo.getByName(req.body.category_Name).then(value => {
         var kind = {
-        Kind_Name: req.body.kind_Name,
-        Description: req.body.description,
-        Category_ID: value[0].Category_ID
-        }
-        kindRepo.add(kind);
-
-        var vm = {
             Kind_Name: req.body.kind_Name,
             Description: req.body.description,
-            Category_ID: value[0].Category_ID,
-            layout: 'mainAdmin.handlebars'
+            Category_ID: value[0].Category_ID
         }
-        res.render('admin/managing-kinds',vm);
+        kindRepo.add(kind);
+        var t1 = kindRepo.loadAllKind();
+        var t2 = categoryRepo.loadAll();
+        Promise.all([t1, t2]).then(([k, c]) => {
+            var vm = {
+                kind: k,
+                category: c,
+                layout: 'mainAdmin.handlebars'
+            };
+            res.render('admin/managing-kinds', vm);
+        });
+
     });
 });
 
@@ -165,11 +161,11 @@ router.get('/managing-kinds', (req, res) => {
 router.post('/managing-kinds', (req, res) => {
     var kind_Name = req.body.kindname;
     kindRepo.search(kind_Name).then(k => {
-        //console.log(k);
         var vm = {
-            Kind: k
+            kind: k,
+            layout: 'mainAdmin.handlebars'
         };
-        //res.render('admin/managing-kinds', vm);
+        res.render('admin/managing-kinds', vm);
     });
 });
 
@@ -187,10 +183,20 @@ router.get('/deleteKind/:id', (req, res) => {
 
 router.get('/managing-orders', (req, res) => {
     ordersRepo.loadAllOrder().then(rows => {
-        //console.log(rows);
+        var color = [];
+        for (var i = 0; i < rows.length; i++) {
+            if (rows[i].Order_Status === "Shipping")
+                color.push("Green");
+            if (rows[i].Order_Status === "New")
+                color.push("Red");
+            if (rows[i].Order_Status === "Completed")
+                color.push("Blue");
+        }
+        console.log(rows);
         var vm = {
             layout: 'mainAdmin.handlebars',
-            orders: rows
+            orders: rows,
+            colors: color
         };
         res.render('admin/managing-orders', vm);
     });
@@ -229,9 +235,10 @@ router.post('/managing-issuingHouses', (req, res) => {
     issuingHousesRepo.search(issuingHouse_Name).then(ih => {
         console.log(ih);
         var vm = {
-            issuingHouse: ih
+            issuingHouse: ih,
+            layout: 'mainAdmin.handlebars',
         };
-        //res.render('/admin/managing-issuingHouses', vm);
+        res.render('admin/managing-issuingHouses', vm);
     });
 });
 
@@ -250,13 +257,13 @@ router.post('/addIssuingHouse', (req, res) => {
     }
     issuingHousesRepo.add(issuingHouse);
 
-    var vm = {
-        IssuingHouse_Name: req.body.issuingHouse_Name,
-        Contact: req.body.contact,
-        Address: req.body.address,
-        layout: 'mainAdmin.handlebars'
-    }
-    res.render('admin/managing-issuingHouses', vm);
+    issuingHousesRepo.loadAll().then(rows => {
+        var vm = {
+            layout: 'mainAdmin.handlebars',
+            issuingHouse: rows
+        };
+        res.render('admin/managing-issuingHouses', vm);
+    });
 });
 
 router.get('/editIssuingHouse', (req, res) => {
@@ -301,14 +308,14 @@ router.post('/managing-orders', (req, res) => {
 });
 
 
-router.post('/managing-orders', (req, res) => {
+router.post('/managingOrders', (req, res) => {
     var order_Status = req.body.orderStatus;
     ordersRepo.search(order_Status).then(o => {
-        // console.log(o);
         var vm = {
-            order: o
+            orders: o,
+            layout: 'mainAdmin.handlebars',
         };
-        //res.render('/admin/managing-orders', vm);
+        res.render('admin/managing-orders', vm);
     });
 });
 

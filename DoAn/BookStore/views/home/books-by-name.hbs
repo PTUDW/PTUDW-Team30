@@ -1,0 +1,39 @@
+<div class="container padding-width">
+    <div class="row">
+        <div class="col-content">
+            <section class="section-hero">
+            </section>
+            <section class="section-display-item">
+                <div class="container-lastest">
+                    <h2 class="title">Books Search</h2>
+                    <div class="row">
+                        {{#each books}}
+                        <form action="/buy/add" method="post">
+                            <div class="container col-desktop">
+                                <div class="container-product row">
+                                    <div class="img-product col-1">
+                                        <a href="/home/view-product/{{Book_ID}}">
+                                            <img src="/img/books/{{Image}}" alt="book" height="150" width="150">
+                                        </a>
+                                    </div>
+                                    <div class="info-product col-2">
+                                        <input name="bookid" type="hidden" value="{{Book_ID}}">
+                                        <h4 class="item-name" name="bookname" height="150" width="150">{{Book_Name}}</h4>
+                                        <p class="cost-item" name="price">${{Price}}</p>
+                                        <button class="cart" id="addtoCart">
+                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</button>
+                        </form>
+                        </div>
+                        </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.js"></script>
+<script src="js/main.js"></script>

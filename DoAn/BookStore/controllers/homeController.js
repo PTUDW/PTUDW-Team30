@@ -124,6 +124,24 @@ router.post('/books-by-search', (req, res) => {
     });
 });
 
+router.post('/books-by-name', (req, res) => {
+    var name = req.body.name;
+    bookRepo.search(name).then(rows => {
+        if (req.session.isLogged == true) {
+            var vm = {
+                books: rows,
+                layout: 'cus.handlebars'
+            }
+        } else {
+            var vm = {
+                books: rows,
+                layout: 'main.handlebars'
+            }
+        }
+        res.render('home/books-by-name', vm);
+    });
+});
+
 router.get('/books-by-category/:kind_name', (req, res) => {
 
     var page = req.query.page;
@@ -342,7 +360,7 @@ router.post('/', (req, res) => {
 router.post('/user-info', (req, res) => {
     var account = {
         Username: req.body.username,
-        Password: req.body.password
+        Password: SHA256(req.body.password).toString()
     };
     var customer = {
         Account_ID: req.session.idAccount,

@@ -7,7 +7,7 @@ exports.loadAll = () => {
 
 exports.loadAllOrder = () => {
     var sql = `select orders.Order_ID,orders.Order_Date, orders.Order_Status,orders.Consignee,orders.Consignee_Phone,orders.Consignee_Address,orders.Note,orders.Total,customer.Customer_Name
-                 from orders, customer where orders.Customer_ID = customer.Customer_ID order by orders.Order_ID ASC`;
+                 from orders, customer where orders.Customer_ID = customer.Customer_ID order by orders.Order_ID DESC`;
     return db.load(sql);
 }
 

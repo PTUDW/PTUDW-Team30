@@ -1442,3 +1442,18 @@ table {
 .pagination a:hover:not(.active) {
     background-color: #ddd;
 }
+
+.colorNew {
+    color: red;
+    font-weight: bold;
+}
+
+.colorShipping {
+    color: rgb(255, 0, 212);
+    font-weight: bold;
+}
+
+.colorCompleted {
+    color: blue;
+    font-weight: bold;
+}
